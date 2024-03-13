@@ -1,0 +1,17 @@
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
