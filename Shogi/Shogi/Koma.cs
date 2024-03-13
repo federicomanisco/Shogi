@@ -28,6 +28,15 @@ namespace Shogi {
             }
         }
 
+        public Image Icona
+        {
+            get { return icona; }
+            set
+            {
+                icona = value;
+            }
+        }
+
         public bool Promossa {
             get { return promossa; }
         }
