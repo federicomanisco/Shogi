@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Shogi {
     public abstract class Koma {
         protected string nomepedina;
+        protected int[,] mossePossibili;
         private (int, int) posizione;
         private bool colore;
         private bool promossa;
@@ -51,6 +52,20 @@ namespace Shogi {
             Posizione = nuovaPosizione;
             scacchiera.aggiungiKoma(this, Posizione);
             
+        }
+        public  int controllomossa(int a, int b)
+        {
+            for (int i = 0; i < mossePossibili.GetLength(0); i++)
+            {
+                for (int j = 0; j < mossePossibili.GetLength(1) - 1; j++)
+                {
+                    if (mossePossibili[i, j] == a && mossePossibili[i, j + 1] == b)
+                    {
+                        return 0; // Mosse valide trovate
+                    }
+                }
+            }
+            return 1;//1 errori
         }
 
         public abstract void promuovi();
