@@ -6,11 +6,32 @@ using System.Threading.Tasks;
 
 namespace Shogi {
     public class Kinsho : Koma{
+        private int[,] mossePossibili;
+
         public Kinsho((int, int) posizione, bool colore, Shogiban scacchiera) : base(posizione, colore, scacchiera) {
+            if (colore) {
+                mossePossibili = new int[6, 2] { 
+                    {0, 1},
+                    {1, 0}, 
+                    {-1, 0}, 
+                    {0, -1}, 
+                    {-1, -1}, 
+                    {1, -1} 
+                };
+            } else {
+                mossePossibili = new int[6, 2] { 
+                    {0, -1}, 
+                    {1, 0}, 
+                    {-1, 0}, 
+                    {0, 1}, 
+                    {1, -1}, 
+                    {1, 1} 
+                };
+            }
         }
 
         public override void promuovi() {
-            throw new NotImplementedException();
+            throw new ArgumentException("Il generale d'oro non può essere promosso.");
         }
 
         //public override void muovi((int, int) nuovaPosizione) { }
