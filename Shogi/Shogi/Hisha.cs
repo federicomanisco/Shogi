@@ -8,7 +8,7 @@ namespace Shogi
 {
     internal class Hisha:Koma //Torre
     {
-        //private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
+        private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
         public Hisha((int, int) posizione, bool colore, Shogiban scacchiera) : base(posizione, colore, scacchiera)
         {
             if (colore)

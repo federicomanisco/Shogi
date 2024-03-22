@@ -9,7 +9,7 @@ namespace Shogi
 {
     internal class Keima:Koma //cavallo
     {
-        //private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
+        private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
         public Keima((int, int) posizione, bool colore, Shogiban scacchiera):base(posizione, colore, scacchiera)
         {
             if (colore) { mossePossibili = new int[2, 2] { { 1, 2 },{-1,2 } }; }
