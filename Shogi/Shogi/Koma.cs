@@ -8,7 +8,7 @@ namespace Shogi {
     public abstract class Koma {
         protected string nomepedina;
         private (int, int) posizione;
-        private bool colore;
+        protected bool colore;
         private bool promossa;
         private Shogiban scacchiera;
         private Image icona;
