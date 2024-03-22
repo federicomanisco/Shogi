@@ -61,6 +61,7 @@ namespace Shogi {
             scacchiera.aggiungiKoma(this, Posizione);
             
         }
+        
 
         public abstract void promuovi();
 
