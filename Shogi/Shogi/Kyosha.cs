@@ -17,7 +17,7 @@ namespace Shogi
             }
             else { 
                 mossePossibili = new int[8, 2] { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 0, 7 }, { 0, 8 } };
-                Icona.RotateFlip(RotateFlipType.Rotate180FlipY);
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
             
         }
