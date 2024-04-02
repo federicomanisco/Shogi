@@ -10,16 +10,9 @@ namespace Shogi {
         private (int, int) posizione;
         protected bool colore;
         private bool promossa;
-        private Shogiban scacchiera;
+        protected string PERCORSOIMMAGINE = Application.StartupPath;
         private Image icona;
 
-
-        public Shogiban Scacchiera {
-            get { return Scacchiera; }
-            set {
-                scacchiera = value;
-            }
-        }
 
         public (int, int) Posizione {
             get { return posizione; }
@@ -53,23 +46,22 @@ namespace Shogi {
         
 
         public void muovi((int, int) nuovaPosizione) {
-            if (!scacchiera.controllaCasellaLibera(nuovaPosizione, this)) {
+            /*if (!scacchiera.controllaCasellaLibera(nuovaPosizione, this)) {
                 throw new ArgumentException("Casella occupata da un'altra koma alleata");
             }
             scacchiera.rimuoviKoma(Posizione);
             Posizione = nuovaPosizione;
-            scacchiera.aggiungiKoma(this, Posizione);
-            
+            scacchiera.aggiungiKoma(this, Posizione);         
+            */
         }
         
 
         public abstract void promuovi();
 
 
-        public Koma((int, int) posizione, bool colore, Shogiban scacchiera) {
+        public Koma((int, int) posizione, bool colore) {
             Posizione = posizione;
             Colore = colore;
-            Scacchiera = scacchiera;
         }
     }
 }

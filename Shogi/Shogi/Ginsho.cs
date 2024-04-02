@@ -8,7 +8,8 @@ namespace Shogi {
     public class Ginsho : Koma{
         private int[,] mossePossibili;
 
-        public Ginsho((int, int) posizione, bool colore, Shogiban scacchiera) : base(posizione, colore, scacchiera) {
+        public Ginsho((int, int) posizione, bool colore) : base(posizione, colore) {
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/generaleArgento.png");
             if (colore) {
                 mossePossibili = new int[5, 2] {
                     {-1, -1},
@@ -25,10 +26,12 @@ namespace Shogi {
                     {-1, 1},
                     {1, 1}
                 };
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
 
         public override void promuovi() {
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/generaleArgento.png");
             if (colore) {
                 mossePossibili = new int[6, 2] {
                     {0, 1},
@@ -47,6 +50,7 @@ namespace Shogi {
                     {1, -1},
                     {1, 1}
                 };
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
 

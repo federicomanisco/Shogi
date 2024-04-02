@@ -9,7 +9,7 @@ namespace Shogi {
 
         private int[,] mossePossibili; 
 
-        public Osho((int, int) posizione, bool colore, Shogiban scacchiera) : base(posizione, colore, scacchiera) {
+        public Osho((int, int) posizione, bool colore) : base(posizione, colore) {
             mossePossibili = new int[8, 2] { 
                 {0, 1}, 
                 {1, 0}, 
@@ -20,6 +20,11 @@ namespace Shogi {
                 {1, -1}, 
                 {-1, 1} 
             };
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/re.png");
+
+            if (!colore) {
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
+            }
         }
 
         public int[,] MossePossibili {

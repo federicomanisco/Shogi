@@ -59,7 +59,8 @@ namespace Shogi {
             }
         }
 
-        public void aggiungiKoma(Koma koma, (int, int) posizione) {
+        public void aggiungiKoma(Koma koma) {
+            (int, int) posizione = koma.Posizione;
             if (controllaPosizioneOutOfBounds(posizione)) {
                 scacchiera[posizione.Item1, posizione.Item2] = koma;
             }

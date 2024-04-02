@@ -8,7 +8,8 @@ namespace Shogi {
     public class Kinsho : Koma{
         private int[,] mossePossibili;
 
-        public Kinsho((int, int) posizione, bool colore, Shogiban scacchiera) : base(posizione, colore, scacchiera) {
+        public Kinsho((int, int) posizione, bool colore) : base(posizione, colore) {
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/generaleOro.png");
             if (colore) {
                 mossePossibili = new int[6, 2] { 
                     {0, 1},
@@ -27,6 +28,7 @@ namespace Shogi {
                     {1, -1}, 
                     {1, 1} 
                 };
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
 

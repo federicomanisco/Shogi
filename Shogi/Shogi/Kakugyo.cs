@@ -8,7 +8,13 @@ namespace Shogi {
     public class Kakugyo : Koma{
         private int[,] mossePossibili;
 
-        public Kakugyo((int, int) posizione, bool colore, Shogiban scacchiera) : base(posizione, colore, scacchiera) {
+        public Kakugyo((int, int) posizione, bool colore) : base(posizione, colore) {
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/alfiere.png");
+
+            if (!colore) {
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
+            }
+
             mossePossibili = new int[32, 2] {
                 //diagonale discendente (\)
                 {-1, -1}, {-2, -2}, {-3, -3}, {-4, -4}, {-5, -5}, {-6, -6}, {-7, -7}, {-8, -8},  
@@ -30,6 +36,11 @@ namespace Shogi {
                 //caselle adiacenti
                 {1, 0}, {-1, 0}, {0, 1}, {0, -1},
             };
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/alfiere.png");
+
+            if (!colore) {
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
+            }
         }
 
         //public override void muovi((int, int) nuovaPosizione) { }

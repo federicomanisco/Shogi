@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mEyOvH5aUSecJwcvxiovItttBRYdxKpRVrfHKilkGKmQ2oajfqKIQ7etCbyjWpBanjnhM0irbX5icpLbmWbpuQ==",
+  "dgSpecHash": "R3o1lfW4FDuWwSpaKbm7jsJ7u7JnrjC2Y5i7r3vhMmR3W90x470+uwfyriCOpFe45O9kGGIg/IBoVmiThY2Gww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rotal\\OneDrive\\Desktop\\shogi\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+  "projectFilePath": "D:\\C#\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
