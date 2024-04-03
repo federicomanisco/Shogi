@@ -8,7 +8,6 @@ namespace Shogi
 {
     internal class Kyosha:Koma //Lanciere
     {
-        private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
         public Kyosha((int, int) posizione, bool colore) : base(posizione, colore)
         {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/lancia.png");

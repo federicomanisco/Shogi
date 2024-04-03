@@ -8,7 +8,6 @@ namespace Shogi
 {
     internal class Fuhyo:Koma //Pedone
     {
-        private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
         public Fuhyo((int, int) posizione, bool colore) : base(posizione, colore)
         {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/pedone.png");
@@ -19,6 +18,7 @@ namespace Shogi
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
+
         public override void promuovi()
         {
             if (colore)

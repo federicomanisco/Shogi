@@ -1,9 +1,12 @@
+using System.CodeDom;
+
 namespace Shogi {
     public partial class Form1: Form {
         public Form1() {
             InitializeComponent();
         }
 
+        bool pannelloCliccato = false;
         Panel[,] Tiles;
         //84x84
         const int TILESIZE = 84;
@@ -12,6 +15,9 @@ namespace Shogi {
         Shogiban shogiban = new Shogiban();
 
         private void Form1_Load(object sender, EventArgs e) {
+            Location = new Point(0, 0);
+            Size = Screen.PrimaryScreen.WorkingArea.Size;
+            WindowState = FormWindowState.Maximized;
 
             Tiles = new Panel[GRIDSIZE, GRIDSIZE];
             for (int c = 0; c < GRIDSIZE; c++) {
@@ -22,8 +28,11 @@ namespace Shogi {
                         Location = new Point(TILESIZE * c + 582, TILESIZE * r + 162 - 40),
                         BackColor = TileColor,
                         BorderStyle = BorderStyle.FixedSingle,
-
                     };
+                    Tile.Controls.Add(new ListBox {
+                        Enabled = false,
+                        Visible = false
+                    });
                     Tile.Click += new EventHandler(Tile_Click);
                     Controls.Add(Tile);
                     Tiles[c, r] = Tile;
@@ -33,6 +42,10 @@ namespace Shogi {
             disegnaZonaPromozione(TileColor);
             scriviNumeriCaselle();
             generaPosizioneIniziale();
+        }
+
+        public (int, int) getRowColFromLocation(Point point) {
+            return ((point.X - 582) / TILESIZE, (point.Y - 162 + 40) / TILESIZE);
         }
 
         private void disegnaZonaPromozione(Color colore) {
@@ -68,6 +81,7 @@ namespace Shogi {
                 lbl.Text = (i + 1).ToString();
                 lbl.Size = new Size(30, 30);
                 lbl.Font = new Font("Arial", 18);
+                lbl.AutoSize = true;
                 Controls.Add(lbl);
             }
 
@@ -77,6 +91,7 @@ namespace Shogi {
                 lbl.Text = Math.Abs((i - 9)).ToString();
                 lbl.Size = new Size(30, 30);
                 lbl.Font = new Font("Arial", 18);
+                lbl.AutoSize = true;
                 Controls.Add(lbl);
             }
         }
@@ -85,6 +100,12 @@ namespace Shogi {
             shogiban.aggiungiKoma(koma);
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImage = koma.Icona;
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImageLayout = ImageLayout.Center;
+            foreach (Control control in Tiles[koma.Posizione.Item1, koma.Posizione.Item2].Controls) {
+                if (control.GetType() == typeof(ListBox)) {
+                    ListBox lista = (ListBox) control;
+                    lista.Items.Add(koma);
+                }
+            }
         }
 
         private void generaPosizioneIniziale() {
@@ -159,8 +180,64 @@ namespace Shogi {
         }
 
         private void Tile_Click(object sender, EventArgs e) {
-            MessageBox.Show("Ciao");
+            pannelloCliccato = !pannelloCliccato;
+
+            if (pannelloCliccato) {
+                Panel panel = (Panel)sender;
+                (int, int) posizioneChiamante = getRowColFromLocation(panel.Location);
+                Koma koma = null;
+                foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls) {
+                    if (control.GetType() == typeof(ListBox)) {
+                        try {
+                            ListBox lista = (ListBox)control;
+                            koma = (Koma)lista.Items[0];
+                            Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
+                        } catch {
+
+                        }
+                    }
+                }
+
+                if (koma != null) {
+                    List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
+                    foreach ((int, int) mossaRegolare in mosseRegolari) {
+                        int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
+                        int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
+                        
+                        Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
+                    }
+                }
+            } else {
+                foreach (Panel tile in Tiles) {
+                    if (tile.BackColor != TileColor) {
+                        tile.BackColor = TileColor;
+                    }
+                }
+            }
+            
         }
 
+        private List<(int, int)> calcolaMosseRegolari(Koma koma) {
+            List<(int, int)> mosseRegolari = new List<(int, int)>();
+            for (int i = 0; i < koma.MossePossibili.GetLength(0); i++) {
+                int mossaX = koma.MossePossibili[i, 0];
+                int mossaY = koma.MossePossibili[i, 1];
+                (int, int) posizioneDaControllare = (koma.Posizione.Item1 + mossaX, koma.Posizione.Item2 + mossaY);
+                if (shogiban.controllaPosizioneOutOfBounds(posizioneDaControllare)) {
+                    if (koma.GetType() == typeof(Keima)) {
+                        if (shogiban.controllaCasellaLibera(posizioneDaControllare, koma)) {
+                            (int, int) mossaRegolare = (mossaX, mossaY);
+                            mosseRegolari.Add(mossaRegolare);
+                        }
+                    } else {
+                        if (!shogiban.pedinaNelMezzo(koma.Posizione, posizioneDaControllare)) {
+                            (int, int) mossaRegolare = (mossaX, mossaY);
+                            mosseRegolari.Add(mossaRegolare);
+                        }
+                    }
+                }
+            }
+            return mosseRegolari;
+        }
     }
 }

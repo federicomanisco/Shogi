@@ -26,7 +26,7 @@ namespace Shogi {
 
         public bool controllaPosizioneOutOfBounds((int, int) posizione) {
             //  Colonna           Colonna            Riga               Riga
-            if (posizione.Item1 < 1 || posizione.Item1 > 9 || posizione.Item2 < 1 || posizione.Item2 > 9)
+            if (posizione.Item1 < 0 || posizione.Item1 > 8 || posizione.Item2 < 0 || posizione.Item2 > 8)
                 return false;
             return true;
         }
@@ -35,12 +35,12 @@ namespace Shogi {
             if (!controllaPosizioneOutOfBounds(posizione)) {
                 throw new ArgumentException("Posizione fuori dai limiti della scacchiera");
             }
-            return scacchiera[posizione.Item1 - 1, posizione.Item2 - 1];
+            return scacchiera[posizione.Item1, posizione.Item2];
         }
 
         public bool controllaCasellaLibera((int, int) posizione, Koma koma) {
-            if (controllaPosizioneOutOfBounds(posizione)) {
-                return false;
+            if (!controllaPosizioneOutOfBounds(posizione)) {
+                throw new ArgumentException("La posizione è fuori dai limiti della scacchiera.");
             }
 
             Koma altraKoma = getKoma(posizione);
@@ -64,6 +64,43 @@ namespace Shogi {
             if (controllaPosizioneOutOfBounds(posizione)) {
                 scacchiera[posizione.Item1, posizione.Item2] = koma;
             }
+        }
+
+        public bool pedinaNelMezzo((int, int) posizioneIniziale, (int, int) posizioneFinale) {
+            if (!controllaPosizioneOutOfBounds(posizioneIniziale)) {
+                throw new ArgumentException("Posizione iniziale fuori dai limiti della scacchiera.");
+            }
+
+            if (!controllaPosizioneOutOfBounds(posizioneFinale)) {
+                throw new ArgumentException("Posizione finale fuori dai limiti della scacchiera.");
+            }
+
+            if (posizioneIniziale == posizioneFinale) {
+                throw new ArgumentException("Posizioni iniziale e finale coincidenti.");
+            }
+
+            int Xiniziale = posizioneIniziale.Item1;
+            int Yiniziale = posizioneIniziale.Item2;
+            int Xfinale = posizioneFinale.Item1;
+            int Yfinale = posizioneFinale.Item2;
+
+            if (Xiniziale != Xfinale && Yiniziale != Yfinale && Math.Abs(Yfinale - Yiniziale) != Math.Abs(Xfinale - Xiniziale)) {
+                throw new ArgumentException("Le caselle non sono allineate.");
+            }
+
+            int direzioneRiga = (Xiniziale == Xfinale ? 0 : (Xfinale > Xiniziale ? 1 : -1));
+            int direzioneColonna = (Yiniziale == Yfinale ? 0 : (Yfinale > Yiniziale ? 1 : -1));
+            int deltaRiga = Math.Abs(Xfinale - Xiniziale);
+            int deltaColonna = Math.Abs(Yfinale - Yiniziale);
+            int numeroPassi = Math.Max(deltaRiga, deltaColonna);
+            for (int passo = 1; passo <= numeroPassi; passo++) {
+                int riga = Xiniziale + (direzioneRiga * passo);
+                int colonna = Yiniziale + (direzioneColonna * passo);
+                if (scacchiera[riga, colonna] != null) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public Shogiban() {

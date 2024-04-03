@@ -10,6 +10,10 @@ namespace Shogi {
         private (int, int) posizione;
         protected bool colore;
         private bool promossa;
+        protected int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
+        public int[,] MossePossibili {
+            get { return mossePossibili; }
+        }
         protected string PERCORSOIMMAGINE = Application.StartupPath;
         private Image icona;
 
@@ -45,14 +49,25 @@ namespace Shogi {
 
         
 
-        public void muovi((int, int) nuovaPosizione) {
-            /*if (!scacchiera.controllaCasellaLibera(nuovaPosizione, this)) {
-                throw new ArgumentException("Casella occupata da un'altra koma alleata");
+        public void muovi((int, int) spostamento) {
+            bool spostamentoValido = false;
+
+            for (int i = 0; i < MossePossibili.GetLength(0); i++) {
+                int spostamentoX = spostamento.Item1;
+                int spostamentoY = spostamento.Item2;
+                int mossaPossibileX = MossePossibili[i, 0];
+                int mossaPossibileY = MossePossibili[i, 1];
+                if (spostamentoX == mossaPossibileX && spostamentoY == mossaPossibileY) {
+                    spostamentoValido = true;
+                }
             }
-            scacchiera.rimuoviKoma(Posizione);
-            Posizione = nuovaPosizione;
-            scacchiera.aggiungiKoma(this, Posizione);         
-            */
+
+            if (!spostamentoValido) {
+                throw new ArgumentException("La mossa inserita non è valida.");
+            } else {
+                (int, int) nuovaPosizione = (Posizione.Item1 + spostamento.Item1, Posizione.Item2 + spostamento.Item2);
+                Posizione = nuovaPosizione;
+            }
         }
         
 

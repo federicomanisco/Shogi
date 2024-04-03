@@ -9,14 +9,13 @@ namespace Shogi
 {
     internal class Keima:Koma //cavallo
     {
-        private int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
         public Keima((int, int) posizione, bool colore) : base(posizione, colore)
         {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/cavallo.png");
             if (colore) { 
-                mossePossibili = new int[2, 2] { { 1, 2 }, { -1, 2 } }; 
+                mossePossibili = new int[2, 2] { { 1, -2 }, { -1, -2 } }; 
             } else { 
-                mossePossibili = new int[2, 2] { { 1, -2 }, { -1, -2 } };
+                mossePossibili = new int[2, 2] { { 1, 2 }, { -1, 2 } };
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Shogi {
     public class Kakugyo : Koma{
-        private int[,] mossePossibili;
 
         public Kakugyo((int, int) posizione, bool colore) : base(posizione, colore) {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/alfiere.png");

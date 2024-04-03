@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Shogi {
     public class Kinsho : Koma{
-        private int[,] mossePossibili;
 
         public Kinsho((int, int) posizione, bool colore) : base(posizione, colore) {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/generaleOro.png");
@@ -25,7 +24,7 @@ namespace Shogi {
                     {1, 0}, 
                     {-1, 0}, 
                     {0, 1}, 
-                    {1, -1}, 
+                    {-1, 1}, 
                     {1, 1} 
                 };
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);

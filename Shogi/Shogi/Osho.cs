@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 namespace Shogi {
     public class Osho: Koma {
 
-        private int[,] mossePossibili; 
-
         public Osho((int, int) posizione, bool colore) : base(posizione, colore) {
             mossePossibili = new int[8, 2] { 
                 {0, 1}, 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R3o1lfW4FDuWwSpaKbm7jsJ7u7JnrjC2Y5i7r3vhMmR3W90x470+uwfyriCOpFe45O9kGGIg/IBoVmiThY2Gww==",
+  "dgSpecHash": "XGex/Ib0RUh/GRrBWIkaY9gnyVa/wRqG9hur9Tonw21QnlbTRJT44RWoz+qRabvV1jnjQX0FurUpyAkzMv5aZA==",
   "success": true,
-  "projectFilePath": "D:\\C#\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+  "projectFilePath": "C:\\C#\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

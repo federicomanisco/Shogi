@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Shogi {
     public class Ginsho : Koma{
-        private int[,] mossePossibili;
 
         public Ginsho((int, int) posizione, bool colore) : base(posizione, colore) {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/generaleArgento.png");
