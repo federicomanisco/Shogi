@@ -1,20 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Shogi {
     public class Kubomawashi 
     {
-        List<Koma> list;
-        public Kubomawashi(Koma pedina)
+
+        string PERCORSOIMMAGINE = Application.StartupPath;
+
+        List<Koma> list = new List<Koma>();
+        public Kubomawashi()
         {
-            list = new List<Koma>();
-        }   
-        public void Add(Koma pedina)
+            
+        }  
+
+        public void AddKoma(Koma pedina)
         {
             list.Add(pedina);
         }
+        public void RemoveKoma(Koma pedina)
+        {
+            list.Remove(pedina);
+        }
+
+
+
+
+
     }
 }

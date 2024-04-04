@@ -1,8 +1,11 @@
 using System.CodeDom;
 
-namespace Shogi {
-    public partial class Form1: Form {
-        public Form1() {
+namespace Shogi
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
             InitializeComponent();
         }
 
@@ -13,23 +16,31 @@ namespace Shogi {
         const int GRIDSIZE = 9;
         Color TileColor = Color.FromArgb(238, 182, 115);
         Shogiban shogiban = new Shogiban();
+        Kubomawashi kubomawashi_sfidante = new Kubomawashi(); //lo sfidante inizia sotto
+        Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
+        int kubomawashi_width = 300; //lunghezza lato kubomawashi, quadrato
 
-        private void Form1_Load(object sender, EventArgs e) {
+        private void Form1_Load(object sender, EventArgs e)
+        {
             Location = new Point(0, 0);
             Size = Screen.PrimaryScreen.WorkingArea.Size;
             WindowState = FormWindowState.Maximized;
 
             Tiles = new Panel[GRIDSIZE, GRIDSIZE];
-            for (int c = 0; c < GRIDSIZE; c++) {
-                for (int r = 0; r < GRIDSIZE; r++) {
-                    Panel Tile = new Panel {
+            for (int c = 0; c < GRIDSIZE; c++)
+            {
+                for (int r = 0; r < GRIDSIZE; r++)
+                {
+                    Panel Tile = new Panel
+                    {
                         Size = new Size(TILESIZE, TILESIZE),
                         //582 = margine orizzontale, 162 = margine verticale, 40 = altezza taskbar windows
                         Location = new Point(TILESIZE * c + 582, TILESIZE * r + 162 - 40),
                         BackColor = TileColor,
                         BorderStyle = BorderStyle.FixedSingle,
                     };
-                    Tile.Controls.Add(new ListBox {
+                    Tile.Controls.Add(new ListBox
+                    {
                         Enabled = false,
                         Visible = false
                     });
@@ -42,13 +53,16 @@ namespace Shogi {
             disegnaZonaPromozione(TileColor);
             scriviNumeriCaselle();
             generaPosizioneIniziale();
+            disegnaKubomawashi(kubomawashi_width);
         }
 
-        public (int, int) getRowColFromLocation(Point point) {
+        public (int, int) getRowColFromLocation(Point point)
+        {
             return ((point.X - 582) / TILESIZE, (point.Y - 162 + 40) / TILESIZE);
         }
 
-        private void disegnaZonaPromozione(Color colore) {
+        private void disegnaZonaPromozione(Color colore)
+        {
             Image sfondo = new Bitmap(10, 10);
             Graphics g = Graphics.FromImage(sfondo);
             Brush brush = new SolidBrush(Color.FromArgb(60, 60, 60));
@@ -71,11 +85,13 @@ namespace Shogi {
 
         }
 
-        private void scriviNumeriCaselle() {
+        private void scriviNumeriCaselle()
+        {
             // 582+38 = Posizione orizzontale della scritta rispetto al bordo sinistro della scacchiera, 82 = altezza della scritta
             (int, int) puntoPartenza = (582 + 38, 82);
 
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Label lbl = new Label();
                 lbl.Location = new Point(puntoPartenza.Item1 + (i * TILESIZE) - 10, puntoPartenza.Item2);
                 lbl.Text = (i + 1).ToString();
@@ -85,7 +101,8 @@ namespace Shogi {
                 Controls.Add(lbl);
             }
 
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Label lbl = new Label();
                 lbl.Location = new Point(puntoPartenza.Item1 + (TILESIZE * 9) - 30, puntoPartenza.Item2 + (i * TILESIZE) + 10 + 55);
                 lbl.Text = Math.Abs((i - 9)).ToString();
@@ -96,25 +113,31 @@ namespace Shogi {
             }
         }
 
-        private void mostraCasella(Koma koma) {
+        private void mostraCasella(Koma koma)
+        {
             shogiban.aggiungiKoma(koma);
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImage = koma.Icona;
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImageLayout = ImageLayout.Center;
-            foreach (Control control in Tiles[koma.Posizione.Item1, koma.Posizione.Item2].Controls) {
-                if (control.GetType() == typeof(ListBox)) {
-                    ListBox lista = (ListBox) control;
+            foreach (Control control in Tiles[koma.Posizione.Item1, koma.Posizione.Item2].Controls)
+            {
+                if (control.GetType() == typeof(ListBox))
+                {
+                    ListBox lista = (ListBox)control;
                     lista.Items.Add(koma);
                 }
             }
         }
 
-        private void generaPosizioneIniziale() {
+        private void generaPosizioneIniziale()
+        {
             //pedoni
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Fuhyo fuhyo = new Fuhyo((i, 2), false);
                 mostraCasella(fuhyo);
             }
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Fuhyo fuhyo = new Fuhyo((i, 6), true);
                 mostraCasella(fuhyo);
             }
@@ -124,7 +147,7 @@ namespace Shogi {
             Osho whiteKing = new Osho((4, 8), true);
             mostraCasella(blackKing);
             mostraCasella(whiteKing);
-            
+
 
             //Lancieri
             Kyosha lanciereNero1 = new Kyosha((0, 0), false);
@@ -145,7 +168,7 @@ namespace Shogi {
             mostraCasella(cavalloNero2);
             mostraCasella(cavalloBianco1);
             mostraCasella(cavalloBianco2);
-            
+
             //Generali Argento
             Ginsho generaleArgentoNero1 = new Ginsho((2, 0), false);
             Ginsho generaleArgentoNero2 = new Ginsho((6, 0), false);
@@ -179,58 +202,100 @@ namespace Shogi {
             mostraCasella(torreBianca);
         }
 
-        private void Tile_Click(object sender, EventArgs e) {
+        private void disegnaKubomawashi(int width)
+        {
+            kubomawashi1.Location = new Point(100,162 - 40);
+            kubomawashi1.BackColor = TileColor;
+            kubomawashi1.Size = new Size(width, width);
+            kubomawashi1.BorderStyle = BorderStyle.FixedSingle;
+            kubomawashi2.Location = new Point(1920 - 100 - width, 162 - 40 + TILESIZE*GRIDSIZE - width);
+            kubomawashi2.BackColor = TileColor;
+            kubomawashi2.Size = new Size(width, width);
+            kubomawashi2.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        /// ////////////////////////////////////////////////////
+        private void disegnaCronometri()
+        {
+
+
+
+        }        
+        /// ////////////////////////////////////////////////////
+
+        private void Tile_Click(object sender, EventArgs e)
+        {
             pannelloCliccato = !pannelloCliccato;
 
-            if (pannelloCliccato) {
+            if (pannelloCliccato)
+            {
                 Panel panel = (Panel)sender;
                 (int, int) posizioneChiamante = getRowColFromLocation(panel.Location);
                 Koma koma = null;
-                foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls) {
-                    if (control.GetType() == typeof(ListBox)) {
-                        try {
+                foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls)
+                {
+                    if (control.GetType() == typeof(ListBox))
+                    {
+                        try
+                        {
                             ListBox lista = (ListBox)control;
                             koma = (Koma)lista.Items[0];
                             Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
-                        } catch {
+                        }
+                        catch
+                        {
 
                         }
                     }
                 }
 
-                if (koma != null) {
+                if (koma != null)
+                {
                     List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
-                    foreach ((int, int) mossaRegolare in mosseRegolari) {
+                    foreach ((int, int) mossaRegolare in mosseRegolari)
+                    {
                         int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
                         int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
-                        
+
                         Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
                     }
                 }
-            } else {
-                foreach (Panel tile in Tiles) {
-                    if (tile.BackColor != TileColor) {
+            }
+            else
+            {
+                foreach (Panel tile in Tiles)
+                {
+                    if (tile.BackColor != TileColor)
+                    {
                         tile.BackColor = TileColor;
                     }
                 }
             }
-            
+
         }
 
-        private List<(int, int)> calcolaMosseRegolari(Koma koma) {
+        private List<(int, int)> calcolaMosseRegolari(Koma koma)
+        {
             List<(int, int)> mosseRegolari = new List<(int, int)>();
-            for (int i = 0; i < koma.MossePossibili.GetLength(0); i++) {
+            for (int i = 0; i < koma.MossePossibili.GetLength(0); i++)
+            {
                 int mossaX = koma.MossePossibili[i, 0];
                 int mossaY = koma.MossePossibili[i, 1];
                 (int, int) posizioneDaControllare = (koma.Posizione.Item1 + mossaX, koma.Posizione.Item2 + mossaY);
-                if (shogiban.controllaPosizioneOutOfBounds(posizioneDaControllare)) {
-                    if (koma.GetType() == typeof(Keima)) {
-                        if (shogiban.controllaCasellaLibera(posizioneDaControllare, koma)) {
+                if (shogiban.controllaPosizioneOutOfBounds(posizioneDaControllare))
+                {
+                    if (koma.GetType() == typeof(Keima))
+                    {
+                        if (shogiban.controllaCasellaLibera(posizioneDaControllare, koma))
+                        {
                             (int, int) mossaRegolare = (mossaX, mossaY);
                             mosseRegolari.Add(mossaRegolare);
                         }
-                    } else {
-                        if (!shogiban.pedinaNelMezzo(koma.Posizione, posizioneDaControllare)) {
+                    }
+                    else
+                    {
+                        if (!shogiban.pedinaNelMezzo(koma.Posizione, posizioneDaControllare))
+                        {
                             (int, int) mossaRegolare = (mossaX, mossaY);
                             mosseRegolari.Add(mossaRegolare);
                         }
@@ -239,5 +304,6 @@ namespace Shogi {
             }
             return mosseRegolari;
         }
+
     }
 }
