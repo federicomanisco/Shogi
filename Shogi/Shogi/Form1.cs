@@ -65,6 +65,7 @@ namespace Shogi
             disegnaKubomawashi(kubomawashi_width);
             disegnaTimer((timer_width, timer_height), tempoMin, tempoSec);
             finito = false;
+            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/woodenTable.jpg");
         }
 
         public (int, int) getRowColFromLocation(Point point)
