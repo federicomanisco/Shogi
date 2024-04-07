@@ -8,23 +8,29 @@ namespace Shogi {
     public abstract class Koma {
         protected string nomepedina;
         private (int, int) posizione;
-        private bool colore;
+        protected bool colore;
         private bool promossa;
-        private Shogiban scacchiera;
+        protected int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
+        public int[,] MossePossibili {
+            get { return mossePossibili; }
+        }
+        protected string PERCORSOIMMAGINE = Application.StartupPath;
         private Image icona;
 
-
-        public Shogiban Scacchiera {
-            get { return Scacchiera; }
-            set {
-                scacchiera = value;
-            }
-        }
 
         public (int, int) Posizione {
             get { return posizione; }
             set {
                 posizione = value;
+            }
+        }
+
+        public Image Icona
+        {
+            get { return icona; }
+            set
+            {
+                icona = value;
             }
         }
 
@@ -43,23 +49,34 @@ namespace Shogi {
 
         
 
-        public void muovi((int, int) nuovaPosizione) {
-            if (!scacchiera.controllaCasellaLibera(nuovaPosizione, this)) {
-                throw new ArgumentException("Casella occupata da un'altra koma alleata");
+        public void muovi((int, int) spostamento) {
+            bool spostamentoValido = false;
+
+            for (int i = 0; i < MossePossibili.GetLength(0); i++) {
+                int spostamentoX = spostamento.Item1;
+                int spostamentoY = spostamento.Item2;
+                int mossaPossibileX = MossePossibili[i, 0];
+                int mossaPossibileY = MossePossibili[i, 1];
+                if (spostamentoX == mossaPossibileX && spostamentoY == mossaPossibileY) {
+                    spostamentoValido = true;
+                }
             }
-            scacchiera.rimuoviKoma(Posizione);
-            Posizione = nuovaPosizione;
-            scacchiera.aggiungiKoma(this, Posizione);
-            
+
+            if (!spostamentoValido) {
+                throw new ArgumentException("La mossa inserita non è valida.");
+            } else {
+                (int, int) nuovaPosizione = (Posizione.Item1 + spostamento.Item1, Posizione.Item2 + spostamento.Item2);
+                Posizione = nuovaPosizione;
+            }
         }
+        
 
         public abstract void promuovi();
 
 
-        public Koma((int, int) posizione, bool colore, Shogiban scacchiera) {
+        public Koma((int, int) posizione, bool colore) {
             Posizione = posizione;
             Colore = colore;
-            Scacchiera = scacchiera;
         }
     }
 }

@@ -1,0 +1,117 @@
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.sourcelink.json
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
+D:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+D:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+D:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+D:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+D:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.AssemblyReference.cache
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
+C:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\Users\LORENZO\Desktop\Shogi-main\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\Users\LORENZO\Desktop\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\Users\LORENZO\Desktop\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\Users\LORENZO\Desktop\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\Users\LORENZO\Desktop\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.exe
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.deps.json
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.runtimeconfig.json
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.dll
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Shogi.pdb
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Form1.resources
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.GenerateResource.cache
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfoInputs.cache
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.AssemblyInfo.cs
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CoreCompileInputs.cache
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.dll
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\refint\Shogi.dll
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.pdb
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.genruntimeconfig.cache
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
