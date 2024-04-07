@@ -20,13 +20,13 @@ namespace Shogi
         Kubomawashi kubomawashi_sfidante = new Kubomawashi(); //lo sfidante inizia sotto
         Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
         int kubomawashi_width = 300; //lunghezza lato kubomawashi, quadrato
-        bool finito;
+        bool finito = false;
 
         protected string PERCORSOIMMAGINE = Application.StartupPath;
         int timer_width = 400;
         int timer_height = 240;
-        int tempoMin = 0; //tempo di gioco per giocatore, minuti
-        int tempoSec = 3; //tempo di gioco per giocatore, secondi
+        int tempoMin = 10; //tempo di gioco per giocatore, minuti
+        int tempoSec = 30; //tempo di gioco per giocatore, secondi
         bool turno = true;
 
         private void Form1_Load(object sender, EventArgs e)
@@ -234,7 +234,6 @@ namespace Shogi
             lbl_Min1.Font = new Font("Swis721 BlkOul BT", 60);
             lbl_Min1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min1.BackColor = Color.FromArgb(40, 40, 40);
-            lbl_Min1.Location = new Point(60 + 42, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 233); // x +42 e y +233 per centrare il testo
 
             lbl_Sec1.Text = sec.ToString();
             lbl_Sec1.Font = new Font("Swis721 BlkOul BT", 60);
@@ -246,13 +245,24 @@ namespace Shogi
             lbl_Min2.Font = new Font("Swis721 BlkOul BT", 60);
             lbl_Min2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min2.BackColor = Color.FromArgb(40, 40, 40);
-            lbl_Min2.Location = new Point(1920 - width - 60 + 40, height - 160 + 67); // x +40 e y +67 per centrare il testo
+
 
             lbl_Sec2.Text = sec.ToString();
             lbl_Sec2.Font = new Font("Swis721 BlkOul BT", 60);
             lbl_Sec2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec2.BackColor = Color.FromArgb(40, 40, 40);
             lbl_Sec2.Location = new Point(1920 - width - 60 + 213, height - 160 + 67); // x +42 e y +233 per centrare il testo
+
+            if (min.ToString().Length < 2)
+            {   //se è a 1 cifra, lo sposto più a destra
+                lbl_Min1.Location = new Point(60 + 42 + 30, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 233); // x +42 e y +233 per centrare il testo
+                lbl_Min2.Location = new Point(1920 - width - 60 + 40 + 30, height - 160 + 67); // x +40 e y +67 per centrare il testo
+            }
+            else
+            {
+                lbl_Min1.Location = new Point(60 + 42, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 233); // x +42 e y +233 per centrare il testo
+                lbl_Min2.Location = new Point(1920 - width - 60 + 40, height - 160 + 67); // x +40 e y +67 per centrare il testo
+            }
         }
 
         private void disegnaKubomawashi(int width)
@@ -352,10 +362,8 @@ namespace Shogi
 
         private void timer_tick(object sender, EventArgs e)
         {
-
-            if (finito) timer1.Stop();
-            else
-            { 
+            if (timer1.Enabled)
+            {
                 int min;
                 int sec;
                 string player;
@@ -378,8 +386,11 @@ namespace Shogi
                 {
                     if (min == 0)
                     {
-                        MessageBox.Show($"LO {player} PER TEMPO");
-                        finito = true;
+                        if (turno) lbl_Sec1.Text = "0";
+                        else lbl_Sec2.Text = "0";
+                        timer1.Stop();
+                        MessageBox.Show($"LO {player} PERDE PER TEMPO");
+                        sec = 0;
                     }
                     else
                     {
@@ -388,6 +399,9 @@ namespace Shogi
                     }
                 }
                 else sec--;
+
+                if ((lbl_Min1.Text).Length == 1) lbl_Min1.Location = new Point(60 + 42 + 30, 1080 - timer_height - (1080 - (GRIDSIZE * TILESIZE)) + 233);
+                if((lbl_Min2.Text).Length == 1) lbl_Min2.Location = new Point(1920 - timer_width - 60 + 40 + 30, timer_height - 160 + 67);
 
                 if (turno)
                 {
