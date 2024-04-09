@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "QnL1EnP0MKQU3FmYmdWlEGyX8uYWY0JBNdF96/G9aswHoxMwg/+1AqZL5t/4d+k7ndcpIO1HsyxJicq9n1TsVA==",
+  "dgSpecHash": "rkueFitgK6wenTSxrANrDYEPwnfZdKgf3nne5t+cVsQ7lw/f8w7AVhHX7Kn8VbJ9kiD8zINnJEn6HmDCRVIsqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj",
+  "projectFilePath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Si è verificato un problema durante la lettura del file di cache C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

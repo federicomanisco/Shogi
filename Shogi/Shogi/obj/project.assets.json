@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj",
+      "projectUniqueName": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
       "projectName": "Shogi",
-      "projectPath": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj",
+      "projectPath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
       "packagesPath": "C:\\Users\\LORENZO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\obj\\",
+      "outputPath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LORENZO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -67,5 +67,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Si è verificato un problema durante la lettura del file di cache C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
