@@ -28,29 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             kubomawashi1 = new PictureBox();
             kubomawashi2 = new PictureBox();
-            pbox_timer1 = new PictureBox();
-            pbox_timer2 = new PictureBox();
-            timer1 = new System.Windows.Forms.Timer(components);
-            button1 = new Button();
-            lbl_Min1 = new Label();
-            lbl_Sec1 = new Label();
-            lbl_Min2 = new Label();
-            lbl_Sec2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kubomawashi1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kubomawashi2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbox_timer1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbox_timer2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -106,88 +95,11 @@
             kubomawashi2.TabIndex = 5;
             kubomawashi2.TabStop = false;
             // 
-            // pbox_timer1
-            // 
-            pbox_timer1.Location = new Point(78, 274);
-            pbox_timer1.Name = "pbox_timer1";
-            pbox_timer1.Size = new Size(73, 119);
-            pbox_timer1.TabIndex = 6;
-            pbox_timer1.TabStop = false;
-            // 
-            // pbox_timer2
-            // 
-            pbox_timer2.Location = new Point(169, 274);
-            pbox_timer2.Name = "pbox_timer2";
-            pbox_timer2.Size = new Size(73, 119);
-            pbox_timer2.TabIndex = 7;
-            pbox_timer2.TabStop = false;
-            // 
-            // timer1
-            // 
-            timer1.Enabled = true;
-            timer1.Interval = 1000;
-            timer1.Tick += timer_tick;
-            // 
-            // button1
-            // 
-            button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(113, 447);
-            button1.Name = "button1";
-            button1.Size = new Size(198, 56);
-            button1.TabIndex = 8;
-            button1.Text = "CAMBIO TURNO (temp)";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // lbl_Min1
-            // 
-            lbl_Min1.AutoSize = true;
-            lbl_Min1.Location = new Point(272, 224);
-            lbl_Min1.Name = "lbl_Min1";
-            lbl_Min1.Size = new Size(38, 15);
-            lbl_Min1.TabIndex = 9;
-            lbl_Min1.Text = "label1";
-            // 
-            // lbl_Sec1
-            // 
-            lbl_Sec1.AutoSize = true;
-            lbl_Sec1.Location = new Point(272, 251);
-            lbl_Sec1.Name = "lbl_Sec1";
-            lbl_Sec1.Size = new Size(38, 15);
-            lbl_Sec1.TabIndex = 10;
-            lbl_Sec1.Text = "label2";
-            // 
-            // lbl_Min2
-            // 
-            lbl_Min2.AutoSize = true;
-            lbl_Min2.Location = new Point(371, 119);
-            lbl_Min2.Name = "lbl_Min2";
-            lbl_Min2.Size = new Size(38, 15);
-            lbl_Min2.TabIndex = 11;
-            lbl_Min2.Text = "label3";
-            // 
-            // lbl_Sec2
-            // 
-            lbl_Sec2.AutoSize = true;
-            lbl_Sec2.Location = new Point(371, 147);
-            lbl_Sec2.Name = "lbl_Sec2";
-            lbl_Sec2.Size = new Size(38, 15);
-            lbl_Sec2.TabIndex = 12;
-            lbl_Sec2.Text = "label4";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1900, 1037);
-            Controls.Add(lbl_Sec2);
-            Controls.Add(lbl_Min2);
-            Controls.Add(lbl_Sec1);
-            Controls.Add(lbl_Min1);
-            Controls.Add(button1);
-            Controls.Add(pbox_timer2);
-            Controls.Add(pbox_timer1);
             Controls.Add(kubomawashi2);
             Controls.Add(kubomawashi1);
             Controls.Add(pictureBox4);
@@ -205,10 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)kubomawashi1).EndInit();
             ((System.ComponentModel.ISupportInitialize)kubomawashi2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbox_timer1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbox_timer2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -219,13 +128,5 @@
         private PictureBox pictureBox4;
         private PictureBox kubomawashi1;
         private PictureBox kubomawashi2;
-        private PictureBox pbox_timer1;
-        private PictureBox pbox_timer2;
-        private System.Windows.Forms.Timer timer1;
-        private Button button1;
-        private Label lbl_Min1;
-        private Label lbl_Sec1;
-        private Label lbl_Min2;
-        private Label lbl_Sec2;
     }
 }

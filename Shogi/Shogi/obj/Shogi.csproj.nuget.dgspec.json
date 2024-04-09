@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj": {}
+    "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj": {
+    "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+        "projectUniqueName": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj",
         "projectName": "Shogi",
-        "projectPath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+        "projectPath": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\Shogi.csproj",
         "packagesPath": "C:\\Users\\LORENZO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\obj\\",
+        "outputPath": "C:\\Users\\LORENZO\\Desktop\\Shogi\\Shogi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LORENZO\\AppData\\Roaming\\NuGet\\NuGet.Config",
