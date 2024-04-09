@@ -1,5 +1,6 @@
 using System.CodeDom;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Text;
 
 namespace Shogi
 {
@@ -20,7 +21,6 @@ namespace Shogi
         Kubomawashi kubomawashi_sfidante = new Kubomawashi(); //lo sfidante inizia sotto
         Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
         int kubomawashi_width = 300; //lunghezza lato kubomawashi, quadrato
-        bool finito = false;
 
         protected string PERCORSOIMMAGINE = Application.StartupPath;
         int timer_width = 400;
@@ -64,7 +64,6 @@ namespace Shogi
             generaPosizioneIniziale();
             disegnaKubomawashi(kubomawashi_width);
             disegnaTimer((timer_width, timer_height), tempoMin, tempoSec);
-            finito = false;
             this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/woodenTable.jpg");
         }
 
@@ -110,6 +109,7 @@ namespace Shogi
                 lbl.Size = new Size(30, 30);
                 lbl.Font = new Font("Arial", 18);
                 lbl.AutoSize = true;
+                lbl.BackColor = Color.Transparent;
                 Controls.Add(lbl);
             }
 
@@ -121,6 +121,7 @@ namespace Shogi
                 lbl.Size = new Size(30, 30);
                 lbl.Font = new Font("Arial", 18);
                 lbl.AutoSize = true;
+                lbl.BackColor = Color.Transparent;
                 Controls.Add(lbl);
             }
         }
@@ -231,39 +232,35 @@ namespace Shogi
             pbox_timer2.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/timerReal.png");
             pbox_timer2.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/numberFont.ttf");
+
             lbl_Min1.Text = min.ToString();
-            lbl_Min1.Font = new Font("Swis721 BlkOul BT", 60);
+            lbl_Min1.Font = new Font(pfc.Families[0], 80);
             lbl_Min1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min1.BackColor = Color.FromArgb(40, 40, 40);
 
             lbl_Sec1.Text = sec.ToString();
-            lbl_Sec1.Font = new Font("Swis721 BlkOul BT", 60);
+            lbl_Sec1.Font = new Font(pfc.Families[0], 80);
             lbl_Sec1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec1.BackColor = Color.FromArgb(40, 40, 40);
-            lbl_Sec1.Location = new Point(60 + 215, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 233); // x +215 e y +233 per centrare il testo
+            lbl_Sec1.Location = new Point(60 + 225, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 227); // x +215 e y +233 per centrare il testo
 
             lbl_Min2.Text = min.ToString();
-            lbl_Min2.Font = new Font("Swis721 BlkOul BT", 60);
+            lbl_Min2.Font = new Font(pfc.Families[0], 80);
             lbl_Min2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min2.BackColor = Color.FromArgb(40, 40, 40);
 
 
             lbl_Sec2.Text = sec.ToString();
-            lbl_Sec2.Font = new Font("Swis721 BlkOul BT", 60);
+            lbl_Sec2.Font = new Font(pfc.Families[0], 80);
             lbl_Sec2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec2.BackColor = Color.FromArgb(40, 40, 40);
-            lbl_Sec2.Location = new Point(1920 - width - 60 + 213, height - 160 + 67); // x +42 e y +233 per centrare il testo
+            lbl_Sec2.Location = new Point(1920 - width - 60 + 223, height - 160 + 62); // x +42 e y +233 per centrare il testo
 
-            if (min.ToString().Length < 2)
-            {   //se è a 1 cifra, lo sposto più a destra
-                lbl_Min1.Location = new Point(60 + 42 + 30, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 233); // x +42 e y +233 per centrare il testo
-                lbl_Min2.Location = new Point(1920 - width - 60 + 40 + 30, height - 160 + 67); // x +40 e y +67 per centrare il testo
-            }
-            else
-            {
-                lbl_Min1.Location = new Point(60 + 42, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 233); // x +42 e y +233 per centrare il testo
-                lbl_Min2.Location = new Point(1920 - width - 60 + 40, height - 160 + 67); // x +40 e y +67 per centrare il testo
-            }
+            lbl_Min1.Location = new Point(60 + 62, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 227); // x +62 e y +233 per centrare il testo
+            lbl_Min2.Location = new Point(1920 - width - 60 + 60, height - 160 + 62); // x +60 e y +67 per centrare il testo
+
         }
 
         private void disegnaKubomawashi(int width)
@@ -401,8 +398,6 @@ namespace Shogi
                 }
                 else sec--;
 
-                if ((lbl_Min1.Text).Length == 1) lbl_Min1.Location = new Point(60 + 42 + 30, 1080 - timer_height - (1080 - (GRIDSIZE * TILESIZE)) + 233);
-                if((lbl_Min2.Text).Length == 1) lbl_Min2.Location = new Point(1920 - timer_width - 60 + 40 + 30, timer_height - 160 + 67);
 
                 if (turno)
                 {
