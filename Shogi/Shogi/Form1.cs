@@ -9,10 +9,10 @@ namespace Shogi {
             float fattoreScalaSchermo = GetScreenScaleFactor();
             float fattoreScalaSchermoInverso = 1 / fattoreScalaSchermo;
 
-            Scale(new SizeF(fattoreScalaSchermoInverso, fattoreScalaSchermoInverso));
+            Scale(new SizeF(fattoreScalaSchermoInverso, fattoreScalaSchermoInverso)); // scala i componenti della form in base alla scala dello schermo
         }
 
-        float GetScreenScaleFactor() {
+        float GetScreenScaleFactor() { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
             Graphics graphics = CreateGraphics();
             float dpiX = graphics.DpiX;
             graphics.Dispose();
@@ -37,6 +37,8 @@ namespace Shogi {
         int tempoMin = 10; //tempo di gioco per giocatore, minuti
         int tempoSec = 30; //tempo di gioco per giocatore, secondi
         bool turno = true;
+
+        (int, int) posizioneChiamante;
 
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -213,12 +215,13 @@ namespace Shogi {
             int width = grandezza.Item1;
             int height = grandezza.Item2;
 
+
+            timer1.Enabled = false;
             pbox_timer1.Size = new Size(width, height);
             pbox_timer1.Location = new Point(60, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) / 2);
             pbox_timer1.BackColor = Color.Transparent;
             pbox_timer1.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/timerReal.png");
             pbox_timer1.SizeMode = PictureBoxSizeMode.StretchImage;
-            timer1.Enabled = false;
 
             pbox_timer2.Size = new Size(width, height);
             pbox_timer2.Location = new Point(1920 - width - 60, height - 160);
@@ -271,10 +274,9 @@ namespace Shogi {
 
         private void Tile_Click(object sender, EventArgs e) {
             pannelloCliccato = !pannelloCliccato;
-
+            Panel panel = (Panel)sender;
             if (pannelloCliccato) {
-                Panel panel = (Panel)sender;
-                (int, int) posizioneChiamante = getRowColFromLocation(panel.Location);
+                posizioneChiamante = getRowColFromLocation(panel.Location);
                 Koma koma = null;
                 foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls) {
                     if (control.GetType() == typeof(ListBox)) {
@@ -298,6 +300,29 @@ namespace Shogi {
                     }
                 }
             } else {
+                if (panel.BackColor == Color.Yellow) {
+                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
+                    Koma koma = shogiban.getKoma(posizioneChiamante);
+                    koma.Posizione = nuovaPosizione;
+                    shogiban.rimuoviKoma(posizioneChiamante);
+                    foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls) {
+                        if (control.GetType() == typeof(ListBox)) {
+                            ListBox lista = (ListBox) control;
+                            lista.Items.Clear();
+                        }
+                    }
+                    shogiban.aggiungiKoma(koma);
+                    foreach (Control control in panel.Controls) {
+                        if (control.GetType() == typeof(ListBox)) {
+                            ListBox lista = (ListBox)control;
+                            lista.Items.Add(koma);
+                        }
+                    }
+                    panel.BackgroundImage = koma.Icona;
+                    panel.BackgroundImageLayout = ImageLayout.Center;
+                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
+                }
+
                 foreach (Panel tile in Tiles) {
                     if (tile.BackColor != TileColor) {
                         tile.BackColor = TileColor;
