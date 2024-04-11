@@ -1,6 +1,7 @@
 using System.CodeDom;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace Shogi {
     public partial class Form1: Form {
@@ -56,10 +57,6 @@ namespace Shogi {
                         BackColor = TileColor,
                         BorderStyle = BorderStyle.FixedSingle,
                     };
-                    Tile.Controls.Add(new ListBox {
-                        Enabled = false,
-                        Visible = false
-                    });
                     Tile.Click += new EventHandler(Tile_Click);
                     Controls.Add(Tile);
                     Tiles[c, r] = Tile;
@@ -132,12 +129,6 @@ namespace Shogi {
             shogiban.aggiungiKoma(koma);
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImage = koma.Icona;
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImageLayout = ImageLayout.Center;
-            foreach (Control control in Tiles[koma.Posizione.Item1, koma.Posizione.Item2].Controls) {
-                if (control.GetType() == typeof(ListBox)) {
-                    ListBox lista = (ListBox)control;
-                    lista.Items.Add(koma);
-                }
-            }
         }
 
         private void generaPosizioneIniziale() {
@@ -278,19 +269,14 @@ namespace Shogi {
             if (pannelloCliccato) {
                 posizioneChiamante = getRowColFromLocation(panel.Location);
                 Koma koma = null;
-                foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls) {
-                    if (control.GetType() == typeof(ListBox)) {
-                        try {
-                            ListBox lista = (ListBox)control;
-                            koma = (Koma)lista.Items[0];
-                            Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
-                        } catch {
+                try {
+                    koma = shogiban.getKoma(posizioneChiamante);
+                } catch {
 
-                        }
-                    }
                 }
 
                 if (koma != null) {
+                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
                     List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
                     foreach ((int, int) mossaRegolare in mosseRegolari) {
                         int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
@@ -305,19 +291,7 @@ namespace Shogi {
                     Koma koma = shogiban.getKoma(posizioneChiamante);
                     koma.Posizione = nuovaPosizione;
                     shogiban.rimuoviKoma(posizioneChiamante);
-                    foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls) {
-                        if (control.GetType() == typeof(ListBox)) {
-                            ListBox lista = (ListBox) control;
-                            lista.Items.Clear();
-                        }
-                    }
                     shogiban.aggiungiKoma(koma);
-                    foreach (Control control in panel.Controls) {
-                        if (control.GetType() == typeof(ListBox)) {
-                            ListBox lista = (ListBox)control;
-                            lista.Items.Add(koma);
-                        }
-                    }
                     panel.BackgroundImage = koma.Icona;
                     panel.BackgroundImageLayout = ImageLayout.Center;
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;

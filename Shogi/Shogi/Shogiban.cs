@@ -43,9 +43,17 @@ namespace Shogi {
                 throw new ArgumentException("La posizione è fuori dai limiti della scacchiera.");
             }
 
-            Koma altraKoma = getKoma(posizione);
-            if (koma.Colore == altraKoma.Colore) {
-                return false;
+            Koma altraKoma = null;
+            try {
+                altraKoma = getKoma(posizione);
+            } catch {
+
+            }
+
+            if (altraKoma != null) {
+                if (koma.Colore == altraKoma.Colore) {
+                    return false;
+                }
             }
             return true;
         }
