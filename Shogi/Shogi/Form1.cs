@@ -320,10 +320,10 @@ namespace Shogi
             {
                 if (panel.BackColor == Color.Yellow)
                 {
-                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
+                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);  
                     Koma koma = shogiban.getKoma(posizioneChiamante);
                     koma.Posizione = nuovaPosizione;
-                    shogiban.rimuoviKoma(posizioneChiamante);
+                    shogiban.rimuoviKoma(posizioneChiamante);   //rimuovi koma
                     shogiban.aggiungiKoma(koma);
                     panel.BackgroundImage = koma.Icona;
                     panel.BackgroundImageLayout = ImageLayout.Center;
