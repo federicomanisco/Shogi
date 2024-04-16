@@ -3,9 +3,12 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace Shogi {
-    public partial class Form1: Form {
-        public Form1() {
+namespace Shogi
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
             InitializeComponent();
             float fattoreScalaSchermo = GetScreenScaleFactor();
             float fattoreScalaSchermoInverso = 1 / fattoreScalaSchermo;
@@ -13,7 +16,8 @@ namespace Shogi {
             Scale(new SizeF(fattoreScalaSchermoInverso, fattoreScalaSchermoInverso)); // scala i componenti della form in base alla scala dello schermo
         }
 
-        float GetScreenScaleFactor() { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
+        float GetScreenScaleFactor()
+        { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
             Graphics graphics = CreateGraphics();
             float dpiX = graphics.DpiX;
             graphics.Dispose();
@@ -32,25 +36,31 @@ namespace Shogi {
         Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
         int kubomawashi_width = 300; //lunghezza lato kubomawashi, quadrato
 
-        protected string PERCORSOIMMAGINE = Application.StartupPath;
+        static protected string PERCORSOIMMAGINE = Application.StartupPath;
         int timer_width = 400;
         int timer_height = 240;
         int tempoMin = 10; //tempo di gioco per giocatore, minuti
         int tempoSec = 30; //tempo di gioco per giocatore, secondi
-        bool turno = true;
+        bool turno = true;  //true Sente (muove x primo, generalmente lo sfidante), false Gote (lo sfidato)
 
         (int, int) posizioneChiamante;
 
+        System.Media.SoundPlayer sound_muoviKoma = new System.Media.SoundPlayer($"{PERCORSOIMMAGINE}/shogiPieces/extra/movingPiece.wav");
 
-        private void Form1_Load(object sender, EventArgs e) {
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             Location = new Point(0, 0);
             Size = Screen.PrimaryScreen.WorkingArea.Size;
             WindowState = FormWindowState.Maximized;
 
             Tiles = new Panel[GRIDSIZE, GRIDSIZE];
-            for (int c = 0; c < GRIDSIZE; c++) {
-                for (int r = 0; r < GRIDSIZE; r++) {
-                    Panel Tile = new Panel {
+            for (int c = 0; c < GRIDSIZE; c++)
+            {
+                for (int r = 0; r < GRIDSIZE; r++)
+                {
+                    Panel Tile = new Panel
+                    {
                         Size = new Size(TILESIZE, TILESIZE),
                         //582 = margine orizzontale, 162 = margine verticale, 40 = altezza taskbar windows
                         Location = new Point(TILESIZE * c + 582, TILESIZE * r + 162 - 40),
@@ -71,11 +81,13 @@ namespace Shogi {
             this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/woodenTable.jpg");
         }
 
-        public (int, int) getRowColFromLocation(Point point) {
+        public (int, int) getRowColFromLocation(Point point)
+        {
             return ((point.X - 582) / TILESIZE, (point.Y - 162 + 40) / TILESIZE);
         }
 
-        private void disegnaZonaPromozione(Color colore) {
+        private void disegnaZonaPromozione(Color colore)
+        {
             Image sfondo = new Bitmap(10, 10);
             Graphics g = Graphics.FromImage(sfondo);
             Brush brush = new SolidBrush(Color.FromArgb(60, 60, 60));
@@ -98,11 +110,13 @@ namespace Shogi {
 
         }
 
-        private void scriviNumeriCaselle() {
+        private void scriviNumeriCaselle()
+        {
             // 582+38 = Posizione orizzontale della scritta rispetto al bordo sinistro della scacchiera, 82 = altezza della scritta
             (int, int) puntoPartenza = (582 + 38, 82);
 
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Label lbl = new Label();
                 lbl.Location = new Point(puntoPartenza.Item1 + (i * TILESIZE) - 10, puntoPartenza.Item2);
                 lbl.Text = (i + 1).ToString();
@@ -113,7 +127,8 @@ namespace Shogi {
                 Controls.Add(lbl);
             }
 
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Label lbl = new Label();
                 lbl.Location = new Point(puntoPartenza.Item1 + (TILESIZE * 9) - 30, puntoPartenza.Item2 + (i * TILESIZE) + 10 + 55);
                 lbl.Text = Math.Abs((i - 9)).ToString();
@@ -125,19 +140,23 @@ namespace Shogi {
             }
         }
 
-        private void mostraCasella(Koma koma) {
+        private void mostraCasella(Koma koma)
+        {
             shogiban.aggiungiKoma(koma);
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImage = koma.Icona;
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImageLayout = ImageLayout.Center;
         }
 
-        private void generaPosizioneIniziale() {
+        private void generaPosizioneIniziale()
+        {
             //pedoni
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Fuhyo fuhyo = new Fuhyo((i, 2), false);
                 mostraCasella(fuhyo);
             }
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 9; i++)
+            {
                 Fuhyo fuhyo = new Fuhyo((i, 6), true);
                 mostraCasella(fuhyo);
             }
@@ -202,12 +221,12 @@ namespace Shogi {
             mostraCasella(torreBianca);
         }
 
-        private void disegnaTimer((int, int) grandezza, int min, int sec) {
+        private void disegnaTimer((int, int) grandezza, int min, int sec)
+        {
             int width = grandezza.Item1;
             int height = grandezza.Item2;
 
 
-            timer1.Enabled = false;
             pbox_timer1.Size = new Size(width, height);
             pbox_timer1.Location = new Point(60, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) / 2);
             pbox_timer1.BackColor = Color.Transparent;
@@ -251,7 +270,8 @@ namespace Shogi {
 
         }
 
-        private void disegnaKubomawashi(int width) {
+        private void disegnaKubomawashi(int width)
+        {
             kubomawashi1.Location = new Point(100, 162 - 40);
             kubomawashi1.BackColor = TileColor;
             kubomawashi1.Size = new Size(width, width);
@@ -263,30 +283,43 @@ namespace Shogi {
         }
 
 
-        private void Tile_Click(object sender, EventArgs e) {
+        private void Tile_Click(object sender, EventArgs e)
+        {
             pannelloCliccato = !pannelloCliccato;
             Panel panel = (Panel)sender;
-            if (pannelloCliccato) {
+            if (pannelloCliccato)
+            {
                 posizioneChiamante = getRowColFromLocation(panel.Location);
                 Koma koma = null;
-                try {
+                try
+                {
                     koma = shogiban.getKoma(posizioneChiamante);
-                } catch {
+                }
+                catch
+                {
 
                 }
 
-                if (koma != null) {
-                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
-                    List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
-                    foreach ((int, int) mossaRegolare in mosseRegolari) {
-                        int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
-                        int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
+                if (koma != null)
+                {
+                    if (koma.Colore == turno)
+                    {
+                        Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
+                        List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
+                        foreach ((int, int) mossaRegolare in mosseRegolari)
+                        {
+                            int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
+                            int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
 
-                        Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
+                            Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
+                        }
                     }
                 }
-            } else {
-                if (panel.BackColor == Color.Yellow) {
+            }
+            else
+            {
+                if (panel.BackColor == Color.Yellow)
+                {
                     (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
                     Koma koma = shogiban.getKoma(posizioneChiamante);
                     koma.Posizione = nuovaPosizione;
@@ -295,30 +328,42 @@ namespace Shogi {
                     panel.BackgroundImage = koma.Icona;
                     panel.BackgroundImageLayout = ImageLayout.Center;
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
+                    turno = !turno;
+                    sound_muoviKoma.Play();
                 }
 
-                foreach (Panel tile in Tiles) {
-                    if (tile.BackColor != TileColor) {
+                foreach (Panel tile in Tiles)
+                {
+                    if (tile.BackColor != TileColor)
+                    {
                         tile.BackColor = TileColor;
                     }
                 }
             }
         }
 
-        private List<(int, int)> calcolaMosseRegolari(Koma koma) {
+        private List<(int, int)> calcolaMosseRegolari(Koma koma)
+        {
             List<(int, int)> mosseRegolari = new List<(int, int)>();
-            for (int i = 0; i < koma.MossePossibili.GetLength(0); i++) {
+            for (int i = 0; i < koma.MossePossibili.GetLength(0); i++)
+            {
                 int mossaX = koma.MossePossibili[i, 0];
                 int mossaY = koma.MossePossibili[i, 1];
                 (int, int) posizioneDaControllare = (koma.Posizione.Item1 + mossaX, koma.Posizione.Item2 + mossaY);
-                if (shogiban.controllaPosizioneOutOfBounds(posizioneDaControllare)) {
-                    if (koma.GetType() == typeof(Keima)) {
-                        if (shogiban.controllaCasellaLibera(posizioneDaControllare, koma)) {
+                if (shogiban.controllaPosizioneOutOfBounds(posizioneDaControllare))
+                {
+                    if (koma.GetType() == typeof(Keima))
+                    {
+                        if (shogiban.controllaCasellaLibera(posizioneDaControllare, koma))
+                        {
                             (int, int) mossaRegolare = (mossaX, mossaY);
                             mosseRegolari.Add(mossaRegolare);
                         }
-                    } else {
-                        if (!shogiban.pedinaNelMezzo(koma.Posizione, posizioneDaControllare)) {
+                    }
+                    else
+                    {
+                        if (!shogiban.pedinaNelMezzo(koma.Posizione, posizioneDaControllare))
+                        {
                             (int, int) mossaRegolare = (mossaX, mossaY);
                             mosseRegolari.Add(mossaRegolare);
                         }
@@ -328,8 +373,10 @@ namespace Shogi {
             return mosseRegolari;
         }
 
-        private void timer_tick(object sender, EventArgs e) {
-            if (timer1.Enabled) {
+        private void timer_tick(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+            {
                 int min;
                 int sec;
                 string player;
@@ -337,39 +384,51 @@ namespace Shogi {
                 if (turno) player = "SFIDANTE";
                 else player = "SFIDATO";
 
-                if (turno) {
+                if (turno)
+                {
                     min = int.Parse(lbl_Min1.Text);
                     sec = int.Parse(lbl_Sec1.Text);
-                } else {
+                }
+                else
+                {
                     min = int.Parse(lbl_Min2.Text);
                     sec = int.Parse(lbl_Sec2.Text);
                 }
 
-                if (sec == 1) {
-                    if (min == 0) {
+                if (sec == 1)
+                {
+                    if (min == 0)
+                    {
                         if (turno) lbl_Sec1.Text = "0";
                         else lbl_Sec2.Text = "0";
                         timer1.Stop();
                         MessageBox.Show($"LO {player} PERDE PER TEMPO");
                         sec = 0;
-                    } else {
+                    }
+                    else
+                    {
                         sec = 60;
                         min--;
                     }
-                } else sec--;
+                }
+                else sec--;
 
 
-                if (turno) {
+                if (turno)
+                {
                     lbl_Min1.Text = min.ToString();
                     lbl_Sec1.Text = sec.ToString();
-                } else {
+                }
+                else
+                {
                     lbl_Min2.Text = min.ToString();
                     lbl_Sec2.Text = sec.ToString();
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void button1_Click(object sender, EventArgs e)
+        {
             turno = !turno;
         }
     }
