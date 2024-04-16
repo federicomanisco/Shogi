@@ -38,7 +38,6 @@
             pbox_timer1 = new PictureBox();
             pbox_timer2 = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
-            button1 = new Button();
             lbl_Min1 = new Label();
             lbl_Sec1 = new Label();
             lbl_Min2 = new Label();
@@ -128,18 +127,6 @@
             timer1.Interval = 1000;
             timer1.Tick += timer_tick;
             // 
-            // button1
-            // 
-            button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(113, 447);
-            button1.Name = "button1";
-            button1.Size = new Size(198, 56);
-            button1.TabIndex = 8;
-            button1.Text = "CAMBIO TURNO (temp)";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // lbl_Min1
             // 
             lbl_Min1.AutoSize = true;
@@ -180,12 +167,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1900, 1037);
+            ClientSize = new Size(1344, 628);
             Controls.Add(lbl_Sec2);
             Controls.Add(lbl_Min2);
             Controls.Add(lbl_Sec1);
             Controls.Add(lbl_Min1);
-            Controls.Add(button1);
             Controls.Add(pbox_timer2);
             Controls.Add(pbox_timer1);
             Controls.Add(kubomawashi2);
@@ -195,9 +181,9 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.Fixed3D;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Shogi";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -222,7 +208,6 @@
         private PictureBox pbox_timer1;
         private PictureBox pbox_timer2;
         private System.Windows.Forms.Timer timer1;
-        private Button button1;
         private Label lbl_Min1;
         private Label lbl_Sec1;
         private Label lbl_Min2;

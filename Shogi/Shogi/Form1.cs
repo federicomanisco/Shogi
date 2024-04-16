@@ -1,6 +1,7 @@
 using System.CodeDom;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace Shogi
 {
@@ -9,6 +10,19 @@ namespace Shogi
         public Form1()
         {
             InitializeComponent();
+            float fattoreScalaSchermo = GetScreenScaleFactor();
+            float fattoreScalaSchermoInverso = 1 / fattoreScalaSchermo;
+
+            Scale(new SizeF(fattoreScalaSchermoInverso, fattoreScalaSchermoInverso)); // scala i componenti della form in base alla scala dello schermo
+        }
+
+        float GetScreenScaleFactor()
+        { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
+            Graphics graphics = CreateGraphics();
+            float dpiX = graphics.DpiX;
+            graphics.Dispose();
+
+            return dpiX / 96f;
         }
 
         bool pannelloCliccato = false;
@@ -22,12 +36,17 @@ namespace Shogi
         Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
         int kubomawashi_width = 300; //lunghezza lato kubomawashi, quadrato
 
-        protected string PERCORSOIMMAGINE = Application.StartupPath;
+        static protected string PERCORSOIMMAGINE = Application.StartupPath;
         int timer_width = 400;
         int timer_height = 240;
         int tempoMin = 10; //tempo di gioco per giocatore, minuti
         int tempoSec = 30; //tempo di gioco per giocatore, secondi
-        bool turno = true;
+        bool turno = true;  //true Sente (muove x primo, generalmente lo sfidante), false Gote (lo sfidato)
+
+        (int, int) posizioneChiamante;
+
+        System.Media.SoundPlayer sound_muoviKoma = new System.Media.SoundPlayer($"{PERCORSOIMMAGINE}/shogiPieces/extra/movingPiece.wav");
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -48,11 +67,6 @@ namespace Shogi
                         BackColor = TileColor,
                         BorderStyle = BorderStyle.FixedSingle,
                     };
-                    Tile.Controls.Add(new ListBox
-                    {
-                        Enabled = false,
-                        Visible = false
-                    });
                     Tile.Click += new EventHandler(Tile_Click);
                     Controls.Add(Tile);
                     Tiles[c, r] = Tile;
@@ -106,8 +120,8 @@ namespace Shogi
                 Label lbl = new Label();
                 lbl.Location = new Point(puntoPartenza.Item1 + (i * TILESIZE) - 10, puntoPartenza.Item2);
                 lbl.Text = (i + 1).ToString();
-                lbl.Size = new Size(30, 30);
-                lbl.Font = new Font("Arial", 18);
+                lbl.Size = new Size(30, 30);     //scala la grandezza del font in base alla scala dello schermo
+                lbl.Font = new Font("Arial", 18 * (1 / GetScreenScaleFactor()));
                 lbl.AutoSize = true;
                 lbl.BackColor = Color.Transparent;
                 Controls.Add(lbl);
@@ -119,7 +133,7 @@ namespace Shogi
                 lbl.Location = new Point(puntoPartenza.Item1 + (TILESIZE * 9) - 30, puntoPartenza.Item2 + (i * TILESIZE) + 10 + 55);
                 lbl.Text = Math.Abs((i - 9)).ToString();
                 lbl.Size = new Size(30, 30);
-                lbl.Font = new Font("Arial", 18);
+                lbl.Font = new Font("Arial", 18 * (1 / GetScreenScaleFactor()));
                 lbl.AutoSize = true;
                 lbl.BackColor = Color.Transparent;
                 Controls.Add(lbl);
@@ -131,14 +145,6 @@ namespace Shogi
             shogiban.aggiungiKoma(koma);
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImage = koma.Icona;
             Tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImageLayout = ImageLayout.Center;
-            foreach (Control control in Tiles[koma.Posizione.Item1, koma.Posizione.Item2].Controls)
-            {
-                if (control.GetType() == typeof(ListBox))
-                {
-                    ListBox lista = (ListBox)control;
-                    lista.Items.Add(koma);
-                }
-            }
         }
 
         private void generaPosizioneIniziale()
@@ -220,6 +226,7 @@ namespace Shogi
             int width = grandezza.Item1;
             int height = grandezza.Item2;
 
+
             pbox_timer1.Size = new Size(width, height);
             pbox_timer1.Location = new Point(60, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) / 2);
             pbox_timer1.BackColor = Color.Transparent;
@@ -235,25 +242,25 @@ namespace Shogi
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/numberFont.ttf");
 
-            lbl_Min1.Text = min.ToString();
-            lbl_Min1.Font = new Font(pfc.Families[0], 80);
+            lbl_Min1.Text = min.ToString();           //Scalo la grandezza del font in base alla scala dello schermo  
+            lbl_Min1.Font = new Font(pfc.Families[0], 80 * (1 / GetScreenScaleFactor()));
             lbl_Min1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min1.BackColor = Color.FromArgb(40, 40, 40);
 
             lbl_Sec1.Text = sec.ToString();
-            lbl_Sec1.Font = new Font(pfc.Families[0], 80);
+            lbl_Sec1.Font = new Font(pfc.Families[0], 80 * (1 / GetScreenScaleFactor()));
             lbl_Sec1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec1.BackColor = Color.FromArgb(40, 40, 40);
             lbl_Sec1.Location = new Point(60 + 225, 1080 - height - (1080 - (GRIDSIZE * TILESIZE)) + 227); // x +215 e y +233 per centrare il testo
 
             lbl_Min2.Text = min.ToString();
-            lbl_Min2.Font = new Font(pfc.Families[0], 80);
+            lbl_Min2.Font = new Font(pfc.Families[0], 80 * (1 / GetScreenScaleFactor()));
             lbl_Min2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min2.BackColor = Color.FromArgb(40, 40, 40);
 
 
             lbl_Sec2.Text = sec.ToString();
-            lbl_Sec2.Font = new Font(pfc.Families[0], 80);
+            lbl_Sec2.Font = new Font(pfc.Families[0], 80 * (1 / GetScreenScaleFactor()));
             lbl_Sec2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec2.BackColor = Color.FromArgb(40, 40, 40);
             lbl_Sec2.Location = new Point(1920 - width - 60 + 223, height - 160 + 62); // x +42 e y +233 per centrare il testo
@@ -279,43 +286,52 @@ namespace Shogi
         private void Tile_Click(object sender, EventArgs e)
         {
             pannelloCliccato = !pannelloCliccato;
-
+            Panel panel = (Panel)sender;
             if (pannelloCliccato)
             {
-                Panel panel = (Panel)sender;
-                (int, int) posizioneChiamante = getRowColFromLocation(panel.Location);
+                posizioneChiamante = getRowColFromLocation(panel.Location);
                 Koma koma = null;
-                foreach (Control control in Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].Controls)
+                try
                 {
-                    if (control.GetType() == typeof(ListBox))
-                    {
-                        try
-                        {
-                            ListBox lista = (ListBox)control;
-                            koma = (Koma)lista.Items[0];
-                            Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
-                        }
-                        catch
-                        {
+                    koma = shogiban.getKoma(posizioneChiamante);
+                }
+                catch
+                {
 
-                        }
-                    }
                 }
 
                 if (koma != null)
                 {
-                    List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
-                    foreach ((int, int) mossaRegolare in mosseRegolari)
+                    if (koma.Colore == turno)
                     {
-                        int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
-                        int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
+                        Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
+                        List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
+                        foreach ((int, int) mossaRegolare in mosseRegolari)
+                        {
+                            int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
+                            int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
 
-                        Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
+                            Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
+                        }
                     }
                 }
             }
             else
             {
+                if (panel.BackColor == Color.Yellow)
+                {
+                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
+                    Koma koma = shogiban.getKoma(posizioneChiamante);
+                    koma.Posizione = nuovaPosizione;
+                    shogiban.rimuoviKoma(posizioneChiamante);
+                    shogiban.aggiungiKoma(koma);
+                    panel.BackgroundImage = koma.Icona;
+                    panel.BackgroundImageLayout = ImageLayout.Center;
+                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
+                    turno = !turno;
+                    sound_muoviKoma.Play();
+                }
+
                 foreach (Panel tile in Tiles)
                 {
                     if (tile.BackColor != TileColor)
@@ -324,7 +340,6 @@ namespace Shogi
                     }
                 }
             }
-
         }
 
         private List<(int, int)> calcolaMosseRegolari(Koma koma)
@@ -410,7 +425,6 @@ namespace Shogi
                     lbl_Sec2.Text = sec.ToString();
                 }
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)

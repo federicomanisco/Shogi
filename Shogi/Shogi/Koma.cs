@@ -8,7 +8,7 @@ namespace Shogi {
     public abstract class Koma {
         protected string nomepedina;
         private (int, int) posizione;
-        protected bool colore;
+        protected bool colore; //true=Sente, false=Gote
         private bool promossa;
         protected int[,] mossePossibili;//prima della virgola ci sono le mosse possibili
         public int[,] MossePossibili {

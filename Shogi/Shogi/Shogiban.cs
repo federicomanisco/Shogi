@@ -43,9 +43,17 @@ namespace Shogi {
                 throw new ArgumentException("La posizione è fuori dai limiti della scacchiera.");
             }
 
-            Koma altraKoma = getKoma(posizione);
-            if (koma.Colore == altraKoma.Colore) {
-                return false;
+            Koma altraKoma = null;
+            try {
+                altraKoma = getKoma(posizione);
+            } catch {
+
+            }
+
+            if (altraKoma != null) {
+                if (koma.Colore == altraKoma.Colore) {
+                    return false;
+                }
             }
             return true;
         }
@@ -83,6 +91,7 @@ namespace Shogi {
             int Yiniziale = posizioneIniziale.Item2;
             int Xfinale = posizioneFinale.Item1;
             int Yfinale = posizioneFinale.Item2;
+            int contaPedineNemiche = 0;
 
             if (Xiniziale != Xfinale && Yiniziale != Yfinale && Math.Abs(Yfinale - Yiniziale) != Math.Abs(Xfinale - Xiniziale)) {
                 throw new ArgumentException("Le caselle non sono allineate.");
@@ -97,7 +106,14 @@ namespace Shogi {
                 int riga = Xiniziale + (direzioneRiga * passo);
                 int colonna = Yiniziale + (direzioneColonna * passo);
                 if (scacchiera[riga, colonna] != null) {
-                    return true;
+                    if (scacchiera[riga, colonna].Colore == getKoma(posizioneIniziale).Colore) {
+                        return true;
+                    } else {
+                        if (contaPedineNemiche == 1) return true;
+                        contaPedineNemiche++;
+                    }
+                } else {
+                    if (contaPedineNemiche == 1) return true;
                 }
             }
             return false;
