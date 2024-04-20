@@ -34,7 +34,7 @@ namespace Shogi
         Shogiban shogiban = new Shogiban();
         Kubomawashi kubomawashi_sfidante = new Kubomawashi(); //lo sfidante inizia sotto
         Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
-        int kubomawashi_width = 300; //lunghezza lato kubomawashi, quadrato
+        int kubomawashi_width = 283; //lunghezza lato kubomawashi, quadrato
 
         static protected string PERCORSOIMMAGINE = Application.StartupPath;
         int timer_width = 400;
@@ -277,59 +277,78 @@ namespace Shogi
             kubomawashi1.Size = new Size(width, width);
             kubomawashi1.BorderStyle = BorderStyle.FixedSingle;
             TableLayoutPanel tableLayoutPanel1 = new TableLayoutPanel();
-            tableLayoutPanel1.Dock = DockStyle.Fill; 
-            tableLayoutPanel1.BackColor = Color.Transparent; 
-            kubomawashi1.Controls.Add(tableLayoutPanel1); 
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.BackColor = Color.Transparent;
+            tableLayoutPanel1.Name = "TableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 5;    //stabilisco un numero di righe per la tabella 1
+            tableLayoutPanel1.ColumnCount = 5; //stabilisco un numero di colonne per la tabella 1
+            kubomawashi1.Controls.Add(tableLayoutPanel1);
+
             kubomawashi2.Location = new Point(1920 - 100 - width, 162 - 40 + TILESIZE * GRIDSIZE - width);
             kubomawashi2.BackColor = TileColor;
             kubomawashi2.Size = new Size(width, width);
             kubomawashi2.BorderStyle = BorderStyle.FixedSingle;
             TableLayoutPanel tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel2.Dock = DockStyle.Fill; 
-            tableLayoutPanel2.BackColor = Color.Transparent; 
-            kubomawashi2.Controls.Add(tableLayoutPanel2); 
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.BackColor = Color.Transparent;
+            tableLayoutPanel2.Name = "TableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 5;    //stabilisco un numero di righe per la tabella 2
+            tableLayoutPanel2.ColumnCount = 5; //stabilisco un numero di colonne per la tabella 2
+            kubomawashi2.Controls.Add(tableLayoutPanel2);
+
         }
         private void inserisciPedinaNelKubomawashi(Koma koma)
         {
-            Panel panelDaUsare = null;
+            TableLayoutPanel panelDaUsare = null;
             List<Koma> listaPannelli = null;
-            if (koma.Colore) 
+            if (koma.Colore)
             {
                 if (kubomawashi_sfidante.PedinaMangiata == null)
                 {
                     kubomawashi_sfidante.PedinaMangiata = koma;
                     listaPannelli = kubomawashi_sfidante.list;
-                    panelDaUsare = (Panel)kubomawashi1.Controls[0]; // Ottiene il pannello interno del kubomawashi1
+                    panelDaUsare = (TableLayoutPanel)kubomawashi1.Controls[0]; // Ottiene il pannello interno del kubomawashi1
                 }
                 else
                 {
                     if (kubomawashi_sfidante.list.Count == 20) { MessageBox.Show("Il kubomawashi dello sfidante è pieno!"); return; }
                     listaPannelli = kubomawashi_sfidante.list;
-                    panelDaUsare = (Panel)kubomawashi1.Controls[0]; 
+                    panelDaUsare = (TableLayoutPanel)kubomawashi1.Controls[0];
                 }
             }
-            else 
+            else
             {
                 if (kubomawashi_sfidato.PedinaMangiata == null)
                 {
                     kubomawashi_sfidato.PedinaMangiata = koma;
                     listaPannelli = kubomawashi_sfidato.list;
-                    panelDaUsare = (Panel)kubomawashi2.Controls[0]; // Ottiene il pannello interno del kubomawashi
+                    panelDaUsare = (TableLayoutPanel)kubomawashi2.Controls[0]; // Ottiene il pannello interno del kubomawashi
                 }
                 else
                 {
                     if (kubomawashi_sfidato.list.Count == 20) { MessageBox.Show("Il kubomawashi dello sfidato è pieno!"); return; }
                     listaPannelli = kubomawashi_sfidato.list;
-                    panelDaUsare = (Panel)kubomawashi2.Controls[0]; 
+                    panelDaUsare = (TableLayoutPanel)kubomawashi2.Controls[0];
                 }
             }
             listaPannelli.Add(koma);
             Panel panelPedina = new Panel();
-            panelPedina.Size = new Size(50, 50); 
+            panelPedina.Size = new Size(50, 50);
             panelPedina.BackgroundImage = koma.Icona;
-            panelPedina.BackgroundImageLayout = ImageLayout.Zoom; 
-            panelPedina.BorderStyle = BorderStyle.FixedSingle; 
+            panelPedina.BackgroundImageLayout = ImageLayout.Zoom;
+            panelPedina.BorderStyle = BorderStyle.FixedSingle;
+
+            panelPedina.Click += new EventHandler(ReinserimentoKoma);
+
+
             panelDaUsare.Controls.Add(panelPedina);
+
+
+        }
+
+        private void ReinserimentoKoma(object sender, EventArgs e)
+        {
+            MessageBox.Show("ciao");
         }
 
         private void Tile_Click(object sender, EventArgs e)
@@ -368,13 +387,13 @@ namespace Shogi
             {
                 if (panel.BackColor == Color.Yellow)
                 {
-                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);  
+                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
                     Koma koma = shogiban.getKoma(posizioneChiamante);
                     koma.Posizione = nuovaPosizione;
                     Koma komamangiato = shogiban.getKoma(nuovaPosizione);
-                    if (komamangiato!=null)//se c'è un'altra pedina nella nuova posizione
-                    {           
-                        inserisciPedinaNelKubomawashi(komamangiato);                      
+                    if (komamangiato != null)//se c'è un'altra pedina nella nuova posizione
+                    {
+                        inserisciPedinaNelKubomawashi(komamangiato);
                     }
                     shogiban.rimuoviKoma(posizioneChiamante);   //rimuovi koma  
                     shogiban.aggiungiKoma(koma);
@@ -483,5 +502,6 @@ namespace Shogi
         {
             turno = !turno;
         }
+
     }
 }
