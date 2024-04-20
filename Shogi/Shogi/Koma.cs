@@ -17,7 +17,6 @@ namespace Shogi {
         protected string PERCORSOIMMAGINE = Application.StartupPath;
         private Image icona;
 
-
         public (int, int) Posizione {
             get { return posizione; }
             set {
@@ -36,6 +35,7 @@ namespace Shogi {
 
         public bool Promossa {
             get { return promossa; }
+            set { promossa = value; }
         }
 
         public bool Colore {

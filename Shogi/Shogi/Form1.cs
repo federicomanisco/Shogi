@@ -98,15 +98,19 @@ namespace Shogi
             pictureBox1.Image = sfondo;
             pictureBox1.BackColor = colore;
             pictureBox1.Location = new Point(puntoPartenza.Item1, puntoPartenza.Item2);
+            pictureBox1.Size = new Size(10,10);
             pictureBox2.Image = sfondo;
             pictureBox2.BackColor = colore;
             pictureBox2.Location = new Point(puntoPartenza.Item1 + (TILESIZE * 3), puntoPartenza.Item2);
+            pictureBox2.Size = new Size(10, 10);
             pictureBox3.Image = sfondo;
             pictureBox3.BackColor = colore;
             pictureBox3.Location = new Point(puntoPartenza.Item1, puntoPartenza.Item2 + (TILESIZE * 3));
+            pictureBox3.Size = new Size(10, 10);
             pictureBox4.Image = sfondo;
             pictureBox4.BackColor = colore;
             pictureBox4.Location = new Point(puntoPartenza.Item1 + (TILESIZE * 3), puntoPartenza.Item2 + (TILESIZE * 3));
+            pictureBox4.Size = new Size(10, 10);
 
         }
 
@@ -400,6 +404,21 @@ namespace Shogi
                     panel.BackgroundImage = koma.Icona;
                     panel.BackgroundImageLayout = ImageLayout.Center;
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
+
+                    
+                    if ((nuovaPosizione.Item2 <= 2 && koma.Colore && !koma.Promossa) || (nuovaPosizione.Item2 >= 6 && !koma.Colore && !koma.Promossa)) {
+                        if((nuovaPosizione.Item2 != 0 && koma.Colore) || (nuovaPosizione.Item2 != 8 && !koma.Colore)) { 
+                            DialogResult chiamata;
+                            chiamata = MessageBox.Show("Vuoi procedere?", "Conferma", MessageBoxButtons.YesNo);
+                            if (chiamata == DialogResult.Yes) promuoviKoma(koma, nuovaPosizione);
+                        }
+                        else
+                        {
+                            promuoviKoma(koma, nuovaPosizione);
+                        }
+                    }
+
+
                     turno = !turno;
                     sound_muoviKoma.Play();
                 }
@@ -411,6 +430,13 @@ namespace Shogi
                     }
                 }
             }
+        }
+
+        private void promuoviKoma(Koma koma, (int,int) pos)
+        {
+            koma.Promossa = true;
+            koma.promuovi();
+            Tiles[pos.Item1, pos.Item2].BackgroundImage = koma.Icona;
         }
 
         private List<(int, int)> calcolaMosseRegolari(Koma koma)

@@ -58,7 +58,7 @@
             pictureBox1.Location = new Point(726, 300);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(9, 8);
+            pictureBox1.Size = new Size(54, 40);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -85,7 +85,7 @@
             pictureBox4.Location = new Point(355, 86);
             pictureBox4.Margin = new Padding(3, 2, 3, 2);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(9, 8);
+            pictureBox4.Size = new Size(10, 10);
             pictureBox4.TabIndex = 3;
             pictureBox4.TabStop = false;
             // 
