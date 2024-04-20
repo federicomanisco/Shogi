@@ -76,7 +76,6 @@ namespace Shogi {
 
         public Koma((int, int) posizione, bool colore) {
             Posizione = posizione;
-            Colore = colore;
-        }
+            Colore = colore;        }
     }
 }

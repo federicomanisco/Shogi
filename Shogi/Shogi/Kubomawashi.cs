@@ -10,8 +10,9 @@ namespace Shogi {
     {
 
         string PERCORSOIMMAGINE = Application.StartupPath;
+        public Koma PedinaMangiata;
 
-        List<Koma> list = new List<Koma>();
+        public List<Koma> list = new List<Koma>();
         public Kubomawashi()
         {
             
