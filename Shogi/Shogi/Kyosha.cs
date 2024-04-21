@@ -22,6 +22,7 @@ namespace Shogi
         }
         public override void promuovi()
         {
+            Promossa = true;
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/lancia.png");
             if (colore)
             {
@@ -34,8 +35,22 @@ namespace Shogi
             {
                 mossePossibili = new int[6, 2]
                 {
-                    {0, -1},{1, 0},{-1, 0},{0, 1},{1, -1},{1, 1}
+                    {0, 1},{-1, 0},{1, 0},{1, 1},{-1, 1},{0, -1}
                 };
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
+            }
+        }
+        public override void depromuovi()
+        {
+            Promossa = false;
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/lancia.png");
+            if (colore)
+            {
+                mossePossibili = new int[8, 2] { { 0, -1 }, { 0, -2 }, { 0, -3 }, { 0, -4 }, { 0, -5 }, { 0, -6 }, { 0, -7 }, { 0, -8 } };
+            }
+            else
+            {
+                mossePossibili = new int[8, 2] { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 0, 7 }, { 0, 8 } };
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }

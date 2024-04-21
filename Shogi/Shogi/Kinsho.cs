@@ -34,7 +34,10 @@ namespace Shogi {
         public override void promuovi() {
             throw new ArgumentException("Il generale d'oro non può essere promosso.");
         }
-
+        public override void depromuovi()
+        {
+            throw new ArgumentException("Il generale d'oro non può essere depromosso.");
+        }
         //public override void muovi((int, int) nuovaPosizione) { }
     }
 }

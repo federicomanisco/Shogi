@@ -32,7 +32,10 @@ namespace Shogi {
         public override void promuovi() {
             throw new ArgumentException("Il re non può essere promosso.");
         }
-
+        public override void depromuovi()
+        {
+            throw new ArgumentException("Il re non può essere depromosso.");
+        }
         //public override void muovi((int, int) nuovaPosizione) { }
     }
 }

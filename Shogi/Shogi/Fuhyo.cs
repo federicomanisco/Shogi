@@ -21,6 +21,7 @@ namespace Shogi
 
         public override void promuovi()
         {
+            Promossa = true;
             if (colore)
             {
                 mossePossibili = new int[6, 2]
@@ -36,6 +37,21 @@ namespace Shogi
                     {0, 1},{-1, 0},{1, 0},{1, 1},{-1, 1},{0, -1}
                 };
                 Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/pedone.png");
+                Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
+            }
+        }
+
+        public override void depromuovi()
+        {
+            Promossa = false;
+            Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/pedone.png");
+            if (colore)
+            {
+                mossePossibili = new int[1, 2] { { 0, -1 } };
+            }
+            else
+            {
+                mossePossibili = new int[1, 2] { { 0, 1 } };
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }

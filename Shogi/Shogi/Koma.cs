@@ -73,6 +73,8 @@ namespace Shogi {
 
         public abstract void promuovi();
 
+        public abstract void depromuovi();
+
 
         public Koma((int, int) posizione, bool colore) {
             Posizione = posizione;

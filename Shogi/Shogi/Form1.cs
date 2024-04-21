@@ -223,6 +223,15 @@ namespace Shogi
             Hisha torreBianca = new Hisha((7, 7), true);
             mostraCasella(torreNera);
             mostraCasella(torreBianca);
+
+            /*   varie prove per i movimenti delle koma promosse 
+            Kyosha KomaUno = new Kyosha((2, 4), false);
+            Kyosha KomaDue = new Kyosha((5, 4), true);
+            KomaUno.promuovi();
+            KomaDue.promuovi();
+            mostraCasella(KomaUno);
+            mostraCasella(KomaDue); */
+
         }
 
         private void disegnaTimer((int, int) grandezza, int min, int sec)
@@ -303,6 +312,7 @@ namespace Shogi
         }
         private void inserisciPedinaNelKubomawashi(Koma koma)
         {
+            koma.depromuovi();
             TableLayoutPanel panelDaUsare = null;
             List<Koma> listaPannelli = null;
             if (koma.Colore)
@@ -405,7 +415,7 @@ namespace Shogi
                     panel.BackgroundImageLayout = ImageLayout.Center;
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
 
-                    
+                    //promozione
                     if ((nuovaPosizione.Item2 <= 2 && koma.Colore && !koma.Promossa) || (nuovaPosizione.Item2 >= 6 && !koma.Colore && !koma.Promossa)) {
                         if((nuovaPosizione.Item2 != 0 && koma.Colore) || (nuovaPosizione.Item2 != 8 && !koma.Colore)) { 
                             DialogResult chiamata;
@@ -416,7 +426,7 @@ namespace Shogi
                         {
                             promuoviKoma(koma, nuovaPosizione);
                         }
-                    }
+                    } //fine promozione
 
 
                     turno = !turno;
