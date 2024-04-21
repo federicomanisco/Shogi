@@ -81,6 +81,32 @@ namespace Shogi {
             }
         }
 
+        public override void changeTeam((int, int) p)
+        {
+            if (colore)
+            {
+                mossePossibili = new int[5, 2] {
+                    {-1, -1},
+                    {0, 1},
+                    {1, -1},
+                    {-1, 1},
+                    {1, 1}
+                };
+            }
+            else
+            {
+                mossePossibili = new int[5, 2] {
+                    {-1, -1},
+                    {0, -1},
+                    {1, -1},
+                    {-1, 1},
+                    {1, 1}
+                };
+            }
+            colore = !colore;
+            Posizione = p;
+        }
+
         //public override void muovi((int, int) nuovaPosizione) { }
     }
 }

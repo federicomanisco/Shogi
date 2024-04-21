@@ -3,6 +3,9 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
+//TODO generale oro e re non sono depromovibili
+//TODO le koma rimesse in campo devono avere mosse corrette per il giocatore che le ha posizionate
+
 namespace Shogi
 {
     public partial class Form1 : Form
@@ -42,6 +45,15 @@ namespace Shogi
         int tempoMin = 10; //tempo di gioco per giocatore, minuti
         int tempoSec = 30; //tempo di gioco per giocatore, secondi
         bool turno = true;  //true Sente (muove x primo, generalmente lo sfidante), false Gote (lo sfidato)
+
+        bool reinserimento = false; // true-> il giocatore sta tentando di reinserire una koma nella shogiban
+        Panel komaReinserimento;
+
+        List<string> komaNonPromovibili = new List<string>
+        {
+            "Osho", //re
+            "Kinsho", //generale d'oro
+        };
 
         (int, int) posizioneChiamante;
 
@@ -313,6 +325,7 @@ namespace Shogi
         private void inserisciPedinaNelKubomawashi(Koma koma)
         {
             koma.depromuovi();
+            koma.Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             TableLayoutPanel panelDaUsare = null;
             List<Koma> listaPannelli = null;
             if (koma.Colore)
@@ -346,14 +359,17 @@ namespace Shogi
                 }
             }
             listaPannelli.Add(koma);
-            Panel panelPedina = new Panel();
-            panelPedina.Size = new Size(50, 50);
-            panelPedina.BackgroundImage = koma.Icona;
-            panelPedina.BackgroundImageLayout = ImageLayout.Zoom;
-            panelPedina.BorderStyle = BorderStyle.FixedSingle;
+            Panel panelPedina = new Panel
+            {
+                Size = new Size(50, 50),
+                BackgroundImage = koma.Icona,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                BorderStyle = BorderStyle.FixedSingle,
+                Name = "prova",
+                Tag = koma
+            };
 
             panelPedina.Click += new EventHandler(ReinserimentoKoma);
-
 
             panelDaUsare.Controls.Add(panelPedina);
 
@@ -362,91 +378,157 @@ namespace Shogi
 
         private void ReinserimentoKoma(object sender, EventArgs e)
         {
-            MessageBox.Show("ciao");
+            
+            Panel panel = (Panel)sender;
+            Koma koma = (Koma)panel.Tag;
+            if (pannelloCliccato)  //controllo che l'utente non stesse cercando di spostare una koma nel campo
+            {
+                reimpostaCaselle();
+            }
+            else if (!reinserimento)
+            {
+                reinserimento = true;
+                komaReinserimento = panel;
+
+
+                for (int c = 0; c <= 8; c++)
+                {
+                    for (int r = 0; r <= 8; r++)
+                    {
+                        if(Tiles[c, r].BackgroundImage == null) Tiles[c,r].BackColor = Color.Yellow;
+                    }
+                }
+
+            }
+            else
+            {
+                reinserimento = false;
+                reimpostaCaselle();
+                komaReinserimento = null;
+            }
+
         }
 
         private void Tile_Click(object sender, EventArgs e)
         {
             pannelloCliccato = !pannelloCliccato;
             Panel panel = (Panel)sender;
-            if (pannelloCliccato)
+            if (!reinserimento)
+            {
+                if (pannelloCliccato)
+                {
+                    posizioneChiamante = getRowColFromLocation(panel.Location);
+                    Koma koma = null;
+                    try
+                    {
+                        koma = shogiban.getKoma(posizioneChiamante);
+                    }
+                    catch { }
+
+                    if (koma != null)
+                    {
+                        if (koma.Colore == turno)
+                        {
+                            Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
+                            List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
+                            foreach ((int, int) mossaRegolare in mosseRegolari)
+                            {
+                                int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
+                                int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
+
+                                Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
+                            }
+                        }
+                    }
+                    MessageBox.Show(koma.Colore.ToString());
+
+                }
+                else
+                {
+
+                    if (panel.BackColor == Color.Yellow)
+                    {
+                        (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
+                        Koma koma = shogiban.getKoma(posizioneChiamante);
+                        koma.Posizione = nuovaPosizione;
+                        Koma komamangiato = shogiban.getKoma(nuovaPosizione);
+                        if (komamangiato != null)//se c'è un'altra pedina nella nuova posizione
+                        {
+                            inserisciPedinaNelKubomawashi(komamangiato);
+                        }
+                        shogiban.rimuoviKoma(posizioneChiamante);   //rimuovi koma  
+                        shogiban.aggiungiKoma(koma);
+                        panel.BackgroundImage = koma.Icona;
+                        panel.BackgroundImageLayout = ImageLayout.Center;
+                        Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
+
+                        //promozione
+                        if (((nuovaPosizione.Item2 <= 2 && koma.Colore && !koma.Promossa) || (nuovaPosizione.Item2 >= 6 && !koma.Colore && !koma.Promossa)) && !komaNonPromovibili.Contains(koma.GetType().Name))
+                        {
+                            if ((nuovaPosizione.Item2 != 0 && koma.Colore) || (nuovaPosizione.Item2 != 8 && !koma.Colore))
+                            {
+                                DialogResult chiamata;
+                                chiamata = MessageBox.Show("Vuoi promuovere la pedina?", "", MessageBoxButtons.YesNo);
+                                if (chiamata == DialogResult.Yes)
+                                {
+                                    koma.promuovi();
+                                    Tiles[nuovaPosizione.Item1, nuovaPosizione.Item2].BackgroundImage = koma.Icona;
+                                }
+                            }
+                            else
+                            {
+                                koma.promuovi();
+                                Tiles[nuovaPosizione.Item1, nuovaPosizione.Item2].BackgroundImage = koma.Icona;
+                            }
+                        } //fine promozione
+
+
+                        turno = !turno;
+                        sound_muoviKoma.Play();
+                    }
+                    foreach (Panel tile in Tiles)
+                    {
+                        if (tile.BackColor != TileColor)
+                        {
+                            tile.BackColor = TileColor;
+                        }
+                    }
+                }
+            }
+            else if (reinserimento)
             {
                 posizioneChiamante = getRowColFromLocation(panel.Location);
-                Koma koma = null;
-                try
-                {
-                    koma = shogiban.getKoma(posizioneChiamante);
-                }
-                catch
+                
+                if (Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor == Color.Yellow)  //se non c'è nessuna koma nella nuova posizione
                 {
 
-                }
-                if (koma != null)
-                {
-                    if (koma.Colore == turno)
-                    {
-                        Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackColor = Color.Red;
-                        List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
-                        foreach ((int, int) mossaRegolare in mosseRegolari)
-                        {
-                            int casellaDaEvidenziareX = koma.Posizione.Item1 + mossaRegolare.Item1;
-                            int casellaDaEvidenziareY = koma.Posizione.Item2 + mossaRegolare.Item2;
+                    Koma koma = (Koma)komaReinserimento.Tag;
+                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = koma.Icona;
+                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImageLayout = ImageLayout.Center;
+                    komaReinserimento.Parent.Controls.Remove(komaReinserimento);
+                    koma.changeTeam(posizioneChiamante);
 
-                            Tiles[casellaDaEvidenziareX, casellaDaEvidenziareY].BackColor = Color.Yellow;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (panel.BackColor == Color.Yellow)
-                {
-                    (int, int) nuovaPosizione = getRowColFromLocation(panel.Location);
-                    Koma koma = shogiban.getKoma(posizioneChiamante);
-                    koma.Posizione = nuovaPosizione;
-                    Koma komamangiato = shogiban.getKoma(nuovaPosizione);
-                    if (komamangiato != null)//se c'è un'altra pedina nella nuova posizione
-                    {
-                        inserisciPedinaNelKubomawashi(komamangiato);
-                    }
-                    shogiban.rimuoviKoma(posizioneChiamante);   //rimuovi koma  
                     shogiban.aggiungiKoma(koma);
-                    panel.BackgroundImage = koma.Icona;
-                    panel.BackgroundImageLayout = ImageLayout.Center;
-                    Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = null;
-
-                    //promozione
-                    if ((nuovaPosizione.Item2 <= 2 && koma.Colore && !koma.Promossa) || (nuovaPosizione.Item2 >= 6 && !koma.Colore && !koma.Promossa)) {
-                        if((nuovaPosizione.Item2 != 0 && koma.Colore) || (nuovaPosizione.Item2 != 8 && !koma.Colore)) { 
-                            DialogResult chiamata;
-                            chiamata = MessageBox.Show("Vuoi procedere?", "Conferma", MessageBoxButtons.YesNo);
-                            if (chiamata == DialogResult.Yes) promuoviKoma(koma, nuovaPosizione);
-                        }
-                        else
-                        {
-                            promuoviKoma(koma, nuovaPosizione);
-                        }
-                    } //fine promozione
-
 
                     turno = !turno;
-                    sound_muoviKoma.Play();
                 }
-                foreach (Panel tile in Tiles)
-                {
-                    if (tile.BackColor != TileColor)
-                    {
-                        tile.BackColor = TileColor;
-                    }
-                }
+
+                reinserimento = false;
+                reimpostaCaselle();
+                komaReinserimento = null;
+                pannelloCliccato = false;
+                
             }
         }
-
-        private void promuoviKoma(Koma koma, (int,int) pos)
+        private void reimpostaCaselle()
         {
-            koma.Promossa = true;
-            koma.promuovi();
-            Tiles[pos.Item1, pos.Item2].BackgroundImage = koma.Icona;
+            for (int c = 0; c <= 8; c++)
+            {
+                for (int r = 0; r <= 8; r++)
+                {
+                    Tiles[c, r].BackColor = TileColor;
+                }
+            }
         }
 
         private List<(int, int)> calcolaMosseRegolari(Koma koma)

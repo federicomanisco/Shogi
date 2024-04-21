@@ -75,9 +75,20 @@ namespace Shogi {
 
         public abstract void depromuovi();
 
+        public abstract void changeTeam((int,int)p); //quando una koma viene mangiata e cambia "team"
+
 
         public Koma((int, int) posizione, bool colore) {
             Posizione = posizione;
-            Colore = colore;        }
+            Colore = colore; 
+        }
+
+
+        public void mangiata()
+        {
+            Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
+            colore = !colore;
+        }
     }
+
 }

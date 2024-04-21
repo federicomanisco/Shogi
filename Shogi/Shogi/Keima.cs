@@ -52,6 +52,18 @@ namespace Shogi
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
-
+        public override void changeTeam((int, int) p)
+        {
+            if (colore)
+            {
+                mossePossibili = new int[2, 2] { { 1, 2 }, { -1, 2 } };
+            }
+            else
+            {
+                mossePossibili = new int[2, 2] { { 1, -2 }, { -1, -2 } };
+            }
+            colore = !colore;
+            Posizione = p;
+        }
     }
 }

@@ -36,6 +36,10 @@ namespace Shogi {
         {
             throw new ArgumentException("Il re non può essere depromosso.");
         }
+        public override void changeTeam((int, int) p)
+        {
+            throw new ArgumentException("Il re non può essere rimesso sulla shogiban.");
+        }
         //public override void muovi((int, int) nuovaPosizione) { }
     }
 }

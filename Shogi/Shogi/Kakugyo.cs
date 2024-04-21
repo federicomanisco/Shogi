@@ -62,6 +62,13 @@ namespace Shogi {
                 {-1, 1}, {-2, 2}, {-3, 3}, {-4, 4}, {-5, 5}, {-6, 6}, {-7, 7}, {-8, 8}
             };
         }
+        public override void changeTeam((int, int) p)
+        {
+            //le mosse dell'alfiere non cambiano
+            colore = !colore;
+            Posizione = p;
+        }
+
         //public override void muovi((int, int) nuovaPosizione) { }
     }
 }

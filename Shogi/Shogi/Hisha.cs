@@ -58,5 +58,11 @@ namespace Shogi
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
+        public override void changeTeam((int, int) p)
+        {
+            //le mosse della torre non cambiano
+            colore = !colore;
+            Posizione = p;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Shogi {
         */
 
         public bool controllaPosizioneOutOfBounds((int, int) posizione) {
-            //  Colonna           Colonna            Riga               Riga
+            //  Colonna                    Colonna                  Riga                  Riga
             if (posizione.Item1 < 0 || posizione.Item1 > 8 || posizione.Item2 < 0 || posizione.Item2 > 8)
                 return false;
             return true;
