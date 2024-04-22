@@ -3,8 +3,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-//TODO generale oro e re non sono depromovibili
-//TODO le koma rimesse in campo devono avere mosse corrette per il giocatore che le ha posizionate
+//TODO re sotto minaccia (scacco)
 
 namespace Shogi
 {
@@ -217,7 +216,7 @@ namespace Shogi
             //Generali Oro
             Kinsho generaleOroNero1 = new Kinsho((3, 0), false);
             Kinsho generaleOroNero2 = new Kinsho((5, 0), false);
-            Kinsho generaleOroBianco1 = new Kinsho((3, 8), true);
+            Kinsho generaleOroBianco1 = new Kinsho((3, 3), true);
             Kinsho generaleOroBianco2 = new Kinsho((5, 8), true);
             mostraCasella(generaleOroNero1);
             mostraCasella(generaleOroNero2);
@@ -324,7 +323,9 @@ namespace Shogi
         }
         private void inserisciPedinaNelKubomawashi(Koma koma)
         {
-            koma.depromuovi();
+            if(!komaNonPromovibili.Contains(koma.GetType().Name)) //se la koma non è depromovibile allora non lo farà
+                koma.depromuovi();
+
             koma.Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             TableLayoutPanel panelDaUsare = null;
             List<Koma> listaPannelli = null;
@@ -359,6 +360,7 @@ namespace Shogi
                 }
             }
             listaPannelli.Add(koma);
+            koma.changeTeam(posizioneChiamante);
             Panel panelPedina = new Panel
             {
                 Size = new Size(50, 50),
@@ -381,21 +383,35 @@ namespace Shogi
             
             Panel panel = (Panel)sender;
             Koma koma = (Koma)panel.Tag;
+            string nomeKoma = koma.GetType().Name;
             if (pannelloCliccato)  //controllo che l'utente non stesse cercando di spostare una koma nel campo
             {
                 reimpostaCaselle();
             }
-            else if (!reinserimento)
+            else if (!reinserimento && turno == koma.Colore)
             {
                 reinserimento = true;
                 komaReinserimento = panel;
-
 
                 for (int c = 0; c <= 8; c++)
                 {
                     for (int r = 0; r <= 8; r++)
                     {
-                        if(Tiles[c, r].BackgroundImage == null) Tiles[c,r].BackColor = Color.Yellow;
+                        //MessageBox.Show(koma.Colore.ToString());
+                        //MessageBox.Show(posizioneChiamante.Item2.ToString());
+                        //MessageBox.Show("-"+ nomeKoma + "-");
+                        if(
+                            !((nomeKoma == "Kyosha" || nomeKoma == "Fuhyo") && koma.Colore && r == 0) &&   //pedoni e lance non possono essere inseriti nell'ultima casella della shogiban (non potrebbero muoversi)
+                            !((nomeKoma == "Kyosha" || nomeKoma == "Fuhyo") && !koma.Colore && r == 8) &&  
+                            !(nomeKoma == "Keima" && koma.Colore && r < 2) &&     //i cavalli non possono essere inseriti nelle ultime due caselle della shogiban (non potrebbero muoversi)
+                            !(nomeKoma == "Keima" && !koma.Colore && r > 6) &&    
+                            Tiles[c, r].BackgroundImage == null
+                            ) 
+                        {
+                            Tiles[c, r].BackColor = Color.Yellow;
+                        }
+                        
+                        
                     }
                 }
 
@@ -440,7 +456,7 @@ namespace Shogi
                             }
                         }
                     }
-                    MessageBox.Show(koma.Colore.ToString());
+                    //MessageBox.Show(koma.Colore.ToString());
 
                 }
                 else
@@ -452,9 +468,12 @@ namespace Shogi
                         Koma koma = shogiban.getKoma(posizioneChiamante);
                         koma.Posizione = nuovaPosizione;
                         Koma komamangiato = shogiban.getKoma(nuovaPosizione);
+                        
                         if (komamangiato != null)//se c'è un'altra pedina nella nuova posizione
                         {
-                            inserisciPedinaNelKubomawashi(komamangiato);
+                            if (komamangiato.GetType().Name == "Osho") finisciPartita(komamangiato);  // se viene mangiato il re deve finire la partita
+                            else inserisciPedinaNelKubomawashi(komamangiato);
+
                         }
                         shogiban.rimuoviKoma(posizioneChiamante);   //rimuovi koma  
                         shogiban.aggiungiKoma(koma);
@@ -506,11 +525,13 @@ namespace Shogi
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = koma.Icona;
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImageLayout = ImageLayout.Center;
                     komaReinserimento.Parent.Controls.Remove(komaReinserimento);
-                    koma.changeTeam(posizioneChiamante);
+                    //koma.changeTeam(posizioneChiamante);
 
+                    koma.Posizione = posizioneChiamante;
                     shogiban.aggiungiKoma(koma);
 
                     turno = !turno;
+                    sound_muoviKoma.Play();
                 }
 
                 reinserimento = false;
@@ -619,6 +640,14 @@ namespace Shogi
         private void button1_Click(object sender, EventArgs e)
         {
             turno = !turno;
+        }
+
+        private void finisciPartita(Koma koma)
+        {
+            string vittorioso;
+            if (koma.Colore) vittorioso = "SFIDATO";
+            else vittorioso = "SFIDANTE";
+            MessageBox.Show($"PARTITA VINTA DALLO {vittorioso}");
         }
 
     }

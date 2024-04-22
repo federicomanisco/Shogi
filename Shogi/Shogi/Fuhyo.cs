@@ -60,11 +60,11 @@ namespace Shogi
         {
             if (colore)
             {
-                mossePossibili = new int[1, 2] { { 0, -1 } };
+                mossePossibili = new int[1, 2] { { 0, 1 } };
             }
             else
             {
-                mossePossibili = new int[1, 2] { { 0, 1 } };
+                mossePossibili = new int[1, 2] { { 0, -1 } };
             }
             colore = !colore;
             Posizione = p;
