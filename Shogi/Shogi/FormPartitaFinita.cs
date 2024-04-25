@@ -26,8 +26,12 @@ namespace Shogi
 
         private void FormPartitaFinita_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
             mettiLabel();
-            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/starman.png");
+            mettiImmagini();
+            MettiBottone();
+
+            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
             this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
@@ -37,17 +41,46 @@ namespace Shogi
             return "GOTE";
         }
 
+        private void MettiBottone()
+        {
+            button1.Size = new Size(300, 60);
+            button1.Location = new Point(150, 255);
+        }
+
         private void mettiLabel()
         {
-            label1.Font = new Font("Arial", 60 * (1 / GetScreenScaleFactor()));
+            label1.Font = new Font("Arial", 40 * (1 / GetScreenScaleFactor()));
             label1.BackColor = Color.Transparent;
-            label1.Text = PrendiVincitore(vittorioso);
-            label1.Location = new Point(this.Width / 2 - (75 * (label1.Text.Length) / 2), 10);
+            label1.Text = $"VINCE {PrendiVincitore(vittorioso)}";
+            label1.Location = new Point(120, 25);
+        }
 
-            label2.Font = new Font("Arial", 60 * (1 / GetScreenScaleFactor()));
-            label2.BackColor = Color.Transparent;
-            label2.Text = "VINCE";
-            label2.Location = new Point((this.Width / 2 - 150), 100);
+        private void mettiImmagini()
+        {
+            pbox_sente.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/re.png");
+            pbox_sente.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbox_sente.BackColor = Color.Black;
+            pbox_sente.Size = new Size(60, 60);
+            pbox_sente.Location = new Point(this.Width / 2 - 3 * pbox_sente.Width, 150);
+            pbox_sente.BorderStyle = BorderStyle.Fixed3D;
+
+            pbox_gote.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/re.png");
+            pbox_gote.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+            pbox_gote.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbox_gote.BackColor = Color.Black;
+            pbox_gote.Size = new Size(60, 60);
+            pbox_gote.Location = new Point(this.Width / 2 + 3 * pbox_gote.Width - pbox_gote.Width, 150);
+            pbox_gote.BorderStyle = BorderStyle.Fixed3D;
+
+            pbox_crown.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/crown.png");
+            pbox_crown.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbox_crown.BackColor = Color.Transparent;
+            pbox_crown.Size = new Size(60, 40);
+
+            if (vittorioso)
+                pbox_crown.Location = new Point(this.Width / 2 - 3 * pbox_sente.Width, 150 - pbox_crown.Height);
+            else
+                pbox_crown.Location = new Point(this.Width / 2 + 3 * pbox_gote.Width - pbox_gote.Width, 150 - pbox_crown.Height);
 
         }
 
@@ -60,17 +93,17 @@ namespace Shogi
             return dpiX / 96f;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void customButton1_Click_1(object sender, EventArgs e)
         {
             Form1 formSchermataIniziale = new Form1(); //TODO sostituire il form della schermata iniziale a quello del form1 (appena viene finito)
             this.Close();
             formSchermataIniziale.Show();
         }
         /*
-   FormPartitaFinita formFinale = new FormPartitaFinita(true);
-   timer1.Stop();
-   formFinale.ShowDialog();
-   this.Close();
+FormPartitaFinita formFinale = new FormPartitaFinita(true);
+timer1.Stop();
+formFinale.ShowDialog();
+this.Close();
 */
     }
 }

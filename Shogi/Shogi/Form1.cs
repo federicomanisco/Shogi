@@ -649,13 +649,5 @@ namespace Shogi
             formFinale.ShowDialog();
             this.Close();
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            FormPartitaFinita formFinale = new FormPartitaFinita(false);
-            timer1.Stop();
-            formFinale.ShowDialog();
-            this.Close();
-        }
     }
 }

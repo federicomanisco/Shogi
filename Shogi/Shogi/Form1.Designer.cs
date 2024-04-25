@@ -42,7 +42,6 @@
             lbl_Sec1 = new Label();
             lbl_Min2 = new Label();
             lbl_Sec2 = new Label();
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -164,22 +163,11 @@
             lbl_Sec2.TabIndex = 12;
             lbl_Sec2.Text = "label4";
             // 
-            // button1
-            // 
-            button1.Location = new Point(39, 426);
-            button1.Name = "button1";
-            button1.Size = new Size(203, 95);
-            button1.TabIndex = 13;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1344, 628);
-            Controls.Add(button1);
             Controls.Add(lbl_Sec2);
             Controls.Add(lbl_Min2);
             Controls.Add(lbl_Sec1);
@@ -224,6 +212,5 @@
         private Label lbl_Sec1;
         private Label lbl_Min2;
         private Label lbl_Sec2;
-        private Button button1;
     }
 }
