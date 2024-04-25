@@ -18,6 +18,15 @@ namespace Shogi
             Scale(new SizeF(fattoreScalaSchermoInverso, fattoreScalaSchermoInverso)); // scala i componenti della form in base alla scala dello schermo
         }
 
+        /*private void PaginaIniziale()
+        {
+            Form1 PaginaIniziale = new Form1();
+            PaginaIniziale.Show();
+            this.Hide();
+        }*/
+
+
+
         float GetScreenScaleFactor()
         { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
             Graphics graphics = CreateGraphics();
