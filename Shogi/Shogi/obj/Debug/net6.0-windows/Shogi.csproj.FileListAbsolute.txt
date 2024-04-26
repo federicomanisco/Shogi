@@ -133,3 +133,6 @@ C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi_2\Shogi\obj\Debug\net6.0-windows\S
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi_2\Shogi\obj\Debug\net6.0-windows\ref\Shogi.dll
 C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
 C:\Users\user\OneDrive - IIS G. Marconi\Desktop\Shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormPartitaFinita.resources
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources

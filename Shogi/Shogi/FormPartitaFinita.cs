@@ -95,8 +95,20 @@ namespace Shogi
 
         private void customButton1_Click_1(object sender, EventArgs e)
         {
-            Form1 formSchermataIniziale = new Form1(); //TODO sostituire il form della schermata iniziale a quello del form1 (appena viene finito)
+            PaginaIniziale formSchermataIniziale = new PaginaIniziale(); //TODO sostituire il form della schermata iniziale a quello del form1 (appena viene finito)
             this.Close();
+            formSchermataIniziale.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PaginaIniziale formSchermataIniziale = new PaginaIniziale(); //TODO sostituire il form della schermata iniziale a quello del form1 (appena viene finito)
+            this.Hide();
             formSchermataIniziale.Show();
         }
         /*

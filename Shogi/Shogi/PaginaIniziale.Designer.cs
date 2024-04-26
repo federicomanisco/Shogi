@@ -32,13 +32,14 @@
             button1 = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            button2 = new Button();
             button3 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
+            button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(339, 203);
             button1.Name = "button1";
@@ -47,6 +48,8 @@
             button1.Text = "Inizia";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            button1.MouseEnter += button1_MouseEnter;
+            button1.MouseLeave += button1_MouseLeave;
             // 
             // label1
             // 
@@ -62,19 +65,9 @@
             // 
             pictureBox1.Location = new Point(35, 48);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(145, 137);
+            pictureBox1.Size = new Size(52, 137);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(339, 321);
-            button2.Name = "button2";
-            button2.Size = new Size(221, 83);
-            button2.TabIndex = 3;
-            button2.Text = "Koma Info?";
-            button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -85,6 +78,21 @@
             button3.TabIndex = 4;
             button3.Text = "....";
             button3.UseVisualStyleBackColor = true;
+            button3.MouseEnter += button3_MouseEnter;
+            button3.MouseLeave += button3_MouseLeave;
+            // 
+            // button2
+            // 
+            button2.Cursor = Cursors.Hand;
+            button2.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(339, 316);
+            button2.Name = "button2";
+            button2.Size = new Size(221, 83);
+            button2.TabIndex = 5;
+            button2.Text = "MOVIMENTI";
+            button2.UseVisualStyleBackColor = true;
+            button2.MouseEnter += button2_MouseEnter;
+            button2.MouseLeave += button2_MouseLeave;
             // 
             // PaginaIniziale
             // 
@@ -93,8 +101,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(853, 566);
-            Controls.Add(button3);
             Controls.Add(button2);
+            Controls.Add(button3);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(button1);
@@ -113,7 +121,7 @@
         private Button button1;
         private Label label1;
         private PictureBox pictureBox1;
-        private Button button2;
         private Button button3;
+        private Button button2;
     }
 }

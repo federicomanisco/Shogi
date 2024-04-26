@@ -33,6 +33,7 @@
             pbox_gote = new PictureBox();
             pbox_crown = new PictureBox();
             button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pbox_sente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbox_gote).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbox_crown).BeginInit();
@@ -41,56 +42,75 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(14, 12);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(50, 20);
             label1.TabIndex = 0;
             label1.Text = "label1";
             // 
             // pbox_sente
             // 
-            pbox_sente.Location = new Point(26, 38);
+            pbox_sente.Location = new Point(30, 51);
+            pbox_sente.Margin = new Padding(3, 4, 3, 4);
             pbox_sente.Name = "pbox_sente";
-            pbox_sente.Size = new Size(100, 50);
+            pbox_sente.Size = new Size(114, 67);
             pbox_sente.TabIndex = 16;
             pbox_sente.TabStop = false;
             // 
             // pbox_gote
             // 
-            pbox_gote.Location = new Point(26, 104);
+            pbox_gote.Location = new Point(30, 139);
+            pbox_gote.Margin = new Padding(3, 4, 3, 4);
             pbox_gote.Name = "pbox_gote";
-            pbox_gote.Size = new Size(100, 50);
+            pbox_gote.Size = new Size(114, 67);
             pbox_gote.TabIndex = 17;
             pbox_gote.TabStop = false;
             // 
             // pbox_crown
             // 
-            pbox_crown.Location = new Point(165, 9);
+            pbox_crown.Location = new Point(189, 12);
+            pbox_crown.Margin = new Padding(3, 4, 3, 4);
             pbox_crown.Name = "pbox_crown";
-            pbox_crown.Size = new Size(56, 42);
+            pbox_crown.Size = new Size(64, 56);
             pbox_crown.TabIndex = 18;
             pbox_crown.TabStop = false;
             // 
             // button1
             // 
-            button1.Location = new Point(165, 190);
+            button1.Location = new Point(14, 240);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(170, 57);
+            button1.Size = new Size(194, 76);
             button1.TabIndex = 19;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Cursor = Cursors.Hand;
+            button2.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(205, 360);
+            button2.Name = "button2";
+            button2.Size = new Size(221, 83);
+            button2.TabIndex = 20;
+            button2.Text = "MENU INIZIALE";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // FormPartitaFinita
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
-            ClientSize = new Size(584, 361);
+            ClientSize = new Size(667, 481);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pbox_crown);
             Controls.Add(pbox_gote);
             Controls.Add(pbox_sente);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormPartitaFinita";
             Text = "FormPartitaFinita";
             Load += FormPartitaFinita_Load;
@@ -108,5 +128,6 @@
         private PictureBox pbox_gote;
         private PictureBox pbox_crown;
         private Button button1;
+        private Button button2;
     }
 }

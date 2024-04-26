@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Shogi
     public partial class PaginaIniziale : Form
     {
         static protected string PERCORSOIMMAGINE = Application.StartupPath;
+        (int, int) grandezzaPulsante = (400, 70);
+
         public PaginaIniziale()
         {
             InitializeComponent();
@@ -37,22 +40,67 @@ namespace Shogi
                     elemento.Font = customFont;
                 }
             }
-            label1.Location = new Point(345,50);
+            label1.Location = new Point(345, 50);
             label1.BackColor = Color.Transparent;
-            
+
+            button1.Size = new Size(grandezzaPulsante.Item1, grandezzaPulsante.Item2);
+            button1.Location = new Point(this.Width / 2 - button1.Width / 2, this.Height / 2 - 100);
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+
+            button2.Size = new Size(grandezzaPulsante.Item1, grandezzaPulsante.Item2);
+            button2.Location = new Point(this.Width / 2 - button1.Width / 2, this.Height / 2);
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.ImageAlign = ContentAlignment.MiddleRight;
+
+            button3.Size = new Size(grandezzaPulsante.Item1, grandezzaPulsante.Item2);
+            button3.Location = new Point(this.Width / 2 - button1.Width / 2, this.Height / 2 + 100);
+            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button3.ImageAlign = ContentAlignment.MiddleRight;
+
         }
 
         private void button1_Click(object sender, EventArgs e)//Nasconde la Pagina Iniziale e fa partire Form1.cs
         {
-            this.Hide();
             Form1 form1 = new Form1();
             form1.ShowDialog();
+            this.Hide();
         }
 
         private void label1_Click(object sender, EventArgs e)//deve essere centrata al cento della schermata
         {
 
 
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/frecciaDestra.png");
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.Image = null;
+        }
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            button2.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/frecciaDestra.png");
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.Image = null;
+        }
+
+        private void button3_MouseEnter(object sender, EventArgs e)
+        {
+            button3.Image = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/frecciaDestra.png");
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.Image = null;
         }
     }
 }
