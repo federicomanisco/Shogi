@@ -78,6 +78,7 @@
             button3.TabIndex = 4;
             button3.Text = "....";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             button3.MouseEnter += button3_MouseEnter;
             button3.MouseLeave += button3_MouseLeave;
             // 
@@ -91,6 +92,7 @@
             button2.TabIndex = 5;
             button2.Text = "MOVIMENTI";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             button2.MouseEnter += button2_MouseEnter;
             button2.MouseLeave += button2_MouseLeave;
             // 

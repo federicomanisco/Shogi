@@ -43,6 +43,12 @@ namespace Shogi
             label1.Location = new Point(345, 50);
             label1.BackColor = Color.Transparent;
 
+            caricaPulsanti();
+
+        }
+
+        private void caricaPulsanti()
+        {
             button1.Size = new Size(grandezzaPulsante.Item1, grandezzaPulsante.Item2);
             button1.Location = new Point(this.Width / 2 - button1.Width / 2, this.Height / 2 - 100);
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -57,7 +63,6 @@ namespace Shogi
             button3.Location = new Point(this.Width / 2 - button1.Width / 2, this.Height / 2 + 100);
             button3.TextImageRelation = TextImageRelation.ImageBeforeText;
             button3.ImageAlign = ContentAlignment.MiddleRight;
-
         }
 
         private void button1_Click(object sender, EventArgs e)//Nasconde la Pagina Iniziale e fa partire Form1.cs
@@ -101,6 +106,17 @@ namespace Shogi
         private void button3_MouseLeave(object sender, EventArgs e)
         {
             button3.Image = null;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormMovimenti movimenti = new FormMovimenti();
+            movimenti.ShowDialog();
         }
     }
 }

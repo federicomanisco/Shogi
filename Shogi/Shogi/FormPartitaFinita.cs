@@ -111,11 +111,5 @@ namespace Shogi
             this.Hide();
             formSchermataIniziale.Show();
         }
-        /*
-FormPartitaFinita formFinale = new FormPartitaFinita(true);
-timer1.Stop();
-formFinale.ShowDialog();
-this.Close();
-*/
     }
 }
