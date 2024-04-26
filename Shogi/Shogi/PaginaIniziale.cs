@@ -68,8 +68,9 @@ namespace Shogi
         private void button1_Click(object sender, EventArgs e)//Nasconde la Pagina Iniziale e fa partire Form1.cs
         {
             Form1 form1 = new Form1();
-            form1.ShowDialog();
             this.Hide();
+            form1.ShowDialog();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)//deve essere centrata al cento della schermata

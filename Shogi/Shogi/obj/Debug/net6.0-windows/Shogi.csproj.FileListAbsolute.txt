@@ -137,3 +137,7 @@ C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows
 C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
 C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
 C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormMovimenti.resources
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormMovimenti.resources
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormPartitaFinita.resources
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
