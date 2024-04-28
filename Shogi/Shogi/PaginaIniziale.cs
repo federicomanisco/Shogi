@@ -16,6 +16,7 @@ namespace Shogi
     {
         static protected string PERCORSOIMMAGINE = Application.StartupPath;
         (int, int) grandezzaPulsante = (400, 70);
+        
 
         public PaginaIniziale()
         {
@@ -44,7 +45,7 @@ namespace Shogi
             label1.BackColor = Color.Transparent;
 
             caricaPulsanti();
-
+           
         }
 
         private void caricaPulsanti()

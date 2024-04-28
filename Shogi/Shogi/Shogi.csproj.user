@@ -7,6 +7,9 @@
     <Compile Update="FormMovimenti.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormMovimentiShogiban.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormPartitaFinita.cs">
       <SubType>Form</SubType>
     </Compile>

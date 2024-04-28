@@ -89,6 +89,8 @@ namespace Shogi {
             Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             colore = !colore;
         }
+
+
     }
 
 }
