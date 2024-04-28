@@ -465,8 +465,6 @@ namespace Shogi
                             }
                         }
                     }
-                    //MessageBox.Show(koma.Colore.ToString());
-
                 }
                 else
                 {

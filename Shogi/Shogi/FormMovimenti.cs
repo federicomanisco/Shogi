@@ -35,22 +35,22 @@ namespace Shogi
         private void DisegnaKoma()
         {
             Panel bott_INDIETRO = new Panel();
-            bott_INDIETRO.Click += new EventHandler(prova);
+            bott_INDIETRO.Click += new EventHandler(chiudi);
 
-            Panel bott_pedone = new Panel        { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_torre = new Panel()       { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_alfiere = new Panel()     { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_genOro = new Panel()      { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_genArg = new Panel()      { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_cavallo = new Panel()     { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_lancia = new Panel()      { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_re = new Panel()          { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_PROMtorre = new Panel()   { Tag = new Fuhyo((4, 6), true) }; 
-            Panel bott_PROMalfiere = new Panel() { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_PROMpedone = new Panel()  { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_PROMgenArg = new Panel()  { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_PROMcavallo = new Panel() { Tag = new Fuhyo((4, 6), true) };
-            Panel bott_PROMlancia = new Panel()  { Tag = new Fuhyo((4, 6), true) };
+            Panel bott_pedone = new Panel();
+            Panel bott_torre = new Panel();
+            Panel bott_alfiere = new Panel();
+            Panel bott_genOro = new Panel();
+            Panel bott_genArg = new Panel();
+            Panel bott_cavallo = new Panel();
+            Panel bott_lancia = new Panel();
+            Panel bott_re = new Panel();
+            Panel bott_PROMtorre = new Panel(); 
+            Panel bott_PROMalfiere = new Panel();
+            Panel bott_PROMpedone = new Panel();
+            Panel bott_PROMgenArg = new Panel();
+            Panel bott_PROMcavallo = new Panel();
+            Panel bott_PROMlancia = new Panel();
 
             bott_INDIETRO.Size = new Size(50,50);
             bott_pedone.Size = new Size(60, 60);
@@ -274,14 +274,14 @@ namespace Shogi
             bott_prova.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/woodenTable.jpg");
             bott_prova.FlatStyle = FlatStyle.Flat;
             bott_prova.Cursor = Cursors.Hand;
-            bott_prova.Click += new EventHandler(Prova);
+            bott_prova.Click += new EventHandler(provaKoma);
 
             this.Controls.Add( bott_prova );
         }
 
-        private void Prova(object sender, EventArgs e)
+        private void chiudi(object sender, EventArgs e)
         {
-            //TODO x
+            this.Close();
         }
 
         private void convertiFont()
@@ -299,7 +299,7 @@ namespace Shogi
             }
         }
 
-        private void prova(object sender, EventArgs e)
+        private void provaKoma(object sender, EventArgs e)
         {
             FormMovimentiShogiban movimenti = new FormMovimentiShogiban();
             movimenti.ShowDialog();
