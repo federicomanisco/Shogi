@@ -1,8 +1,11 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +29,45 @@ namespace Shogi
         System.Media.SoundPlayer sound_muoviKoma = new System.Media.SoundPlayer($"{PERCORSOIMMAGINE}/shogiPieces/extra/movingPiece.wav");
         (int, int) posizioneChiamante;
         Shogiban shogiban = new Shogiban();
+        PrivateFontCollection fontCollection = new PrivateFontCollection();
+        Font customFont;
+        PictureBox pbox;
+        Label nomeKoma;
 
         private void FormMovimentiShogiban_Load(object sender, EventArgs e)
         {
             this.Size = new Size(GRIDSIZE * TILESIZE + 500, GRIDSIZE * TILESIZE + 39);
             Tiles = new Panel[GRIDSIZE, GRIDSIZE];
+            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
+            customFont = new Font(fontCollection.Families[0], 30, FontStyle.Bold);
 
             generaShogiban();
             generaKoma();
+            preparaSpiegazione();
+        }
+
+        private void preparaSpiegazione()
+        {
+            //immagine di movimento
+            pbox = new PictureBox();
+            pbox.Size = new Size(190, 190);
+            pbox.BorderStyle = BorderStyle.FixedSingle;
+            pbox.BackgroundImageLayout = ImageLayout.Stretch;
+            pbox.Location = new Point(this.Width - pbox.Width - 39, 30);
+            pbox.BackColor = TileColor;
+            this.Controls.Add(pbox);
+
+            //nome koma selezionata
+            nomeKoma = new Label();
+            nomeKoma.Text = String.Empty;
+            nomeKoma.Size = new Size(300, 50);
+            nomeKoma.Location = new Point(TILESIZE * GRIDSIZE + 30, 100);
+            nomeKoma.Font = customFont;
+            nomeKoma.BackColor = Color.Transparent;
+            this.Controls.Add(nomeKoma);
+
         }
 
         private void generaShogiban()
@@ -291,21 +325,21 @@ namespace Shogi
             bott_PROMlancia.Text = null;
             bott_PROMcavallo.Text = null;
 
-            bott_INDIETRO.Location = new Point(this.Width - bott_INDIETRO.Width - 70, this.Height - bott_INDIETRO.Height - 15);
-            bott_pedone.Location = new Point(50, 105);
-            bott_torre.Location = new Point(220, 105);
-            bott_alfiere.Location = new Point(390, 105);
-            bott_genOro.Location = new Point(800, 105);
-            bott_genArg.Location = new Point(50, 215);
-            bott_lancia.Location = new Point(220, 215);
-            bott_cavallo.Location = new Point(390, 215);
-            bott_re.Location = new Point(560, 215);
-            bott_PROMpedone.Location = new Point(110, 400);
-            bott_PROMtorre.Location = new Point(300, 400);
-            bott_PROMalfiere.Location = new Point(490, 400);
-            bott_PROMgenArg.Location = new Point(110, 510);
-            bott_PROMlancia.Location = new Point(300, 510);
-            bott_PROMcavallo.Location = new Point(490, 510);
+            bott_INDIETRO.Location = new Point(this.Width - bott_INDIETRO.Width - 40, this.Height - bott_INDIETRO.Height - 55);
+            bott_pedone.Location = new Point(820, 265);
+            bott_torre.Location = new Point(920, 265);
+            bott_alfiere.Location = new Point(1020, 265);
+            bott_genOro.Location = new Point(1120, 265);
+            bott_genArg.Location = new Point(820, 375);
+            bott_lancia.Location = new Point(920, 375);
+            bott_cavallo.Location = new Point(1020, 375);
+            bott_re.Location = new Point(1120, 375);
+            bott_PROMpedone.Location = new Point(900 - 30, 485);
+            bott_PROMtorre.Location = new Point(1000 - 30, 485);
+            bott_PROMalfiere.Location = new Point(1100 - 30, 485);
+            bott_PROMgenArg.Location = new Point(900 - 30, 595);
+            bott_PROMlancia.Location = new Point(1000 - 30, 595);
+            bott_PROMcavallo.Location = new Point(1100 - 30, 595);
 
             bott_pedone.Click += pedinaMezzo;
             bott_torre.Click += pedinaMezzo;
@@ -353,23 +387,68 @@ namespace Shogi
             if (panel.Name == "p") koma.promuovi();
 
             mostraCasella(koma);
+            sound_muoviKoma.Play();
+            string typeKoma = koma.GetType().Name;
+            nomeKoma.Text = typeKoma;
+            pbox.BackgroundImage = null;
+            pbox.BackgroundImage = Image.FromFile(immagineMovimenti(koma));
+        }
+
+        private string immagineMovimenti(Koma koma)
+        {
+            string nome = koma.GetType().Name;
+            if (!koma.Promossa) { 
+                switch (nome)
+                {
+                    case "Fuhyo":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/pedone.png";
+                    case "Ginsho":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/genArg.png";
+                    case "Kinsho":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/genOro.png";
+                    case "Kakugyo":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/alfiere.png";
+                    case "Hisha":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/torre.png";
+                    case "Kyosha":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/lancia.png";
+                    case "Keima":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/cavallo.png";
+                    case "Osho":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/re.png";
+                }
+            }else
+            {
+                switch (nome)
+                {
+                    case "Fuhyo":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/genOro.png";
+                    case "Ginsho":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/genOro.png";
+                    case "Kakugyo":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/Palfiere.png";
+                    case "Hisha":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/Ptorre.png";
+                    case "Kyosha":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/genOro.png";
+                    case "Keima":
+                        return $"{PERCORSOIMMAGINE}/shogiPieces/movimenti/genOro.png";
+                }
+            }
+
+
+            return "";
         }
 
         private void ripulisciShogiban()
         {
-            foreach (Panel tile in Tiles)
-            {
-                if (tile.BackColor != TileColor)
-                {
-                    tile.BackColor = TileColor;
-                    tile.BackgroundImage = null;
-                }
-            }
             for(int i = 0; i<9 ; i++)
             {
                 for (int j = 0; j < 9 ; j++)
                 {
                     shogiban.rimuoviKoma((j, i));
+                    Tiles[j,i].BackColor = TileColor;
+                    Tiles[j, i].BackgroundImage = null;
                 }
             }
         }
