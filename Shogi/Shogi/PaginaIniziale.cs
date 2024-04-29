@@ -37,15 +37,24 @@ namespace Shogi
                 {
                     PrivateFontCollection fontCollection = new PrivateFontCollection();
                     fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/MISTV___.ttf");
-                    Font customFont = new Font(fontCollection.Families[0], 34, FontStyle.Bold);
+                    Font customFont = new Font(fontCollection.Families[0], 34 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
                     elemento.Font = customFont;
                 }
             }
-            label1.Location = new Point(345, 50);
+            label1.Location = new Point(this.Width / 2 - 80, 50);
             label1.BackColor = Color.Transparent;
 
             caricaPulsanti();
            
+        }
+
+        float GetScreenScaleFactor()
+        { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
+            Graphics graphics = CreateGraphics();
+            float dpiX = graphics.DpiX;
+            graphics.Dispose();
+
+            return dpiX / 96f;
         }
 
         private void caricaPulsanti()

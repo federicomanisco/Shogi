@@ -253,8 +253,8 @@ namespace Shogi
             convertiFont();
             PrivateFontCollection fontCollection = new PrivateFontCollection();
             fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/MISTV___.ttf");
-            lbl_MOVIMENTI.Font = new Font(fontCollection.Families[0], 25, FontStyle.Bold);
-            lbl_PROMOSSE.Font = new Font(fontCollection.Families[0], 25, FontStyle.Bold);
+            lbl_MOVIMENTI.Font = new Font(fontCollection.Families[0], 25 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+            lbl_PROMOSSE.Font = new Font(fontCollection.Families[0], 25 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
             lbl_MOVIMENTI.Size = new Size(250, 40);
             lbl_PROMOSSE.Size = new Size(250, 40);
 
@@ -269,7 +269,7 @@ namespace Shogi
 
             PrivateFontCollection fontCollection = new PrivateFontCollection();
             fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
-            bott_prova.Font = new Font(fontCollection.Families[0], 25, FontStyle.Bold);
+            bott_prova.Font = new Font(fontCollection.Families[0], 25 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
 
             bott_prova.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/woodenTable.jpg");
             bott_prova.FlatStyle = FlatStyle.Flat;
@@ -284,6 +284,15 @@ namespace Shogi
             this.Close();
         }
 
+        float GetScreenScaleFactor()
+        { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
+            Graphics graphics = CreateGraphics();
+            float dpiX = graphics.DpiX;
+            graphics.Dispose();
+
+            return dpiX / 96f;
+        }
+
         private void convertiFont()
         {
             foreach (Control elemento in this.Controls)
@@ -292,7 +301,7 @@ namespace Shogi
                 {
                     PrivateFontCollection fontCollection = new PrivateFontCollection();
                     fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
-                    Font customFont = new Font(fontCollection.Families[0], 10, FontStyle.Bold);
+                    Font customFont = new Font(fontCollection.Families[0], 10 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
                     elemento.BackColor = Color.Transparent;
                     elemento.Font = customFont;
                 }

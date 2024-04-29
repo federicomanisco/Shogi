@@ -41,7 +41,7 @@ namespace Shogi
             this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
             this.BackgroundImageLayout = ImageLayout.Stretch;
             fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
-            customFont = new Font(fontCollection.Families[0], 30, FontStyle.Bold);
+            customFont = new Font(fontCollection.Families[0], 30 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
 
             generaShogiban();
             generaKoma();
