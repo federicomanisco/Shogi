@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Shogi {
     public class Ginsho : Koma{
 
-        public Ginsho((int, int) posizione, bool colore) : base(posizione, colore) {
+        public Ginsho((int, int) posizione, Giocatore colore) : base(posizione, colore) {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/generaleArgento.png");
-            if (colore) {
+            if (colore == Giocatore.Sente) {
                 mossePossibili = new int[5, 2] {
                     {-1, -1},
                     {0, -1},
@@ -32,7 +32,7 @@ namespace Shogi {
         public override void promuovi() {
             Promossa = true;
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/generaleArgento.png");
-            if (colore) {
+            if (colore == Giocatore.Sente) {
                 mossePossibili = new int[6, 2] {
                     {0, 1},
                     {1, 0},
@@ -58,7 +58,7 @@ namespace Shogi {
         {
             Promossa = false;
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/generaleArgento.png");
-            if (colore)
+            if (colore == Giocatore.Sente)
             {
                 mossePossibili = new int[5, 2] {
                     {-1, -1},
@@ -83,7 +83,7 @@ namespace Shogi {
 
         public override void changeTeam((int, int) p)
         {
-            if (colore)
+            if (colore == Giocatore.Sente)
             {
                 mossePossibili = new int[5, 2] {
                     {-1, -1},
@@ -103,7 +103,7 @@ namespace Shogi {
                     {1, 1}
                 };
             }
-            colore = !colore;
+            colore = (colore == Giocatore.Sente) ? Giocatore.Gote : Giocatore.Sente;
             Posizione = p;
         }
 

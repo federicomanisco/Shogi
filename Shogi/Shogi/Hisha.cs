@@ -8,7 +8,7 @@ namespace Shogi
 {
     internal class Hisha:Koma //Torre
     {//prima della virgola ci sono le mosse possibili
-        public Hisha((int, int) posizione, bool colore) : base(posizione, colore)
+        public Hisha((int, int) posizione, Giocatore colore) : base(posizione, colore)
         {    
             mossePossibili = new int[32, 2]
             {
@@ -19,7 +19,7 @@ namespace Shogi
             };
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/torre.png");
 
-            if (!colore) {
+            if (colore == Giocatore.Gote) {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
@@ -36,7 +36,7 @@ namespace Shogi
             };
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/torre.png");
 
-            if (!colore) {
+            if (colore == Giocatore.Gote) {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
@@ -53,7 +53,7 @@ namespace Shogi
 };
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/torre.png");
 
-            if (!colore)
+            if (colore == Giocatore.Gote)
             {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
@@ -61,7 +61,7 @@ namespace Shogi
         public override void changeTeam((int, int) p)
         {
             //le mosse della torre non cambiano
-            colore = !colore;
+            colore = (colore == Giocatore.Sente) ? Giocatore.Gote : Giocatore.Sente;
             Posizione = p;
         }
     }

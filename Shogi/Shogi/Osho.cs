@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Shogi {
     public class Osho: Koma {
 
-        public Osho((int, int) posizione, bool colore) : base(posizione, colore) {
+        public Osho((int, int) posizione, Giocatore colore) : base(posizione, colore) {
             mossePossibili = new int[8, 2] { 
                 {0, 1}, 
                 {1, 0}, 
@@ -20,13 +20,9 @@ namespace Shogi {
             };
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/re.png");
 
-            if (!colore) {
+            if (colore == Giocatore.Gote) {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
-        }
-
-        public int[,] MossePossibili {
-            get { return mossePossibili; }
         }
 
         public override void promuovi() {
@@ -40,6 +36,5 @@ namespace Shogi {
         {
             throw new ArgumentException("Il re non può essere rimesso sulla shogiban.");
         }
-        //public override void muovi((int, int) nuovaPosizione) { }
     }
 }

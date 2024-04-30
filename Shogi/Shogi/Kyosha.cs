@@ -8,10 +8,10 @@ namespace Shogi
 {
     internal class Kyosha:Koma //Lanciere
     {
-        public Kyosha((int, int) posizione, bool colore) : base(posizione, colore)
+        public Kyosha((int, int) posizione, Giocatore colore) : base(posizione, colore)
         {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/lancia.png");
-            if (colore) { 
+            if (colore == Giocatore.Sente) { 
                 mossePossibili = new int[8, 2] { { 0, -1 }, { 0, -2 }, {0, -3 }, {   0, -4 }, {0, -5 }, { 0, -6 }, { 0, -7 }, {0, -8 } };
             }
             else { 
@@ -24,7 +24,7 @@ namespace Shogi
         {
             Promossa = true;
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/lancia.png");
-            if (colore)
+            if (colore == Giocatore.Sente)
             {
                 mossePossibili = new int[6, 2]
                 {
@@ -44,7 +44,7 @@ namespace Shogi
         {
             Promossa = false;
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/lancia.png");
-            if (colore)
+            if (colore == Giocatore.Sente)
             {
                 mossePossibili = new int[8, 2] { { 0, -1 }, { 0, -2 }, { 0, -3 }, { 0, -4 }, { 0, -5 }, { 0, -6 }, { 0, -7 }, { 0, -8 } };
             }
@@ -56,7 +56,7 @@ namespace Shogi
         }
         public override void changeTeam((int, int) p)
         {
-            if (colore)
+            if (colore == Giocatore.Sente)
             {
                 mossePossibili = new int[8, 2] { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 0, 7 }, { 0, 8 } };
             }
@@ -64,7 +64,7 @@ namespace Shogi
             {
                 mossePossibili = new int[8, 2] { { 0, -1 }, { 0, -2 }, { 0, -3 }, { 0, -4 }, { 0, -5 }, { 0, -6 }, { 0, -7 }, { 0, -8 } };
             }
-            colore = !colore;
+            colore = (colore == Giocatore.Sente) ? Giocatore.Gote : Giocatore.Sente;
             Posizione = p;
         }
     }

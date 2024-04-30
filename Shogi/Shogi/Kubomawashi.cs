@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 namespace Shogi {
     public class Kubomawashi 
     {
-
-        string PERCORSOIMMAGINE = Application.StartupPath;
         public Koma PedinaMangiata;
 
         public List<Koma> list = new List<Koma>();
@@ -26,10 +24,5 @@ namespace Shogi {
         {
             list.Remove(pedina);
         }
-
-
-
-
-
     }
 }

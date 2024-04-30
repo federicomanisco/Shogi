@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Shogi {
     public class Kakugyo : Koma{
 
-        public Kakugyo((int, int) posizione, bool colore) : base(posizione, colore) {
+        public Kakugyo((int, int) posizione, Giocatore colore) : base(posizione, colore) {
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/alfiere.png");
 
-            if (!colore) {
+            if (colore == Giocatore.Gote) {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
 
@@ -38,7 +38,7 @@ namespace Shogi {
             };
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/alfiere.png");
 
-            if (!colore) {
+            if (colore == Giocatore.Gote) {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
         }
@@ -48,7 +48,7 @@ namespace Shogi {
             Promossa = false;
             Icona = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/alfiere.png");
 
-            if (!colore)
+            if (colore == Giocatore.Gote)
             {
                 Icona.RotateFlip(RotateFlipType.Rotate180FlipX);
             }
@@ -65,7 +65,7 @@ namespace Shogi {
         public override void changeTeam((int, int) p)
         {
             //le mosse dell'alfiere non cambiano
-            colore = !colore;
+            colore = (colore == Giocatore.Sente) ? Giocatore.Gote : Giocatore.Sente;
             Posizione = p;
         }
 

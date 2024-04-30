@@ -13,10 +13,10 @@ namespace Shogi
     public partial class FormPartitaFinita : Form
     {
 
-        bool vittorioso;
+        Koma.Giocatore vittorioso;
         string PERCORSOIMMAGINE = Application.StartupPath;
 
-        public FormPartitaFinita(bool v) //true vince Sente (sotto), false vince Gote (sopra)
+        public FormPartitaFinita(Koma.Giocatore v) //true vince Sente (sotto), false vince Gote (sopra)
         {
             InitializeComponent();
             vittorioso = v;
@@ -26,22 +26,22 @@ namespace Shogi
 
         private void FormPartitaFinita_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             mettiLabel();
             mettiImmagini();
-            MettiBottone();
+            mettiBottone();
 
-            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
+            BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        private string PrendiVincitore(bool v)
+        private string PrendiVincitore(Koma.Giocatore v)
         {
-            if (v) return "SENTE";
+            if (v == Koma.Giocatore.Sente) return "SENTE";
             return "GOTE";
         }
 
-        private void MettiBottone()
+        private void mettiBottone()
         {
             button1.Size = new Size(300, 60);
             button1.Location = new Point(150, 255);
@@ -49,7 +49,7 @@ namespace Shogi
 
         private void mettiLabel()
         {
-            label1.Font = new Font("Arial", 40 * (1 / GetScreenScaleFactor()));
+            label1.Font = new Font("Arial", 40 * (1 / Utilities.GetScreenScaleFactor(this)));
             label1.BackColor = Color.Transparent;
             label1.Text = $"VINCE {PrendiVincitore(vittorioso)}";
             label1.Location = new Point(120, 25);
@@ -77,26 +77,17 @@ namespace Shogi
             pbox_crown.BackColor = Color.Transparent;
             pbox_crown.Size = new Size(60, 40);
 
-            if (vittorioso)
+            if (vittorioso == Koma.Giocatore.Sente)
                 pbox_crown.Location = new Point(this.Width / 2 - 3 * pbox_sente.Width, 150 - pbox_crown.Height);
             else
                 pbox_crown.Location = new Point(this.Width / 2 + 3 * pbox_gote.Width - pbox_gote.Width, 150 - pbox_crown.Height);
 
         }
 
-        float GetScreenScaleFactor()
-        { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
-            Graphics graphics = CreateGraphics();
-            float dpiX = graphics.DpiX;
-            graphics.Dispose();
-
-            return dpiX / 96f;
-        }
-
         private void customButton1_Click_1(object sender, EventArgs e)
         {
-            PaginaIniziale formSchermataIniziale = new PaginaIniziale(); //TODO sostituire il form della schermata iniziale a quello del form1 (appena viene finito)
-            this.Close();
+            PaginaIniziale formSchermataIniziale = new PaginaIniziale();
+            Close();
             formSchermataIniziale.Show();
         }
 
@@ -107,8 +98,8 @@ namespace Shogi
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PaginaIniziale formSchermataIniziale = new PaginaIniziale(); //TODO sostituire il form della schermata iniziale a quello del form1 (appena viene finito)
-            this.Hide();
+            PaginaIniziale formSchermataIniziale = new PaginaIniziale();
+            Hide();
             formSchermataIniziale.Show();
         }
     }

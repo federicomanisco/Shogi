@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mEyOvH5aUSecJwcvxiovItttBRYdxKpRVrfHKilkGKmQ2oajfqKIQ7etCbyjWpBanjnhM0irbX5icpLbmWbpuQ==",
+  "dgSpecHash": "kynI+Pv1H/OEyKnXy/Q9jKxbe5/hdoWdGNjnKhzwKl20+G4JABza6lqbfhA4lpYZ9GFaOzIQOdFJ3rNTD9iNkQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rotal\\OneDrive\\Desktop\\shogi\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\C#\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\marin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
