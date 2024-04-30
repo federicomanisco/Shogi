@@ -25,23 +25,24 @@ namespace Shogi
             /*pictureBox1.Image = Image.FromFile($@"{PERCORSOIMMAGINE}/shogiPieces/pedone.png"); // Replace with the path to your logo
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Location = new Point(12, 12);*/
-            pictureBox1.Visible = false;
         }
 
 
         private void PaginaIniziale_Load(object sender, EventArgs e)
         {
+            Size = Screen.PrimaryScreen.WorkingArea.Size;
+            WindowState = FormWindowState.Maximized;
             foreach (Control elemento in this.Controls)
             {
                 if (elemento is Label)
                 {
                     PrivateFontCollection fontCollection = new PrivateFontCollection();
                     fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/MISTV___.ttf");
-                    Font customFont = new Font(fontCollection.Families[0], 34 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+                    Font customFont = new Font(fontCollection.Families[0], 50 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
                     elemento.Font = customFont;
                 }
             }
-            label1.Location = new Point(this.Width / 2 - 80, 50);
+            label1.Location = new Point(this.Width / 2 - 110, 200);
             label1.BackColor = Color.Transparent;
 
             caricaPulsanti();
@@ -126,7 +127,7 @@ namespace Shogi
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormMovimenti movimenti = new FormMovimenti();
+            FormMovimenti movimenti = new FormMovimenti(BackgroundImage);
             movimenti.ShowDialog();
         }
     }

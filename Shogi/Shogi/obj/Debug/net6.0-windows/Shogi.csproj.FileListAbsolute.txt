@@ -142,3 +142,4 @@ C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Sho
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormMovimentiShogiban.resources
+C:\Users\rotal\OneDrive\Desktop\shogi\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormMovimentiShogiban.resources

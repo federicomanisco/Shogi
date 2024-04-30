@@ -31,10 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaginaIniziale));
             button1 = new Button();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
             button3 = new Button();
             button2 = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -45,7 +43,7 @@
             button1.Name = "button1";
             button1.Size = new Size(221, 83);
             button1.TabIndex = 0;
-            button1.Text = "Inizia";
+            button1.Text = "GIOCA";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             button1.MouseEnter += button1_MouseEnter;
@@ -61,14 +59,6 @@
             label1.Text = "Shogi";
             label1.Click += label1_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(35, 48);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(52, 137);
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // button3
             // 
             button3.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -76,7 +66,7 @@
             button3.Name = "button3";
             button3.Size = new Size(221, 83);
             button3.TabIndex = 4;
-            button3.Text = "....";
+            button3.Text = "ESCI";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             button3.MouseEnter += button3_MouseEnter;
@@ -90,7 +80,7 @@
             button2.Name = "button2";
             button2.Size = new Size(221, 83);
             button2.TabIndex = 5;
-            button2.Text = "MOVIMENTI";
+            button2.Text = "GUIDA";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             button2.MouseEnter += button2_MouseEnter;
@@ -105,7 +95,6 @@
             ClientSize = new Size(853, 566);
             Controls.Add(button2);
             Controls.Add(button3);
-            Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(button1);
             DoubleBuffered = true;
@@ -113,7 +102,6 @@
             Name = "PaginaIniziale";
             Text = "PaginaIniziale";
             Load += PaginaIniziale_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -122,7 +110,6 @@
 
         private Button button1;
         private Label label1;
-        private PictureBox pictureBox1;
         private Button button3;
         private Button button2;
     }

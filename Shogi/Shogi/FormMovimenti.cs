@@ -15,27 +15,37 @@ namespace Shogi
     {
 
         string PERCORSOIMMAGINE = Application.StartupPath;
-
+        int disBordo;
+        
         public FormMovimenti()
         {
             InitializeComponent();
         }
+        public FormMovimenti(Image i)
+        {
+            InitializeComponent();
+            BackgroundImageLayout = ImageLayout.Stretch;
+            this.BackgroundImage = i;
+        }
 
         private void FormMovimenti_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(690, 750);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Size = Screen.PrimaryScreen.WorkingArea.Size;
+            WindowState = FormWindowState.Maximized;
+            
 
             ScriviLabel();
             DisegnaKoma();
-            bottoneProva();
-            
-            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
-        }
+
+           }
 
         private void DisegnaKoma()
         {
             Panel bott_INDIETRO = new Panel();
             bott_INDIETRO.Click += new EventHandler(chiudi);
+            bott_INDIETRO.Name = "indietro";
 
             Panel bott_pedone = new Panel();
             Panel bott_torre = new Panel();
@@ -53,20 +63,20 @@ namespace Shogi
             Panel bott_PROMlancia = new Panel();
 
             bott_INDIETRO.Size = new Size(50,50);
-            bott_pedone.Size = new Size(60, 60);
-            bott_torre.Size = new Size(60, 60);
-            bott_alfiere.Size = new Size(60, 60);
-            bott_genOro.Size = new Size(60, 60);
-            bott_genArg.Size = new Size(60, 60);
-            bott_lancia.Size = new Size(60, 60);
-            bott_cavallo.Size = new Size(60, 60);
-            bott_re.Size = new Size(60, 60);
-            bott_PROMpedone.Size = new Size(60, 60);
-            bott_PROMtorre.Size = new Size(60, 60);
-            bott_PROMalfiere.Size = new Size(60, 60);
-            bott_PROMgenArg.Size = new Size(60, 60);
-            bott_PROMlancia.Size = new Size(60, 60);
-            bott_PROMcavallo.Size = new Size(60, 60);
+            bott_pedone.Size = new Size(80, 80);
+            bott_torre.Size = new Size(80, 80);
+            bott_alfiere.Size = new Size(80, 80);
+            bott_genOro.Size = new Size(80, 80);
+            bott_genArg.Size = new Size(80, 80);
+            bott_lancia.Size = new Size(80, 80);
+            bott_cavallo.Size = new Size(80, 80);
+            bott_re.Size = new Size(80, 80);
+            bott_PROMpedone.Size = new Size(80, 80);
+            bott_PROMtorre.Size = new Size(80, 80);
+            bott_PROMalfiere.Size = new Size(80, 80);
+            bott_PROMgenArg.Size = new Size(80, 80);
+            bott_PROMlancia.Size = new Size(80, 80);
+            bott_PROMcavallo.Size = new Size(80, 80);
 
             bott_INDIETRO.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/turnBack.png");
             bott_pedone.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/pedone.png");
@@ -85,20 +95,6 @@ namespace Shogi
             bott_PROMcavallo.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/Promossa/cavallo.png");
 
             bott_INDIETRO.Cursor = Cursors.Hand;
-            bott_pedone.Cursor = Cursors.Hand;
-            bott_torre.Cursor = Cursors.Hand;
-            bott_alfiere.Cursor = Cursors.Hand;
-            bott_genOro.Cursor = Cursors.Hand;
-            bott_genArg.Cursor = Cursors.Hand;
-            bott_cavallo.Cursor = Cursors.Hand;
-            bott_lancia.Cursor = Cursors.Hand;
-            bott_re.Cursor = Cursors.Hand;
-            bott_PROMpedone.Cursor = Cursors.Hand;
-            bott_PROMtorre.Cursor = Cursors.Hand;
-            bott_PROMalfiere.Cursor = Cursors.Hand;
-            bott_PROMgenArg.Cursor = Cursors.Hand;
-            bott_PROMcavallo.Cursor = Cursors.Hand;
-            bott_PROMlancia.Cursor = Cursors.Hand;
 
             bott_INDIETRO.BackgroundImageLayout = ImageLayout.Stretch;
             bott_pedone.BackgroundImageLayout = ImageLayout.Stretch;
@@ -147,21 +143,22 @@ namespace Shogi
             bott_PROMlancia.Text = null;
             bott_PROMcavallo.Text = null;
 
+            
             bott_INDIETRO.Location = new Point(this.Width - bott_INDIETRO.Width - 70, 15);
-            bott_pedone.Location = new Point(50, 105);
-            bott_torre.Location = new Point(220, 105);
-            bott_alfiere.Location = new Point(390, 105);
-            bott_genOro.Location = new Point(560, 105);
-            bott_genArg.Location = new Point(50, 215);
-            bott_lancia.Location = new Point(220, 215);
-            bott_cavallo.Location = new Point(390, 215);
-            bott_re.Location = new Point(560, 215);
-            bott_PROMpedone.Location = new Point(110, 400);
-            bott_PROMtorre.Location = new Point(300, 400);
-            bott_PROMalfiere.Location = new Point(490, 400);
-            bott_PROMgenArg.Location = new Point(110, 510);
-            bott_PROMlancia.Location = new Point(300, 510);
-            bott_PROMcavallo.Location = new Point(490, 510);
+            bott_pedone.Location = new Point(50 + disBordo, 105 + 50);
+            bott_torre.Location = new Point(220 + disBordo, 105 + 50);
+            bott_alfiere.Location = new Point(390 + disBordo, 105 + 50);
+            bott_genOro.Location = new Point(560 + disBordo, 105 + 50);
+            bott_genArg.Location = new Point(50 + disBordo, 215 + 100);
+            bott_lancia.Location = new Point(220 + disBordo, 215 + 100);
+            bott_cavallo.Location = new Point(390 + disBordo, 215 + 100);
+            bott_re.Location = new Point(560 + disBordo, 215 + 100);
+            bott_PROMpedone.Location = new Point(110 + disBordo, 400 + 50 + 130);
+            bott_PROMtorre.Location = new Point(300 + disBordo, 400 + 50 + 130);
+            bott_PROMalfiere.Location = new Point(490 + disBordo, 400 + 50 + 130);
+            bott_PROMgenArg.Location = new Point(110 + disBordo, 510 + 50 + 180);
+            bott_PROMlancia.Location = new Point(300 + disBordo, 510 + 50 + 180);
+            bott_PROMcavallo.Location = new Point(490 + disBordo, 510 + 50 + 180);
 
             this.Controls.Add(bott_INDIETRO);
             this.Controls.Add(bott_pedone);
@@ -178,6 +175,14 @@ namespace Shogi
             this.Controls.Add(bott_PROMgenArg);
             this.Controls.Add(bott_PROMcavallo);
             this.Controls.Add(bott_PROMlancia);
+
+            foreach (Control panel in this.Controls)
+            {
+                if (panel is Panel && panel.Name != "indietro")
+                {
+                    panel.Click += new EventHandler(provaKoma);
+                }
+            }
         }
 
         private void ScriviLabel()
@@ -199,39 +204,40 @@ namespace Shogi
             Label lbl_Pcavallo = new Label();
             Label lbl_Plancia = new Label();
 
-            lbl_MOVIMENTI.Text = "MOVIMENTI";
-            lbl_pedone.Text = "Fuhyo";
-            lbl_torre.Text = "Hisha";
-            lbl_alfiere.Text = "Kakugyo";
-            lbl_genOro.Text = "Kinsho";
-            lbl_genArg.Text = "Ginsho";
-            lbl_cavallo.Text = "Keima";
-            lbl_lancia.Text = "Kyosha";
-            lbl_re.Text = "Osho";
+            lbl_MOVIMENTI.Text = "KOMA";
+            lbl_pedone.Text = "FUHYO";
+            lbl_torre.Text = "HISHA";
+            lbl_alfiere.Text = "KAKUGYO";
+            lbl_genOro.Text = "KINSHO";
+            lbl_genArg.Text = "GINSHO";
+            lbl_cavallo.Text = "KEIMA";
+            lbl_lancia.Text = "KYOSHA";
+            lbl_re.Text = "OSHO";
             lbl_PROMOSSE.Text = "PROMOSSE";
-            lbl_Ppedone.Text = "Fuhyo";
-            lbl_Ptorre.Text = "Hisha";
-            lbl_Palfiere.Text = "Kakugyo";
-            lbl_PgenArg.Text = "Ginsho";
-            lbl_Pcavallo.Text = "Keima";
-            lbl_Plancia.Text = "Kyosha";
+            lbl_Ppedone.Text = "FUHYO";
+            lbl_Ptorre.Text = "HISHA";
+            lbl_Palfiere.Text = "KAKUGYO";
+            lbl_PgenArg.Text = "GINSHO";
+            lbl_Pcavallo.Text = "KEIMA";
+            lbl_Plancia.Text = "KYOSHA";
 
-            lbl_MOVIMENTI.Location = new Point(this.Width / 2 - 120, 30);
-            lbl_pedone.Location = new Point(55, 85); //+5
-            lbl_torre.Location = new Point(225, 85); //+5
-            lbl_alfiere.Location = new Point(388, 85); //-2
-            lbl_genOro.Location = new Point(563, 85); //+3
-            lbl_genArg.Location = new Point(53, 195); //+3
-            lbl_cavallo.Location = new Point(394, 195); //+4
-            lbl_lancia.Location = new Point(222, 195); //+2
-            lbl_re.Location = new Point(560, 195);
-            lbl_PROMOSSE.Location = new Point(this.Width / 2 - 110, 305);
-            lbl_Ppedone.Location = new Point(115, 380); 
-            lbl_Ptorre.Location = new Point(305, 380);   
-            lbl_Palfiere.Location = new Point(488, 380);
-            lbl_PgenArg.Location = new Point(110, 490);
-            lbl_Pcavallo.Location = new Point(494, 490); 
-            lbl_Plancia.Location = new Point(302, 490); 
+            disBordo = this.Width / 2 - 610 / 2 - 39;
+            lbl_MOVIMENTI.Location = new Point(this.Width / 2 - 110, 30);
+            lbl_pedone.Location = new Point(55 + disBordo - 20, 85 + 40); //+5
+            lbl_torre.Location = new Point(225 + disBordo - 15, 85 + 40); //+5
+            lbl_alfiere.Location = new Point(388 + disBordo - 30, 85 + 40); //-2
+            lbl_genOro.Location = new Point(563 + disBordo - 20, 85 + 40); //+3
+            lbl_genArg.Location = new Point(53 + disBordo - 20, 195 + 90); //+3
+            lbl_cavallo.Location = new Point(394 + disBordo - 10, 195 + 90); //+4
+            lbl_lancia.Location = new Point(222 + disBordo - 20, 195 + 90); //+2
+            lbl_re.Location = new Point(560 + disBordo - 7, 195 + 90);
+            lbl_PROMOSSE.Location = new Point(this.Width / 2 - 150, 305 + 50 + 100);
+            lbl_Ppedone.Location = new Point(115 + disBordo - 20, 380 + 50 + 120); 
+            lbl_Ptorre.Location = new Point(305 + disBordo - 15, 380 + 50 + 120);   
+            lbl_Palfiere.Location = new Point(488 + disBordo - 30, 380 + 50 + 120);
+            lbl_PgenArg.Location = new Point(110 + disBordo - 20, 490 + 50 + 170);
+            lbl_Pcavallo.Location = new Point(494 + disBordo - 10, 490 + 50 + 170); 
+            lbl_Plancia.Location = new Point(302 + disBordo - 20, 490 + 50 + 170); 
 
             this.Controls.Add(lbl_MOVIMENTI);
             this.Controls.Add(lbl_pedone);
@@ -253,31 +259,13 @@ namespace Shogi
             convertiFont();
             PrivateFontCollection fontCollection = new PrivateFontCollection();
             fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/MISTV___.ttf");
-            lbl_MOVIMENTI.Font = new Font(fontCollection.Families[0], 25 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
-            lbl_PROMOSSE.Font = new Font(fontCollection.Families[0], 25 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
-            lbl_MOVIMENTI.Size = new Size(250, 40);
-            lbl_PROMOSSE.Size = new Size(250, 40);
+            lbl_MOVIMENTI.Font = new Font(fontCollection.Families[0], 40 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+            lbl_PROMOSSE.Font = new Font(fontCollection.Families[0], 40 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+            lbl_MOVIMENTI.Size = new Size(400, 60);
+            lbl_PROMOSSE.Size = new Size(400, 60);
 
         }
 
-        private void bottoneProva()
-        {
-            Button bott_prova = new Button();
-            bott_prova.Size = new Size(300, 60);
-            bott_prova.Location = new Point(this.Width /2 - bott_prova.Width / 2, this.Height - bott_prova.Height - 80);
-            bott_prova.Text = "PROVA";
-
-            PrivateFontCollection fontCollection = new PrivateFontCollection();
-            fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
-            bott_prova.Font = new Font(fontCollection.Families[0], 25 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
-
-            bott_prova.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/woodenTable.jpg");
-            bott_prova.FlatStyle = FlatStyle.Flat;
-            bott_prova.Cursor = Cursors.Hand;
-            bott_prova.Click += new EventHandler(provaKoma);
-
-            this.Controls.Add( bott_prova );
-        }
 
         private void chiudi(object sender, EventArgs e)
         {
@@ -301,16 +289,18 @@ namespace Shogi
                 {
                     PrivateFontCollection fontCollection = new PrivateFontCollection();
                     fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
-                    Font customFont = new Font(fontCollection.Families[0], 10 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+                    Font customFont = new Font(fontCollection.Families[0], 20 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
                     elemento.BackColor = Color.Transparent;
                     elemento.Font = customFont;
+                    elemento.Size = new Size(150, 30);
                 }
             }
         }
 
         private void provaKoma(object sender, EventArgs e)
         {
-            FormMovimentiShogiban movimenti = new FormMovimentiShogiban();
+            this.Hide();
+            FormMovimentiShogiban movimenti = new FormMovimentiShogiban(BackgroundImage);
             movimenti.ShowDialog();
             this.Close();
         }

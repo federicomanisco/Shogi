@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Shogi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63042aaf21e67d4b08f77e97f34e16bcee92a211")]
 [assembly: System.Reflection.AssemblyProductAttribute("Shogi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Shogi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

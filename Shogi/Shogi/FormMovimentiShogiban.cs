@@ -19,12 +19,19 @@ namespace Shogi
         {
             InitializeComponent();
         }
+        public FormMovimentiShogiban(Image i)
+        {
+            InitializeComponent();
+            BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImage = i;
+        }
 
         bool pannelloCliccato = false;
         Panel[,] Tiles;
         Color TileColor = Color.FromArgb(238, 182, 115);
-        const int TILESIZE = 84;
+        int TILESIZE = 0;
         const int GRIDSIZE = 9;
+        const int GRANDKOMA = 80;
         static protected string PERCORSOIMMAGINE = Application.StartupPath;
         System.Media.SoundPlayer sound_muoviKoma = new System.Media.SoundPlayer($"{PERCORSOIMMAGINE}/shogiPieces/extra/movingPiece.wav");
         (int, int) posizioneChiamante;
@@ -36,12 +43,14 @@ namespace Shogi
 
         private void FormMovimentiShogiban_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(GRIDSIZE * TILESIZE + 500, GRIDSIZE * TILESIZE + 39);
+            TILESIZE = this.Height / GRIDSIZE + 3;
+            Size = Screen.PrimaryScreen.WorkingArea.Size;
+            WindowState = FormWindowState.Maximized;
             Tiles = new Panel[GRIDSIZE, GRIDSIZE];
-            this.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/sfondo1.jpg");
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            
             fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/movimentiFont.ttf");
             customFont = new Font(fontCollection.Families[0], 30 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+            
 
             generaShogiban();
             generaKoma();
@@ -61,8 +70,8 @@ namespace Shogi
 
             //nome koma selezionata
             nomeKoma = new Label();
-            nomeKoma.Text = String.Empty;
-            nomeKoma.Size = new Size(300, 50);
+            nomeKoma.Text = "Seleziona la Koma";
+            nomeKoma.Size = new Size(500, 50);
             nomeKoma.Location = new Point(TILESIZE * GRIDSIZE + 30, 100);
             nomeKoma.Font = customFont;
             nomeKoma.BackColor = Color.Transparent;
@@ -223,6 +232,9 @@ namespace Shogi
             Panel bott_PROMcavallo = new Panel() { Tag = new Keima((4, 6), true) };
             Panel bott_PROMlancia = new Panel() { Tag = new Kyosha((4, 6), true) };
 
+            List<Panel> komaNormali = new List<Panel> { bott_pedone, bott_torre, bott_alfiere, bott_genOro, bott_genArg, bott_cavallo, bott_lancia, bott_re };
+            List<Panel> komaPromosse = new List<Panel> { bott_PROMpedone, bott_PROMtorre, bott_PROMalfiere, bott_PROMgenArg, bott_PROMcavallo, bott_PROMlancia };  
+            
             bott_PROMpedone.Name = "p";
             bott_PROMtorre.Name = "p";
             bott_PROMalfiere.Name = "p";
@@ -230,21 +242,21 @@ namespace Shogi
             bott_PROMlancia.Name = "p";
             bott_PROMcavallo.Name = "p";
 
-            bott_INDIETRO.Size = new Size(50, 50);
-            bott_pedone.Size = new Size(60, 60);
-            bott_torre.Size = new Size(60, 60);
-            bott_alfiere.Size = new Size(60, 60);
-            bott_genOro.Size = new Size(60, 60);
-            bott_genArg.Size = new Size(60, 60);
-            bott_lancia.Size = new Size(60, 60);
-            bott_cavallo.Size = new Size(60, 60);
-            bott_re.Size = new Size(60, 60);
-            bott_PROMpedone.Size = new Size(60, 60);
-            bott_PROMtorre.Size = new Size(60, 60);
-            bott_PROMalfiere.Size = new Size(60, 60);
-            bott_PROMgenArg.Size = new Size(60, 60);
-            bott_PROMlancia.Size = new Size(60, 60);
-            bott_PROMcavallo.Size = new Size(60, 60);
+            bott_INDIETRO.Size = new Size(70, 70);
+            bott_pedone.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_torre.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_alfiere.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_genOro.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_genArg.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_lancia.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_cavallo.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_re.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_PROMpedone.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_PROMtorre.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_PROMalfiere.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_PROMgenArg.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_PROMlancia.Size = new Size(GRANDKOMA, GRANDKOMA);
+            bott_PROMcavallo.Size = new Size(GRANDKOMA, GRANDKOMA);
 
             bott_INDIETRO.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/extra/turnBack.png");
             bott_pedone.BackgroundImage = Image.FromFile($"{PERCORSOIMMAGINE}/shogiPieces/pedone.png");
@@ -325,8 +337,31 @@ namespace Shogi
             bott_PROMlancia.Text = null;
             bott_PROMcavallo.Text = null;
 
+            int posInizNorm = GRIDSIZE * TILESIZE + 150;
+            int posInizProm = GRIDSIZE * TILESIZE + 150 + ((GRANDKOMA * 4 + 110 * 3) / 4 - GRANDKOMA - 10);
+            int cont = 0;
+
+            foreach(Panel panel in komaNormali)
+            {
+                if(cont < 4) { 
+                    panel.Location = new Point(posInizNorm + cont * 140, 350);
+                } else panel.Location = new Point(posInizNorm + (cont-4) * 140, 460);
+                cont++;
+            }
+            cont = 0;
+            foreach (Panel panel in komaPromosse)
+            {
+                if (cont < 3)
+                {
+                    panel.Location = new Point(posInizProm + cont * 140, 570);
+                }
+                else panel.Location = new Point(posInizProm + (cont - 3) * 140, 680);
+                cont++;
+            }
+            bott_INDIETRO.Location = new Point(this.Width - 39 - 20 - bott_INDIETRO.Width, this.Height - 39 - 20 - bott_INDIETRO.Height);
+            /*
             bott_INDIETRO.Location = new Point(this.Width - bott_INDIETRO.Width - 40, this.Height - bott_INDIETRO.Height - 55);
-            bott_pedone.Location = new Point(820, 265);
+            bott_pedone.Location = new Point(GRIDSIZE*TILESIZE + 150, 265);
             bott_torre.Location = new Point(920, 265);
             bott_alfiere.Location = new Point(1020, 265);
             bott_genOro.Location = new Point(1120, 265);
@@ -339,7 +374,7 @@ namespace Shogi
             bott_PROMalfiere.Location = new Point(1100 - 30, 485);
             bott_PROMgenArg.Location = new Point(900 - 30, 595);
             bott_PROMlancia.Location = new Point(1000 - 30, 595);
-            bott_PROMcavallo.Location = new Point(1100 - 30, 595);
+            bott_PROMcavallo.Location = new Point(1100 - 30, 595);*/
 
             bott_pedone.Click += pedinaMezzo;
             bott_torre.Click += pedinaMezzo;
