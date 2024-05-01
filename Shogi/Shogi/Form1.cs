@@ -26,8 +26,8 @@ namespace Shogi {
         static protected string PERCORSOIMMAGINE = Application.StartupPath;
         const int TIMERWIDTH = 400;
         const int TIMERHEIGHT = 240;
-        int tempoMin = 0; //tempo di gioco per giocatore, minuti
-        int tempoSec = 3; //tempo di gioco per giocatore, secondi
+        int tempoMin = 10; //tempo di gioco per giocatore, minuti
+        int tempoSec = 30; //tempo di gioco per giocatore, secondi
         bool primaMossa = false; //se è stata eseguita la prima mossa da parte del Sente
         bool partitaFinita = false;
         const int MARGINEX = 582;
@@ -308,8 +308,8 @@ namespace Shogi {
                 int sec;
                 Koma player;
 
-                if (turno == Koma.Giocatore.Sente) player = new Osho((0,0), Koma.Giocatore.Sente);
-                else player = new Osho((0,0), Koma.Giocatore.Gote);
+                if (turno == Koma.Giocatore.Sente) player = new Osho((0,0), Koma.Giocatore.Gote);
+                else player = new Osho((0,0), Koma.Giocatore.Sente);
 
                 if (turno == Koma.Giocatore.Sente) {
                     min = int.Parse(lbl_Min1.Text);
@@ -395,6 +395,7 @@ namespace Shogi {
         private void SvuotaSalvataggio() {
             StreamWriter sw = new StreamWriter("Salvataggio.json");
             sw.Write(string.Empty);
+            sw.Close();
         }
 
         private void finisciPartita(Koma koma) {
@@ -410,6 +411,7 @@ namespace Shogi {
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
             if (!partitaFinita) {
                 DialogResult risposta;
+                timer1.Stop();
                 risposta = MessageBox.Show("Vuoi salvare la partita?", "", MessageBoxButtons.YesNo);
                 if (risposta == DialogResult.Yes) {
                     Salva();
