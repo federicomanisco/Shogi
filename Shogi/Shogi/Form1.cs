@@ -373,6 +373,9 @@ namespace Shogi {
                         Tiles[i, j].BackgroundImage = null;
                         Koma koma = salvataggio.ShogibanState[i, j];
                         if (koma != null) {
+                            if (koma.Promossa) {
+                                koma.promuovi();
+                            }
                             Utilities.mostraCasella(shogiban, Tiles, koma);
                         }
                     }
