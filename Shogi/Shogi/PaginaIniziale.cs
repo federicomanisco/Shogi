@@ -38,7 +38,7 @@ namespace Shogi
                 {
                     PrivateFontCollection fontCollection = new PrivateFontCollection();
                     fontCollection.AddFontFile($@"{PERCORSOIMMAGINE}/shogiPieces/extra/MISTV___.ttf");
-                    Font customFont = new Font(fontCollection.Families[0], 50 * (1 / GetScreenScaleFactor()), FontStyle.Bold);
+                    Font customFont = new Font(fontCollection.Families[0], 50 * (1 / Utilities.GetScreenScaleFactor(this)), FontStyle.Bold);
                     elemento.Font = customFont;
                 }
             }
@@ -47,15 +47,6 @@ namespace Shogi
 
             caricaPulsanti();
            
-        }
-
-        float GetScreenScaleFactor()
-        { //restituisce la scala dello schermo (100%, 125%, 150%, 175%) sapendo che 96DPI = 100%
-            Graphics graphics = CreateGraphics();
-            float dpiX = graphics.DpiX;
-            graphics.Dispose();
-
-            return dpiX / 96f;
         }
 
         private void caricaPulsanti()
@@ -79,7 +70,7 @@ namespace Shogi
         private void button1_Click(object sender, EventArgs e)//Nasconde la Pagina Iniziale e fa partire Form1.cs
         {
             Form1 form1 = new Form1();
-            this.Hide();
+            Hide();
             form1.ShowDialog();
             
         }
@@ -122,7 +113,7 @@ namespace Shogi
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

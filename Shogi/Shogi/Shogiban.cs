@@ -130,12 +130,23 @@ namespace Shogi {
             List<(int, int)> mosseRegolari = calcolaMosseRegolari(koma);
             Shogiban copia = Copy();
             foreach ((int, int) mossa in mosseRegolari) {
+                Koma komaPrecedente = null;
                 (int, int) vecchiaPosizione = koma.Posizione;
-                copia.makeMove(koma, (koma.Posizione.Item1 + mossa.Item1, koma.Posizione.Item2 + mossa.Item2));
+                (int, int) nuovaPosizione = (koma.Posizione.Item1 + mossa.Item1, koma.Posizione.Item2 + mossa.Item2);
+                if (Scacchiera[nuovaPosizione.Item1, nuovaPosizione.Item2] != null) {
+                    komaPrecedente = Scacchiera[nuovaPosizione.Item1, nuovaPosizione.Item2];
+                    copia.makeMove(koma, nuovaPosizione);
+                } else {
+                    copia.makeMove(koma, nuovaPosizione);
+                }
+                
                 if (!ReSottoScacco(copia, koma.Colore)) {
                     mosseLegali.Add(mossa);
                 }
                 copia.makeMove(koma, vecchiaPosizione);
+                if (komaPrecedente != null) {
+                    copia.aggiungiKoma(komaPrecedente);
+                }
             }
             return mosseLegali;
         }

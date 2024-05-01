@@ -83,23 +83,23 @@ namespace Shogi {
             TableLayoutPanel panelDaUsare = null;
             List<Koma> listaPannelli = null;
             if (koma.Colore == Koma.Giocatore.Sente) {
-                if (kubomawashi_sfidante.PedinaMangiata == null) {
-                    kubomawashi_sfidante.PedinaMangiata = koma;
-                    listaPannelli = kubomawashi_sfidante.list;
+                if (kubomawashi_sfidante.UltimaPedinaMangiata == null) {
+                    kubomawashi_sfidante.UltimaPedinaMangiata = koma;
+                    listaPannelli = kubomawashi_sfidante.Pedine;
                     panelDaUsare = (TableLayoutPanel)kubomawashi1.Controls[0]; // Ottiene il pannello interno del kubomawashi1
                 } else {
-                    if (kubomawashi_sfidante.list.Count == 20) { MessageBox.Show("Il kubomawashi dello sfidante è pieno!"); return; }
-                    listaPannelli = kubomawashi_sfidante.list;
+                    if (kubomawashi_sfidante.Pedine.Count == 20) { MessageBox.Show("Il kubomawashi dello sfidante è pieno!"); return; }
+                    listaPannelli = kubomawashi_sfidante.Pedine;
                     panelDaUsare = (TableLayoutPanel)kubomawashi1.Controls[0];
                 }
             } else {
-                if (kubomawashi_sfidato.PedinaMangiata == null) {
-                    kubomawashi_sfidato.PedinaMangiata = koma;
-                    listaPannelli = kubomawashi_sfidato.list;
+                if (kubomawashi_sfidato.UltimaPedinaMangiata == null) {
+                    kubomawashi_sfidato.UltimaPedinaMangiata = koma;
+                    listaPannelli = kubomawashi_sfidato.Pedine;
                     panelDaUsare = (TableLayoutPanel)kubomawashi2.Controls[0]; // Ottiene il pannello interno del kubomawashi
                 } else {
-                    if (kubomawashi_sfidato.list.Count == 20) { MessageBox.Show("Il kubomawashi dello sfidato è pieno!"); return; }
-                    listaPannelli = kubomawashi_sfidato.list;
+                    if (kubomawashi_sfidato.Pedine.Count == 20) { MessageBox.Show("Il kubomawashi dello sfidato è pieno!"); return; }
+                    listaPannelli = kubomawashi_sfidato.Pedine;
                     panelDaUsare = (TableLayoutPanel)kubomawashi2.Controls[0];
                 }
             }
@@ -119,6 +119,44 @@ namespace Shogi {
             panelDaUsare.Controls.Add(panelPedina);
 
 
+        }
+
+        private void inserisciPedinaNelKubomawashi(List<Koma> pedine) {
+            foreach(Koma koma in pedine) {
+                if (!komaNonPromovibili.Contains(koma.GetType().Name)) //se la koma non è depromovibile allora non lo farà
+                    koma.depromuovi();
+
+                TableLayoutPanel panelDaUsare = null;
+                List<Koma> listaPannelli = null;
+                if (((koma.Colore == Koma.Giocatore.Sente) ? Koma.Giocatore.Gote : Koma.Giocatore.Sente) == Koma.Giocatore.Sente) {
+                    if (kubomawashi_sfidante.Pedine.Count == 20) {
+                        MessageBox.Show("Il kubomawashi dello sfidante è pieno!");
+                        return;
+                    }
+                    kubomawashi_sfidante.UltimaPedinaMangiata = koma;
+                    listaPannelli = kubomawashi_sfidante.Pedine;
+                    panelDaUsare = (TableLayoutPanel)kubomawashi1.Controls[0];
+                } else {
+                    if (kubomawashi_sfidato.Pedine.Count == 20) { 
+                        MessageBox.Show("Il kubomawashi dello sfidato è pieno!"); 
+                        return;
+                    }
+                    listaPannelli = kubomawashi_sfidato.Pedine;
+                    panelDaUsare = (TableLayoutPanel)kubomawashi2.Controls[0];
+                }
+                Panel panelPedina = new Panel {
+                    Size = new Size(50, 50),
+                    BackgroundImage = koma.Icona,
+                    BackgroundImageLayout = ImageLayout.Zoom,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Name = "prova",
+                    Tag = koma
+                };
+
+                panelPedina.Click += new EventHandler(ReinserimentoKoma);
+
+                panelDaUsare.Controls.Add(panelPedina);
+            }
         }
 
         private void ReinserimentoKoma(object sender, EventArgs e) {
@@ -237,7 +275,6 @@ namespace Shogi {
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImage = koma.Icona;
                     Tiles[posizioneChiamante.Item1, posizioneChiamante.Item2].BackgroundImageLayout = ImageLayout.Center;
                     komaReinserimento.Parent.Controls.Remove(komaReinserimento);
-                    //koma.changeTeam(posizioneChiamante);
 
                     koma.Posizione = posizioneChiamante;
                     shogiban.aggiungiKoma(koma);
@@ -286,7 +323,7 @@ namespace Shogi {
                         MessageBox.Show($"LO {player} PERDE PER TEMPO");
                         sec = 0;
                     } else {
-                        sec = 60;
+                        sec = 59;
                         min--;
                     }
                 } else sec--;
@@ -336,12 +373,15 @@ namespace Shogi {
                         Tiles[i, j].BackgroundImage = null;
                         Koma koma = salvataggio.ShogibanState[i, j];
                         if (koma != null) {
-                            //Utilities.mostraCasella(shogiban, Tiles, koma);
+                            Utilities.mostraCasella(shogiban, Tiles, koma);
                         }
                     }
                 }
                 kubomawashi_sfidato = salvataggio.KubomawashiGote;
+                inserisciPedinaNelKubomawashi(kubomawashi_sfidato.Pedine);
                 kubomawashi_sfidante = salvataggio.KubomawashiSente;
+                inserisciPedinaNelKubomawashi(kubomawashi_sfidante.Pedine);
+                
             }
         }
 
@@ -356,7 +396,7 @@ namespace Shogi {
             formFinale.ShowDialog();
             partitaFinita = true;
             SvuotaSalvataggio();
-            this.Close();
+            Close();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) {

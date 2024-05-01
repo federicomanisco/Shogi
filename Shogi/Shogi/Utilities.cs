@@ -81,7 +81,7 @@ namespace Shogi {
             mostraCasella(shogiban, tiles, torreBianca);
         }
 
-        private static void mostraCasella(Shogiban shogiban, Panel[,] tiles, Koma koma) {
+        public static void mostraCasella(Shogiban shogiban, Panel[,] tiles, Koma koma) {
             shogiban.aggiungiKoma(koma);
             tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImage = koma.Icona;
             tiles[koma.Posizione.Item1, koma.Posizione.Item2].BackgroundImageLayout = ImageLayout.Center;
@@ -189,7 +189,6 @@ namespace Shogi {
             int width = grandezza.Item1;
             int height = grandezza.Item2;
 
-
             pbox_timer1.Size = new Size(width, height);
             pbox_timer1.Location = new Point(60, 1080 - height - (1080 - (gridsize * tilesize)) / 2);
             pbox_timer1.BackColor = Color.Transparent;
@@ -205,28 +204,28 @@ namespace Shogi {
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile($@"{percorsoImmagine}/shogiPieces/extra/numberFont.ttf");
 
-            lbl_Min1.Text = min.ToString();           //Scalo la grandezza del font in base alla scala dello schermo  
+            lbl_Min1.Text = min.ToString("D2");           //Scalo la grandezza del font in base alla scala dello schermo  
             lbl_Min1.Font = new Font(pfc.Families[0], 80 * (1 / scaleFactor));
             lbl_Min1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min1.BackColor = Color.FromArgb(40, 40, 40);
 
-            lbl_Sec1.Text = sec.ToString();
+            lbl_Sec1.Text = sec.ToString("D2");
             lbl_Sec1.Font = new Font(pfc.Families[0], 80 * (1 / scaleFactor));
             lbl_Sec1.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec1.BackColor = Color.FromArgb(40, 40, 40);
-            lbl_Sec1.Location = new Point(60 + 225, 1080 - height - (1080 - (gridsize * tilesize)) + 227); // x +215 e y +233 per centrare il testo
+            lbl_Sec1.Location = new Point(60 + 205, 1080 - height - (1080 - (gridsize * tilesize)) + 227); // x +215 e y +233 per centrare il testo
 
-            lbl_Min2.Text = min.ToString();
+            lbl_Min2.Text = min.ToString("D2");
             lbl_Min2.Font = new Font(pfc.Families[0], 80 * (1 / scaleFactor));
             lbl_Min2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Min2.BackColor = Color.FromArgb(40, 40, 40);
+            
 
-
-            lbl_Sec2.Text = sec.ToString();
+            lbl_Sec2.Text = sec.ToString("D2");
             lbl_Sec2.Font = new Font(pfc.Families[0], 80 * (1 / scaleFactor));
             lbl_Sec2.ForeColor = Color.FromArgb(255, 38, 42);
             lbl_Sec2.BackColor = Color.FromArgb(40, 40, 40);
-            lbl_Sec2.Location = new Point(1920 - width - 60 + 223, height - 160 + 62); // x +42 e y +233 per centrare il testo
+            lbl_Sec2.Location = new Point(1920 - width - 60 + 205, height - 160 + 62); // x +42 e y +233 per centrare il testo
 
             lbl_Min1.Location = new Point(60 + 62, 1080 - height - (1080 - (gridsize * tilesize)) + 227); // x +62 e y +233 per centrare il testo
             lbl_Min2.Location = new Point(1920 - width - 60 + 60, height - 160 + 62); // x +60 e y +67 per centrare il testo
