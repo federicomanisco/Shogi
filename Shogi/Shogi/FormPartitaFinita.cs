@@ -13,13 +13,13 @@ namespace Shogi
     public partial class FormPartitaFinita : Form
     {
 
-        Koma.Giocatore vittorioso;
+        Koma.Giocatore perdente;
         string PERCORSOIMMAGINE = Application.StartupPath;
 
-        public FormPartitaFinita(Koma.Giocatore v) //true vince Sente (sotto), false vince Gote (sopra)
+        public FormPartitaFinita(Koma.Giocatore p) //true vince Sente (sotto), false vince Gote (sopra)
         {
             InitializeComponent();
-            vittorioso = v;
+            perdente = p;
         }
 
 
@@ -51,7 +51,7 @@ namespace Shogi
         {
             label1.Font = new Font("Arial", 40 * (1 / Utilities.GetScreenScaleFactor(this)));
             label1.BackColor = Color.Transparent;
-            label1.Text = $"VINCE {PrendiVincitore(vittorioso)}";
+            label1.Text = $"VINCE {PrendiVincitore(perdente)}";
             label1.Location = new Point(120, 25);
         }
 
@@ -77,7 +77,7 @@ namespace Shogi
             pbox_crown.BackColor = Color.Transparent;
             pbox_crown.Size = new Size(60, 40);
 
-            if (vittorioso == Koma.Giocatore.Sente)
+            if (perdente != Koma.Giocatore.Sente)
                 pbox_crown.Location = new Point(this.Width / 2 - 3 * pbox_sente.Width, 150 - pbox_crown.Height);
             else
                 pbox_crown.Location = new Point(this.Width / 2 + 3 * pbox_gote.Width - pbox_gote.Width, 150 - pbox_crown.Height);

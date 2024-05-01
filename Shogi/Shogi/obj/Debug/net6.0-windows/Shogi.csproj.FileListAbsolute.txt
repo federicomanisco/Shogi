@@ -150,3 +150,6 @@ D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
 D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
 D:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CopyComplete
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.AssemblyReference.cache
+C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CopyComplete

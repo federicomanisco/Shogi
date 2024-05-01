@@ -33,7 +33,6 @@
             pbox_gote = new PictureBox();
             pbox_crown = new PictureBox();
             button1 = new Button();
-            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pbox_sente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbox_gote).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbox_crown).BeginInit();
@@ -74,26 +73,16 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 180);
+            button1.Cursor = Cursors.Hand;
+            button1.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(200, 243);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(170, 57);
-            button1.TabIndex = 19;
-            button1.Text = "button1";
+            button1.Size = new Size(193, 62);
+            button1.TabIndex = 20;
+            button1.Text = "MENU INIZIALE";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.Cursor = Cursors.Hand;
-            button2.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(179, 270);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(193, 62);
-            button2.TabIndex = 20;
-            button2.Text = "MENU INIZIALE";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button1.Click += button2_Click;
             // 
             // FormPartitaFinita
             // 
@@ -101,7 +90,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(584, 361);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pbox_crown);
             Controls.Add(pbox_gote);

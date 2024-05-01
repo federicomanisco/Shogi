@@ -30,6 +30,7 @@ namespace Shogi
 
         private void PaginaIniziale_Load(object sender, EventArgs e)
         {
+            
             Size = Screen.PrimaryScreen.WorkingArea.Size;
             WindowState = FormWindowState.Maximized;
             foreach (Control elemento in this.Controls)
@@ -46,7 +47,6 @@ namespace Shogi
             label1.BackColor = Color.Transparent;
 
             caricaPulsanti();
-           
         }
 
         private void caricaPulsanti()

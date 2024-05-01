@@ -20,14 +20,15 @@ namespace Shogi {
         const int GRIDSIZE = 9;
         Color TileColor = Color.FromArgb(238, 182, 115);
         Shogiban shogiban = new Shogiban();
-        Kubomawashi kubomawashi_sfidante = new Kubomawashi(); //lo sfidante inizia sotto
-        Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra
+        Kubomawashi kubomawashi_sfidante = new Kubomawashi(); //lo sfidante inizia sotto (Sente)
+        Kubomawashi kubomawashi_sfidato = new Kubomawashi();  //lo sfidato inizia sopra (Gote)
         int kubomawashi_width = 283; //lunghezza lato kubomawashi, quadrato
         static protected string PERCORSOIMMAGINE = Application.StartupPath;
         const int TIMERWIDTH = 400;
         const int TIMERHEIGHT = 240;
-        int tempoMin = 10; //tempo di gioco per giocatore, minuti
-        int tempoSec = 30; //tempo di gioco per giocatore, secondi
+        int tempoMin = 0; //tempo di gioco per giocatore, minuti
+        int tempoSec = 3; //tempo di gioco per giocatore, secondi
+        bool primaMossa = false; //se è stata eseguita la prima mossa da parte del Sente
         bool partitaFinita = false;
         const int MARGINEX = 582;
         const int MARGINEY = 122;
@@ -222,6 +223,9 @@ namespace Shogi {
                 } else {
 
                     if (panel.BackColor == Color.Yellow) {
+
+                        if(!primaMossa) primaMossa = true; //primaMossa true se non era ancora stata fatta prima nessuna mossa
+
                         (int, int) nuovaPosizione = Utilities.getRowColFromLocation(panel.Location, TILESIZE, MARGINEX, MARGINEY);
                         Koma koma = shogiban.getKoma(posizioneChiamante);
                         koma.Posizione = nuovaPosizione;
@@ -299,13 +303,13 @@ namespace Shogi {
         }
 
         private void timer_tick(object sender, EventArgs e) {
-            if (timer1.Enabled) {
+            if (timer1.Enabled && primaMossa) {
                 int min;
                 int sec;
-                string player;
+                Koma player;
 
-                if (turno == Koma.Giocatore.Sente) player = "SFIDANTE";
-                else player = "SFIDATO";
+                if (turno == Koma.Giocatore.Sente) player = new Osho((0,0), Koma.Giocatore.Sente);
+                else player = new Osho((0,0), Koma.Giocatore.Gote);
 
                 if (turno == Koma.Giocatore.Sente) {
                     min = int.Parse(lbl_Min1.Text);
@@ -320,8 +324,8 @@ namespace Shogi {
                         if (turno == Koma.Giocatore.Sente) lbl_Sec1.Text = "0";
                         else lbl_Sec2.Text = "0";
                         timer1.Stop();
-                        MessageBox.Show($"LO {player} PERDE PER TEMPO");
                         sec = 0;
+                        finisciPartita(player);
                     } else {
                         sec = 59;
                         min--;
@@ -394,12 +398,13 @@ namespace Shogi {
         }
 
         private void finisciPartita(Koma koma) {
-            FormPartitaFinita formFinale = new FormPartitaFinita(koma.Colore); //passo il colore opposto del re mangiato
-            timer1.Stop();
-            formFinale.ShowDialog();
             partitaFinita = true;
             SvuotaSalvataggio();
             Close();
+            FormPartitaFinita formFinale = new FormPartitaFinita(koma.Colore); //passo il colore opposto del re mangiato
+            timer1.Stop();
+            formFinale.ShowDialog();
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
