@@ -153,3 +153,11 @@ D:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CopyComplete
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.AssemblyReference.cache
 C:\Users\LORENZO\Documents\GitHub\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CopyComplete
+C:\C#\Shogi\Shogi\Shogi\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.AssemblyReference.cache
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormMovimenti.resources
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormMovimentiShogiban.resources
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.FormPartitaFinita.resources
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.PaginaIniziale.resources
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.Properties.Resources.resources
+C:\C#\Shogi\Shogi\Shogi\obj\Debug\net6.0-windows\Shogi.csproj.CopyComplete

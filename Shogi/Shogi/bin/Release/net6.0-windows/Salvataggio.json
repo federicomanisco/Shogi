@@ -1,0 +1,497 @@
+{
+  "$type": "Shogi.Salvataggio, Shogi",
+  "ShogibanState": {
+    "$type": "Shogi.Koma[,], Shogi",
+    "$values": [
+      [
+        {
+          "$type": "Shogi.Kyosha, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 0,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 0,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 0,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Kyosha, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 0,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Keima, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 1,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        {
+          "$type": "Shogi.Hisha, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 1,
+            "Item2": 1
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 1,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 1,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        {
+          "$type": "Shogi.Kakugyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 1,
+            "Item2": 7
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        {
+          "$type": "Shogi.Keima, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 1,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Ginsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 2,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 2,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 2,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Ginsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 2,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Kinsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 3,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 3,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 3,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Kinsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 3,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Osho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 4,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 4,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 4,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Osho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 4,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Kinsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 5,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 5,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 5,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Kinsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 5,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Ginsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 6,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 6,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 6,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Ginsho, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 6,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Keima, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 7,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        {
+          "$type": "Shogi.Kakugyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 7,
+            "Item2": 1
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 7,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 7,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        {
+          "$type": "Shogi.Hisha, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 7,
+            "Item2": 7
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        {
+          "$type": "Shogi.Keima, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 7,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ],
+      [
+        {
+          "$type": "Shogi.Kyosha, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 8,
+            "Item2": 0
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 8,
+            "Item2": 2
+          },
+          "Promossa": false,
+          "Colore": 1
+        },
+        null,
+        null,
+        null,
+        {
+          "$type": "Shogi.Fuhyo, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 8,
+            "Item2": 6
+          },
+          "Promossa": false,
+          "Colore": 0
+        },
+        null,
+        {
+          "$type": "Shogi.Kyosha, Shogi",
+          "Posizione": {
+            "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+            "Item1": 8,
+            "Item2": 8
+          },
+          "Promossa": false,
+          "Colore": 0
+        }
+      ]
+    ]
+  },
+  "TempiGiocatori": {
+    "$type": "System.ValueTuple`2[[System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib],[System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib]], System.Private.CoreLib",
+    "Item1": {
+      "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+      "Item1": 10,
+      "Item2": 30
+    },
+    "Item2": {
+      "$type": "System.ValueTuple`2[[System.Int32, System.Private.CoreLib],[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+      "Item1": 10,
+      "Item2": 30
+    }
+  },
+  "Turno": 0,
+  "KubomawashiSente": {
+    "$type": "Shogi.Kubomawashi, Shogi",
+    "UltimaPedinaMangiata": null,
+    "Pedine": {
+      "$type": "System.Collections.Generic.List`1[[Shogi.Koma, Shogi]], System.Private.CoreLib",
+      "$values": []
+    }
+  },
+  "KubomawashiGote": {
+    "$type": "Shogi.Kubomawashi, Shogi",
+    "UltimaPedinaMangiata": null,
+    "Pedine": {
+      "$type": "System.Collections.Generic.List`1[[Shogi.Koma, Shogi]], System.Private.CoreLib",
+      "$values": []
+    }
+  }
+}

@@ -55,19 +55,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LORENZO\\.nuget\\packages\\": {}
+    "C:\\Users\\feder\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+      "projectUniqueName": "C:\\C#\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
       "projectName": "Shogi",
-      "projectPath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
-      "packagesPath": "C:\\Users\\LORENZO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LORENZO\\Documents\\GitHub\\Shogi\\Shogi\\Shogi\\obj\\",
+      "projectPath": "C:\\C#\\Shogi\\Shogi\\Shogi\\Shogi.csproj",
+      "packagesPath": "C:\\Users\\feder\\.nuget\\packages\\",
+      "outputPath": "C:\\C#\\Shogi\\Shogi\\Shogi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LORENZO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\feder\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -117,7 +117,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
