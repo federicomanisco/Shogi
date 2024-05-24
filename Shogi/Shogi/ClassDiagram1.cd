@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shogi.Properties.Resources" Collapsed="true">
+    <Position X="24.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Form1" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQBA5BCQGAAIAECgyCDAAQiIEAACA6AIAyIggFEACY=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.FormMovimenti" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAACAACAAAAAAACCAAAUCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FormMovimenti.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.FormMovimentiShogiban" Collapsed="true">
+    <Position X="23" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAwAAAWAAAAAQgAGEIAUCASAACAIIAAgAgIIEAAA=</HashCode>
+      <FileName>FormMovimentiShogiban.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.FormPartitaFinita" Collapsed="true">
+    <Position X="24.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEEAACEAACAAABAAEACAAAQCAAAYAAAAAGAAAGAAAAk=</HashCode>
+      <FileName>FormPartitaFinita.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Fuhyo" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Fuhyo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Ginsho" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Ginsho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Hisha" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Hisha.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Kakugyo" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Kakugyo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Keima" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Keima.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Kinsho" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Kinsho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Koma" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAgABAAAAAAAEAAASBAAAgAACIEAAAmBAAQAA=</HashCode>
+      <FileName>Koma.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Kubomawashi" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAABAAAAAEAAQAAAAAAAAAAAAEAAAAgA=</HashCode>
+      <FileName>Kubomawashi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Kyosha" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Kyosha.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Osho" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Osho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.PaginaIniziale" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAQQAQCAAABAAAACAAEQCAAA4AAACAHAgAAAAEAg=</HashCode>
+      <FileName>PaginaIniziale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Program" Collapsed="true">
+    <Position X="23" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Salvataggio" Collapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAARAAAAAA=</HashCode>
+      <FileName>Salvataggio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Shogiban" Collapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAIAAAAYAAAAAggAABAEAgAAgAIAACAAAIIAAAAAAQ=</HashCode>
+      <FileName>Shogiban.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shogi.Utilities" Collapsed="true">
+    <Position X="23" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQAAAgAAAAQIAQAAAQAAAIAAAAAACAAAgAgAQA=</HashCode>
+      <FileName>Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
